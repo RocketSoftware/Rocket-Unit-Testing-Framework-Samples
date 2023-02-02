@@ -3,9 +3,15 @@
 This repo contains a collection of samples that demonstrate the unit testing features of the [Micro Focus Unit Testing Framework](https://www.microfocus.com/documentation/enterprise-developer/ed80/ED-Eclipse/index.html?t=GUID-56868D50-F836-4FA3-9255-8BCE6F895D1B.html)
 
 
+## Samples
+
+| Sample Name                                                 | Link                             |
+| ----------------------------------------------------------- | -------------------------------- |
+| Silk Central test data source sample (Legacy/For Reference) | [Directory](SilkCentral-Sample/) |
+
 ## Other Samples
 
-| Description                                     | Link                                                                                                            |
+| Sample Name                                     | Link                                                                                                            |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | Visual COBOL For Java Developers Book/Chapter 7 | [Git Repo](https://github.com/MicroFocus/visual-cobol-for-java-developers-book/tree/master/chapter-07/MFUnit)   |
 | Visual COBOL For Java Developers Book/Chapter 9 | [Git Repo](https://github.com/MicroFocus/visual-cobol-for-java-developers-book/tree/master/chapter-09/complete) |
