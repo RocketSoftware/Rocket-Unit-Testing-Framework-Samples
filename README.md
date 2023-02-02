@@ -3,6 +3,15 @@
 This repo contains a collection of samples that demonstrate the unit testing features of the [Micro Focus Unit Testing Framework](https://www.microfocus.com/documentation/enterprise-developer/ed80/ED-Eclipse/index.html?t=GUID-56868D50-F836-4FA3-9255-8BCE6F895D1B.html)
 
 
+## Other Samples
+
+| Description                                     | Link                                                                                                            |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Visual COBOL For Java Developers Book/Chapter 7 | [Git Repo](https://github.com/MicroFocus/visual-cobol-for-java-developers-book/tree/master/chapter-07/MFUnit)   |
+| Visual COBOL For Java Developers Book/Chapter 9 | [Git Repo](https://github.com/MicroFocus/visual-cobol-for-java-developers-book/tree/master/chapter-09/complete) |
+| Airport Sample                                  | [Git Repo](https://github.com/MicroFocus/Airport-Sample)                                                        |
+
+
 ## License
 Copyright (C) 2023 Micro Focus. All Rights Reserved. This software may be used, modified, and distributed (provided this notice is included without modification) solely for internal demonstration purposes with other Micro Focus software, and is otherwise subject to the EULA at https://www.microfocus.com/en-us/legal/software-licensing.
 
