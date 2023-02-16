@@ -5,13 +5,14 @@ This repo contains a collection of samples that demonstrate the unit testing fea
 
 ## Samples
 
-| Sample Name                                                 | Feature     | Link                             |
-| ----------------------------------------------------------- | ----------- | -------------------------------- |
-| Basic "PASS" test case sample                               |             | [Directory](MyFirstTest/)        |
-| Basic "FAIL" test case sample                               |             | [Directory](MyFirstFail/)        |
-| Simple date check program with test case                    |             | [Directory](DateCheck/)          |
-| FlyerLevel sample                                           | Data Driven | [Directory](FlyerLevel/)         |
-| Silk Central test data source sample (Legacy/For Reference) |             | [Directory](SilkCentral-Sample/) |
+| Sample Name                                                 | Feature            | Link                             |
+| ----------------------------------------------------------- | ------------------ | -------------------------------- |
+| Basic "PASS" test case sample                               |                    | [Directory](MyFirstTest/)        |
+| Basic "FAIL" test case sample                               |                    | [Directory](MyFirstFail/)        |
+| Simple date check program with test case                    |                    | [Directory](DateCheck/)          |
+| FlyerLevel sample                                           | Data Driven        | [Directory](FlyerLevel/)         |
+| Fizzbuzz sample                                             | Section based test | [Directory](mfupp_fizzbuzz/)     |
+| Silk Central test data source sample (Legacy/For Reference) |                    | [Directory](SilkCentral-Sample/) |
 
 ## Other Samples
 
