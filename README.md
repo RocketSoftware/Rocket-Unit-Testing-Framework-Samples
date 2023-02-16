@@ -9,6 +9,7 @@ This repo contains a collection of samples that demonstrate the unit testing fea
 | ----------------------------------------------------------- | -------------------------------- |
 | Basic "PASS" test case sample                               | [Directory](MyFirstTest/)        |
 | Basic "FAIL" test case sample                               | [Directory](MyFirstFail/)        |
+| Simple date check program with test case                    | [Directory](DateCheck/)        |
 | Silk Central test data source sample (Legacy/For Reference) | [Directory](SilkCentral-Sample/) |
 
 ## Other Samples
