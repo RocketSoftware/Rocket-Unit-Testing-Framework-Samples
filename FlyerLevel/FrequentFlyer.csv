@@ -1,0 +1,7 @@
+InitialStatus,InitialPoints,EarnedPoints,FinalStatus
+Bronze,0,100,Bronze
+Bronze,0,300,Silver
+Bronze,100,200,Silver
+Bronze,0,700,Gold
+Bronze,0,1500,Platinum
+Platinum,1600,12000,Diamond
