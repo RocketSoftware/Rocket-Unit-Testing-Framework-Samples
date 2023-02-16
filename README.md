@@ -7,6 +7,8 @@ This repo contains a collection of samples that demonstrate the unit testing fea
 
 | Sample Name                                                 | Link                             |
 | ----------------------------------------------------------- | -------------------------------- |
+| Basic "PASS" test case sample                               | [Directory](MyFirstTest/)        |
+| Basic "FAIL" test case sample                               | [Directory](MyFirstFail/)        |
 | Silk Central test data source sample (Legacy/For Reference) | [Directory](SilkCentral-Sample/) |
 
 ## Other Samples
