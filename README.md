@@ -1,6 +1,6 @@
 # Micro Focus Unit Testing Framework Samples
 
-This repo contains a collection of samples that demonstrate the unit testing features of the [Micro Focus Unit Testing Framework](https://www.microfocus.com/documentation/enterprise-developer/ed80/ED-Eclipse/index.html?t=GUID-56868D50-F836-4FA3-9255-8BCE6F895D1B.html)
+This repo contains a collection of samples that demonstrate the features included with the [Micro Focus Unit Testing Framework](https://www.microfocus.com/documentation/enterprise-developer/ed80/ED-Eclipse/index.html?t=GUID-56868D50-F836-4FA3-9255-8BCE6F895D1B.html)
 
 
 ## Samples
@@ -9,10 +9,12 @@ This repo contains a collection of samples that demonstrate the unit testing fea
 | ----------------------------------------------------------- | --------------------- | ------------------------------------ | -------------------------------- |
 | Basic "PASS" test case sample                               |                       |                                      | [Directory](MyFirstTest/)        |
 | Basic "FAIL" test case sample                               |                       |                                      | [Directory](MyFirstFail/)        |
-| Simple date check program with test case                    |                       |                                      | [Directory](DateCheck/)          |
-| FlyerLevel sample                                           | 5                     | Data Driven                          | [Directory](FlyerLevel/)         |
-| Fizzbuzz sample                                             | 7                     | Section based test                   | [Directory](mfupp_fizzbuzz/)     |
-| Silk Central test data source sample (Legacy/For Reference) | 3                     | Silk Central based data driven tests | [Directory](SilkCentral-Sample/) |
+| Simple date check program with test case                    |                       | Program based test case              | [Directory](DateCheck/)          |
+| FlyerLevel sample                                           | VC/ED v5              | Program based & data driven test     | [Directory](FlyerLevel/)         |
+| Fizzbuzz sample                                             | VC/ED v7              | Section based test                   | [Directory](mfupp_fizzbuzz/)     |
+| Silk Central test data source sample (Legacy/For Reference) | VC/ED v3              | Silk Central based data driven tests | [Directory](SilkCentral-Sample/) |
+
+*VC/ED = Visual COBOL and Enterprise Developer
 
 ## Other Samples
 
