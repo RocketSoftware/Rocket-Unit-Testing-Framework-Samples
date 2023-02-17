@@ -1,0 +1,37 @@
+      *>----------------------------------------------------------------
+      *>
+      *> A set of tests for the "fizzbuzz" example
+      *>
+      *> Objective:
+      *>  Tests for fizz, buzz, baz, fizzbuzz and normal number
+      *>
+      *>----------------------------------------------------------------
+       Entry "MFUT_FIZZBUZZ".
+           Move Function numval(mfu-dd-CURRENT-NUMBER) To CURRENT-NUMBER
+           Perform PROCESS-NUMBER
+
+           If CURRENT-RESULT Not Equal mfu-dd-CURRENT-RESULT
+               Move Spaces To ws-test-temp-message
+               String "FAIL - Got: " Delimited By Size
+                 mfu-dd-CURRENT-RESULT Delimited By Space
+                 ", Expected " Delimited By Size
+                 CURRENT-RESULT Delimited By Space
+                 ", For number " Delimited By Size
+                 mfu-dd-CURRENT-NUMBER Delimited By Space
+                 x"0" Delimited By Size
+                   Into ws-test-temp-message
+               End-String
+               Call "MFU_ASSERT_FAIL_Z" Using
+                   By Reference ws-test-temp-message
+               End-Call
+           Else
+               display "PASS: " CURRENT-NUMBER " / "
+                 mfu-dd-CURRENT-RESULT
+           End-If
+           Goback.
+
+
+       Fizzbuzz-Metadata Section.
+       Entry "MFUM_FIZZBUZZ"
+           Move "csv:$MFU_DD_DIR/fizzbuzz_data.csv" To MFU-MD-TESTDATA
+           Goback.
