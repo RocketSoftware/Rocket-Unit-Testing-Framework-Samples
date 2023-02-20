@@ -1,0 +1,6 @@
+AMOUNT,RATE,TERM,EXPECTED_RESULT
+0,1.0,10,"Please enter a non-zero amount"
+6000,0.0,10,"Nothing's free. Rate must be greater than 0%"
+6000,5,00,"Decimal point missing/misplaced in interest rate"
+2500,5.0,12,$214.02
+6000,5.0,24,$263.23
