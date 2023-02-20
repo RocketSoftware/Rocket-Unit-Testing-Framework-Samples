@@ -15,7 +15,7 @@ This repo contains a collection of samples that demonstrate the features include
 | Fizzbuzz data driven sample                                 | VC/ED v7              | Section based & data driven test case                       | [Directory](mfupp_fizzbuzz_dd/)      |
 | FirstExample/Compare JCL Unit Test                          | ED 6                  | JCL test case                                               | [Directory](ed_jcl_sample/)          |
 | Accept From CONSOLE/JCL Sample                              | ED 6                  | JCL, COBOL and console reply based test case                | [Directory](ed_jcl_cobol_reply/)     |
-| JCL Samples as unit tests                                   | ED 6                  | JCL and COBOL test cases                                    | [Directory](ed_jcl_cobol_examples/)] |
+| JCL Samples as unit tests                                   | ED 6                  | JCL and COBOL test cases                                    | [Directory](ed_jcl_cobol_examples/)  |
 | getCustomerId sample                                        | VC/ED v9              | Program based test case (including sql) with a mock program | [Directory](mfupp_getCustomerId/)    |
 | Silk Central test data source sample (Legacy/For Reference) | VC/ED v3              | Silk Central based data driven test cases                   | [Directory](SilkCentral-Sample/)     |
 
