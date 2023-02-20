@@ -18,6 +18,7 @@ This repo contains a collection of samples that demonstrate the features include
 | Fizzbuzz sample                                             | VC/ED v7              | Section based test case                                     | [Directory](mfupp_fizzbuzz/)        |
 | Fizzbuzz data driven sample                                 | VC/ED v7              | Section based & data driven test case                       | [Directory](mfupp_fizzbuzz_dd/)     |
 | getCustomerId sample                                        | VC/ED v9              | Program based test case (including sql) with a mock program | [Directory](mfupp_getCustomerId/)   |
+| simplified bankdemo sample                                  | VC/ED v9              | Program/Section based test cases with mock cics             | [Directory](mfupp_bankdemo/)        |
 
 *VC/ED = Visual COBOL and Enterprise Developer
 
