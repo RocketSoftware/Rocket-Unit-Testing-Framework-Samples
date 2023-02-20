@@ -17,8 +17,8 @@ This repo contains a collection of samples that demonstrate the features include
 | JCL Samples as unit tests                                   | ED v6                 | JCL and COBOL test cases                                    | [Directory](ed_jcl_cobol_examples/)     |
 | Fizzbuzz sample                                             | VC/ED v7              | Section based test case                                     | [Directory](mfupp_fizzbuzz/)            |
 | Fizzbuzz data driven sample                                 | VC/ED v7              | Section based & data driven test case                       | [Directory](mfupp_fizzbuzz_dd/)         |
-| getCustomerId sample                                        | VC/ED v9              | Program based test case (including sql) with a mock program | [Directory](mfupp_getCustomerId/)       |
-| simplified bankdemo sample                                  | ED v9                 | Program/Section based test cases with mock cics             | [Directory](mfupp_bankdemo/)            |
+| Customer id sample                                        | VC/ED v9              | Program based test case (including sql) with a mock program | [Directory](mfupp_getCustomerId/)       |
+| Simplified bankdemo sample                                  | ED v9                 | Program/Section based test cases with mock cics             | [Directory](mfupp_bankdemo/)            |
 | Employee table scanner sample                               | VC/ED v9              | Program based test with mock sql                           | [Directory](mfupp_scan_employee_table/) |
 
 *VC/ED = Visual COBOL and Enterprise Developer
