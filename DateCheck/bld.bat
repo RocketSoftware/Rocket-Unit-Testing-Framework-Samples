@@ -56,7 +56,7 @@ dir/b *.obj >examples.lnk
 cbllink -Dexamples.dll @examples.lnk
 mfurun -generate-mfu examples.dll
 mfurun %extra_arg% -report:junit -jit:nodebug -verbose examples.mfu
-@REM @del examples.mfu examples.dll *.obj *.idy examples.lnk examples.mfgcf
+@del examples.mfu examples.dll *.obj *.idy examples.lnk examples.mfgcf
 goto theend
 
 :bld_jvm

@@ -15,6 +15,7 @@
        78 TEST-MyFirstFail value "MyFirstFail".
        copy "mfunit.cpy".
        procedure division.
+           call "CBL_DEBUGBREAK"
            call "wibble"
            *> this test case will always fail
            if 1 equals 1
