@@ -27,9 +27,9 @@ bld_native() {
 		echo Compiling : $i.cbl
 		if [ -f $i.dir ]
 		then
-			cob -U -C 'use"'$i.dir'"' -z -e "" $i.cbl
+			cob -Ug -C 'use"'$i.dir'"' -z -e "" $i.cbl
 		else
-			cob -zU -e "" $i.cbl
+			cob -zgU -e "" $i.cbl
 		fi
 	done
 
@@ -38,7 +38,7 @@ bld_native() {
 	do
 		echo Running unit test for $i
 		cobmfurun -verbose $MFU_ARG -report:junit -report:printfile -outdir:results $i.so
-		rm -f $i.o $i.int $i.idy $i.so
+		#rm -f $i.o $i.int $i.idy $i.so
 		echo
 	done
 }
