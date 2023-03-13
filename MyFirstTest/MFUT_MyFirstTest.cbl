@@ -11,7 +11,7 @@
       * This is a example of a small unit test that always passes
       *****************************************************************
        copy "mfunit_prototypes.cpy".
-       program-id. MFUT_MyfirstTest.
+       program-id. MFUT_MyFirstTest.
        working-storage section.
        78 TEST-MyFirstTest value "MyFirstTest".
        copy "mfunit.cpy".
