@@ -41,11 +41,11 @@
 
        Process-Number Section.
            Evaluate True
-               When Function mod(Current-Number,15) Equal 0
+               When Function mod(Current-Number, 15) Equal 0
                		Move "FIZZBUZZ" To Current-Result
-               When Function Mod(Current-Number,7) Equal 0
+               When Function Mod(Current-Number, 7) Equal 0
                		Move "BAZ" To Current-Result
-               When Function Mod(Current-Number,5) Equal 0
+               When Function Mod(Current-Number, 5) Equal 0
                		Move "BUZZ" To Current-Result
                When Function mod(Current-Number, 3) Equal 0
                		Move "FIZZ" To Current-Result
