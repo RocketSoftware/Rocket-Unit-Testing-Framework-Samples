@@ -25,7 +25,7 @@
              INTO(WS-MESSAGE-R)
           END-EXEC
 
-          MOVE FUNCTION REVERSE(WS-MESSAGE-R(4:78)) To WS-MESSAGE-T
+          MOVE FUNCTION REVERSE(WS-MESSAGE-R(4:76)) To WS-MESSAGE-T
           EXEC CICS SEND TEXT
              ERASE
              FROM (WS-MESSAGE-T)
