@@ -1,7 +1,6 @@
-#!/bin/sh
 TARGET=native
 SRC_NOEXT="CICSHello"
-MFUPP_DIR="-C p(mfupp) CONFIRM VERBOSE CICS(IGNORE) MOCK(CICS) EXEC-REPORT-FILE p(cp) endp endp"
+MFUPP_DIR="-C p(mfupp) CONFIRM VERBOSE CICS(IGNORE) MOCK(CICS) endp"
 MF_RM="rm -f"
 NAME=cicshello
 
@@ -27,7 +26,6 @@ bld_native() {
 	do
 		echo Compiling : $i.cbl
 		cob -via "$MFUPP_DIR" $i.cbl 
-		# cob64 -via -C "P(mfupp) CONFIRM VERBOSE CICS(IGNORE) MOCK(CICS) EXEC-REPORT-FILE P(cp) ENDP" $i.cbl 
 
 	done
 	cob -zg -e "" -o tests.so ./*.int
