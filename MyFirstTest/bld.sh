@@ -4,8 +4,9 @@ SRC_NOEXT="MFUT_MyFirstTest"
 TARGET=native
 MFU_ARG=
 NAME=MyFirstTest
+MF_RM="rm -f"
 
-if [ "$TERM" = "xterm-256color" ]
+if [ "x$TERM" = "xxterm-256color" ]
 then
 	MFU_ARG=-diagnostics-color:ansi
 fi
@@ -16,6 +17,7 @@ do
 		.native) TARGET=native ;;
 		.jvm) TARGET=jvm ;;
 		.net6) TARGET=net6 ;;
+		.norm) MF_RM="echo norm set: leaving files: " ;;
 		*) echo $0: Invalid argument $i
 		   exit 1 
 		   ;;
@@ -43,7 +45,7 @@ bld_native() {
 	do
 		echo Running unit test for $i
 		cobmfurun -verbose $MFU_ARG $REPORT_ARGS -outdir:results $i.so
-		#rm -f $i.o $i.int $i.idy $i.so
+		$MF_RM $i.o $i.int $i.idy $i.so
 		echo
 	done
 }
@@ -65,6 +67,7 @@ bld_jvm() {
 	jar cvf  examples.jar -C jbin .
 	mfjarprogmap -jar examples.jar
 	cobmfurunj $MFU_ARG $REPORT_ARGS -outdir:results examples.jar
+	$MF_RM $i.o $i.int $i.idy $i.so examples.jar
 }
 
 bld_net6() {

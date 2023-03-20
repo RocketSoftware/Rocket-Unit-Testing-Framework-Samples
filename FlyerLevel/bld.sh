@@ -4,9 +4,10 @@ TEST_NOEXT="MFUT_TESTFLYER"
 SRC_NOEXT="$TEST_NOEXT GetFlyerLevel"
 TARGET=native
 MFU_ARG=
+NAME="TESTFLYER"
 MF_RM="rm -f"
 
-if [ "$TERM" = "xtemrm-256color" ]
+if [ "x$TERM" = "xxterm-256color" ]
 then
 	MFU_ARG=-diagnostics-color:ansi
 fi
@@ -24,6 +25,10 @@ do
 	esac
 done
 
+JUNIT_PACKAGE=com.microfocus.sample.$TARGET
+REPORT_NAME=${NAME}_${TARGET}-report.txt
+REPORT_ARGS="-report:junit -junit-packname:$JUNIT_PACKAGE -report:printfile -reportfile:$REPORT_NAME"
+
 bld_native() {
 	for i in $SRC_NOEXT
 	do
@@ -32,7 +37,7 @@ bld_native() {
 		then
 			cob -Ug -C 'use"'$i.dir'"' -z -e "" $i.cbl
 		else
-			cob -zU -e "" $i.cbl
+			cob -zgU -e "" $i.cbl
 		fi
 	done
 
@@ -40,7 +45,7 @@ bld_native() {
 	for i in $TEST_NOEXT
 	do
 		echo Running unit test for $i
-		cobmfurun -verbose $MFU_ARG -report:junit -report:printfile -outdir:results $i.so
+		cobmfurun -verbose $MFU_ARG $REPORT_ARGS -outdir:results $i.so
 		$MF_RM $i.o $i.int $i.idy $i.so
 		echo
 	done
@@ -62,13 +67,13 @@ bld_jvm() {
 
 	jar cvf  examples.jar -C jbin .
 	mfjarprogmap -jar examples.jar
-	cobmfurunj $MFU_ARG -report:junit -verbose -report:junit -report:printfile -outdir:results examples.jar
+	cobmfurunj $MFU_ARG $REPORT_ARGS -outdir:results examples.jar
 	$MF_RM $i.o $i.int $i.idy $i.so examples.jar
 }
 
 bld_net6() {
 	cd dn6
-	dotnet build /t:rebuild /t:run
+	dotnet build /t:rebuild "/p:MFUnitRunnerCommandGenerateArguments=$REPORT_ARGS" /t:run
 	dotnet build /t:clean
 	cd ..
 	mkdir -p results

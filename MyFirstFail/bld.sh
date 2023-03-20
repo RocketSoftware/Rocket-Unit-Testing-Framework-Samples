@@ -3,6 +3,7 @@
 SRC_NOEXT="MFUT_MyFirstFail"
 TARGET=native
 MFU_ARG=
+NAME=MyFirstFail
 
 if [ "$TERM" = "xterm-256color" ]
 then
@@ -21,6 +22,10 @@ do
 	esac
 done
 
+JUNIT_PACKAGE=com.microfocus.sample.$TARGET
+REPORT_NAME=${NAME}_${TARGET}-report.txt
+REPORT_ARGS="-report:junit -junit-packname:$JUNIT_PACKAGE -report:printfile -reportfile:$REPORT_NAME"
+
 bld_native() {
 	for i in $SRC_NOEXT
 	do
@@ -37,8 +42,8 @@ bld_native() {
 	for i in $SRC_NOEXT
 	do
 		echo Running unit test for $i
-		cobmfurun -verbose $MFU_ARG -report:junit -report:printfile -outdir:results $i.so
-		rm -f $i.o $i.int $i.idy $i.so
+		cobmfurun -verbose $MFU_ARG $REPORT_ARGS -outdir:results $i.so
+		#rm -f $i.o $i.int $i.idy $i.so
 		echo
 	done
 }
@@ -59,12 +64,12 @@ bld_jvm() {
 
 	jar cvf  examples.jar -C jbin .
 	mfjarprogmap -jar examples.jar
-	cobmfurunj $MFU_ARG -report:junit -verbose -report:junit -report:printfile -outdir:results examples.jar
+	cobmfurunj -verbose $MFU_ARG $REPORT_ARGS -outdir:results examples.jar
 }
 
 bld_net6() {
 	cd dn6
-	dotnet build /t:rebuild /t:run
+	dotnet build /t:rebuild "/p:MFUnitRunnerCommandGenerateArguments=$REPORT_ARGS" /t:run
 	dotnet build /t:clean
 	cd ..
 	mkdir -p results
