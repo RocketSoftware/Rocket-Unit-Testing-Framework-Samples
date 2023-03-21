@@ -68,12 +68,23 @@ bld_jvm() {
 	cobmfurunj $MFU_ARG $REPORT_ARGS -outdir:results examples.jar
 	$MF_RM $i.o $i.int $i.idy $i.so examples.jar
 }
+
+bld_net6() {
+	cd dn6
+	dotnet build /t:rebuild "/p:MFUnitRunnerCommandGenerateArguments=$REPORT_ARGS" /t:run
+	dotnet build /t:clean
+	cd ..
+	mkdir -p results
+	cp dn6/bin/*/net6.0/TEST*.xml results/
+	cp dn6/bin/*/net6.0/*-report.txt results/
+}
+
 for i in $*
 do
 	case .$i in
 		.native) TARGET=native ;;
 		.jvm) TARGET=jvm ;;
-		# .net6) TARGET=net6 ;;
+		.net6) TARGET=net6 ;;
 		.norm) MF_RM="echo norm set: leaving files: " ;;
 		*) echo $0: Invalid argument $i
 		   exit 1 

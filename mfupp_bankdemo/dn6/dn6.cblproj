@@ -16,13 +16,12 @@
     <SourceFormat>fixed</SourceFormat>
     <DebugSymbols>true</DebugSymbols>
     <AdditionalDirectives>nolitlink
-    list(bankdemo.lst)
-    preplist
     change-message"987 N"
     change-message"1202 N"
     change-message"1205 N"
+    change-message"1209 N"
     change-message"1125 N"
-    p(mfupp) endp
+    p(mfupp)  cp()    endp
     </AdditionalDirectives>
     <WarningLevel>3</WarningLevel>
     <MFDependencyPaths>..\cpylib;..\tests</MFDependencyPaths>
@@ -39,17 +38,16 @@
 
   <ItemGroup>
     <Compile Include="..\BBANK30P.cbl" />
-    <!-- <Compile Include="..\BBANK70P.cbl" /> -->
+    <Compile Include="..\BBANK70P.cbl" /> 
   </ItemGroup>
 
     <ItemGroup>
-    <TestCSVFiles Include="..\FrequentFlyer.csv"/>
+    <TestCSVFiles Include="..\*.csv"/>
   </ItemGroup>
 
   <ItemGroup>
     <!-- Reference MicroFocus.COBOL.MFUNIT in order for MFU* APIs to be resolved -->
     <PackageReference Include="MicroFocus.COBOL.MFUNIT" Version="6.90.*" />
-    <PackageReference Include="MicroFocus.COBOL.Runtime" Version="3.90.*" />
     <None Include="global.json" />
   </ItemGroup>
 
