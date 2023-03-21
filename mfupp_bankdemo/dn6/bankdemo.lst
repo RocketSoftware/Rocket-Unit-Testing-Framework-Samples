@@ -1,0 +1,2334 @@
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page   1
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* Options: "C:\Users\Stephen
+*          Gennard\Micro-Focus-Unit-Testing-Framework-Samples\mfupp_bankdemo\BB
+*          ANK30P.cbl" nologo tlog("C:\Users\Stephen
+*          Gennard\Micro-Focus-Unit-Testing-Framework-Samples\mfupp_bankdemo\dn
+*          6\obj\Debug\net6.0\dn6.TrackingLogs\cobol.read.1.tlog") ilemit
+*          use("C:\Users\Stephen
+*          Gennard\Micro-Focus-Unit-Testing-Framework-Samples\mfupp_bankdemo\dn
+*          6\_cobol00000001-000021C8.dir") ;
+* 013 004 COPYEXT
+* 013 004
+* 013 004 NOCOPYLBR
+* 013 004 SOURCEFORMAT
+* 013 004   SOURCEFORMAT"FIXED"
+* 013 004   SOURCETABSTOP"4"
+* 013 004 NOSPZERO
+* 013 004 AMODE
+* 013 004 NOAMODE
+* 013 004 CHARSET
+* 013 004   CHARSET"ASCII"
+* 013 004   CHECKDIV"ANSI"
+* 013 004 NOCHECKREFMOD
+* 013 004 REENTRANT
+* 013 004 NOREENTRANT
+* 013 004 P64
+* 013 004 NOP64
+* 013 004 DIRECTIVES-IN-COMMENTS
+* 013 004 NODIRECTIVES-IN-COMMENTS
+* 013 004 ILGEN
+* 013 004   ILGEN"SUB"
+* 013 004 NOILICON
+* 013 004 DIALECT
+* 013 004   DIALECT"MF"
+* 013 004 NODIRECTIVES-IN-COMMENTS
+* 013 004 APOST
+* 013 004 NOAPOST
+* 013 004 RM
+* 013 004 NORM
+* 013 004 ACU
+* 013 004 NOACU
+* 013 004 RTNCODE-SIZE
+* 013 004   RTNCODE-SIZE"4"
+* 013 004   RTNCODE-TYPE"COMP"
+* 013 004 NORWHARDPAGE
+* 032 000       *****************************************************************
+* 032 000       *                                                               *
+* 032 000       * Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+* 032 000       * This software may be used, modified, and distributed          *
+* 032 000       * (provided this notice is included without modification)       *
+* 032 000       * solely for internal demonstration purposes with other         *
+* 032 000       * Micro Focus software, and is otherwise subject to the EULA at *
+* 032 000       * https://www.microfocus.com/en-us/legal/software-licensing.    *
+* 032 000       *                                                               *
+* 032 000       * THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+* 032 000       * WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+* 032 000       * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+* 032 000       * SHALL NOT APPLY.                                              *
+* 032 000       * TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+* 032 000       * MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page   2
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000       * WITH THIS SOFTWARE.                                           *
+* 032 000       *                                                               *
+* 032 000       *****************************************************************
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * Program:     BBANK30P.CBL                                     *
+* 032 000       * Layer:       Business logic                                   *
+* 032 000       * Function:    Display account balances                         *
+* 032 000       *****************************************************************
+* 032 000
+* 032 000        IDENTIFICATION DIVISION.
+* 032 000        PROGRAM-ID.
+* 032 000            BBANK30P.
+* 032 000        DATE-WRITTEN.
+* 032 000            September 2003.
+* 032 000        DATE-COMPILED.
+     1*****************************************************************
+     2*                                                               *
+     3* Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+     4* This software may be used, modified, and distributed          *
+     5* (provided this notice is included without modification)       *
+     6* solely for internal demonstration purposes with other         *
+     7* Micro Focus software, and is otherwise subject to the EULA at *
+     8* https://www.microfocus.com/en-us/legal/software-licensing.    *
+     9*                                                               *
+    10* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+    11* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+    12* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+    13* SHALL NOT APPLY.                                              *
+    14* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+    15* MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+    16* WITH THIS SOFTWARE.                                           *
+    17*                                                               *
+    18*****************************************************************
+    19
+    20*****************************************************************
+    21* Program:     BBANK30P.CBL                                     *
+    22* Layer:       Business logic                                   *
+    23* Function:    Display account balances                         *
+    24*****************************************************************
+    25
+    26 IDENTIFICATION DIVISION.
+    27 PROGRAM-ID.
+    28     BBANK30P.
+    29 DATE-WRITTEN.
+    30     September 2003.
+* 032 000            Today.
+* 032 000
+* 032 000        ENVIRONMENT DIVISION.
+    31 DATE-COMPILED. 21-Mar-23 15:23.
+* 032 000
+* 032 000        DATA DIVISION.
+* 032 000        WORKING-STORAGE SECTION.
+* 001 000       $SET    constant MFUPP--PRGID"BBANK30P"
+    34 ENVIRONMENT DIVISION.
+    35
+    36 DATA DIVISION.
+    37 WORKING-STORAGE SECTION.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page   3
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+    37$SET    constant MFUPP--PRGID"BBANK30P"
+* 001 000       $SET    constant MFUPP--RTS-API"mfunit_pp_runtime"
+    37$SET    constant MFUPP--RTS-API"mfunit_pp_runtime"
+* 001 000       $SET    constant MFUPP--RTS-SET-CTRLER"mfunit_pp_set_controller"
+    37$SET    constant MFUPP--RTS-SET-CTRLER"mfunit_pp_set_controller"
+* 001 000       $SET    constant MFUPP--RTS-REDIR-API"mfunit_pp_redir"
+    37$SET    constant MFUPP--RTS-REDIR-API"mfunit_pp_redir"
+* 001 000       $SET    constant MFUPP--RTS-EP-REDIR-API"mfunit_pp_ep_redir"
+    37$SET    constant MFUPP--RTS-EP-REDIR-API"mfunit_pp_ep_redir"
+* 001 000       $SET    constant MFUPP--RTS-NPRG-REDIR-API"mfunit_pp_subprg_redir"
+    37$SET    constant MFUPP--RTS-NPRG-REDIR-API"mfunit_pp_subprg_redir"
+* 001 000       $SET    constant MFUPP--RTS-REDIR-ERR-API"mfunit_pp_redir_err"
+    37$SET    constant MFUPP--RTS-REDIR-ERR-API"mfunit_pp_redir_err"
+* 001 000       $SET    constant MFUPP--IS-PROGRAM(1)
+    37$SET    constant MFUPP--IS-PROGRAM(1)
+* 001 000       $SET    constant MFUPP--IS-ENTRY-POINT(2)
+    37$SET    constant MFUPP--IS-ENTRY-POINT(2)
+* 001 000       $SET    constant MFUPP--IS-SUBPROGRAM(3)
+    37$SET    constant MFUPP--IS-SUBPROGRAM(3)
+* 001 000       $SET    constant MFUPP--IS-EXEC-CICS(4)
+    37$SET    constant MFUPP--IS-EXEC-CICS(4)
+* 001 000       $SET    constant MFUPP--IS-EXEC-SQL(5)
+    37$SET    constant MFUPP--IS-EXEC-SQL(5)
+* 001 000       $SET    constant MFUPP--ACTION-DO-NOTHING(1)
+    37$SET    constant MFUPP--ACTION-DO-NOTHING(1)
+* 001 000       $SET    constant MFUPP--ACTION-GOBACK(2)
+    37$SET    constant MFUPP--ACTION-GOBACK(2)
+* 001 000       $SET    constant MFUPP--ACTION-REDIRECT(3)
+    37$SET    constant MFUPP--ACTION-REDIRECT(3)
+* 001 000       $SET    constant MFUPP--EXEC-HELPER"MFUPPEHLPER"
+    37$SET    constant MFUPP--EXEC-HELPER"MFUPPEHLPER"
+* 001 000       $SET    constant MFUPP--PROG-HELPER"MFUPPPHLPER"
+    37$SET    constant MFUPP--PROG-HELPER"MFUPPPHLPER"
+* 001 000        copy "dfheiblk".
+    37*copy "dfheiblk".
+    38*<CR_TAG_DEMO_BEGIN>
+    39*
+    40*  Copyright (C) 2023 Micro Focus or one of its affiliates.
+    41*  All rights reserved.
+    42*
+    43*  This sample code is supplied for demonstration purposes only
+    44*  on an "as is" basis and "is for use at your own risk".
+    45*
+    46*<CR_TAG_DEMO_END>
+    47*----------------------------------------------------------------*
+    48* dfheiblk.cpy
+    49*----------------------------------------------------------------*
+    50 01  DFHEIBLK.
+    51     05  EIBTIME                 PIC S9(7)       COMP-3.
+    52     05  EIBDATE                 PIC S9(7)       COMP-3.
+    53     05  EIBTRNID                PIC  X(4).
+    54     05  EIBTASKN                PIC S9(7)       COMP-3.
+    55     05  EIBTRMID                PIC  X(4).
+    56     05  EIBRSVD1                PIC S9(4)       COMP.
+    57     05  DFHEIGDI REDEFINES EIBRSVD1 PIC S9(4)   COMP.
+    58     05  EIBCPOSN                PIC S9(4)       COMP.
+    59     05  EIBCALEN                PIC S9(4)       COMP.
+    60     05  EIBAID                  PIC  X(1).
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page   4
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp (C:\ed90\cp)
+    61     05  EIBFN                   PIC  X(2).
+    62     05  EIBRCODE                PIC  X(6).
+    63     05  EIBDS                   PIC  X(8).
+    64     05  EIBREQID                PIC  X(8).
+    65     05  EIBRSRCE                PIC  X(8).
+    66     05  EIBSYNC                 PIC  X(1).
+    67     05  EIBFREE                 PIC  X(1).
+    68     05  EIBRECV                 PIC  X(1).
+    69     05  EIBSEND                 PIC  X(1).
+    70     05  EIBATT                  PIC  X(1).
+    71     05  EIBEOC                  PIC  X(1).
+    72     05  EIBFMH                  PIC  X(1).
+    73     05  EIBCOMPL                PIC  X(1).
+    74     05  EIBSIG                  PIC  X(1).
+    75     05  EIBCONF                 PIC  X(1).
+    76     05  EIBERR                  PIC  X(1).
+    77     05  EIBERRCD                PIC  X(4).
+    78     05  EIBSYNRB                PIC  X(1).
+    79     05  EIBNODAT                PIC  X(1).
+    80     05  EIBRESP                 PIC S9(8)       COMP.
+    81     05  EIBRESP2                PIC S9(8)       COMP.
+* 001 000       $SET    change-message"1036 N"
+    82     05  EIBRLDBK                PIC  X(1).
+    83*----------------------------------------------------------------*
+    84* dfheiblk.cpy end
+    85*----------------------------------------------------------------*
+    85$SET    change-message"1036 N"
+* 001 000       $SET    change-message"1138 N"
+    85$SET    change-message"1138 N"
+* 001 000       $SET    change-message"634 N"
+    85$SET    change-message"634 N"
+* 001 000       $SET    change-message"1006 N"
+    85$SET    change-message"1006 N"
+* 001 000       $SET    change-message"628 N"
+    85$SET    change-message"628 N"
+* 001 000       $SET    change-message"1078 N"
+    85$SET    change-message"1078 N"
+* 001 000            COPY "MFUWS_BBANK30P".
+    85*    COPY "MFUWS_BBANK30P".
+    86*copy "mfunit.cpy".
+    87*>****************************************************************
+    88*>
+    89*> (C) Copyright 1997-2023 Micro Focus or one of its affiliates.
+    90*>
+    91*> The only warranties for products and services of Micro Focus
+    92*> and its affiliates and licensors (“Micro Focus”) are set forth
+    93*> in the express warranty statements accompanying such products
+    94*> and services. Nothing herein should be construed as
+    95*> constituting an additional warranty. Micro Focus shall not be
+    96*> liable for technical or editorial errors or omissions contained
+    97*> herein.
+    98*>
+    99*> The information contained herein is subject to change
+   100*> without notice.
+   101*>
+   102*> Contains Confidential Information. Except as specifically
+   103*> indicated otherwise,  a valid license is    required for
+   104*> possession, use or copying. Consistent with FAR 12.211 and
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page   5
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp (C:\ed90\cp)
+   105*> 12.212, Commercial Computer Software, Computer Software
+   106*> Documentation, and Technical Data for Commercial Items are
+   107*> licensed to the U.S. Government under vendor's standard
+   108*> commercial license
+   109*>
+   110*>****************************************************************
+   111*>
+   112*> This file contains a list of constants for use by programs
+   113*> that use the Micro Focus Unit Testing Framework
+   114*>
+   115*>****************************************************************
+   116$if MFU-VERSION not defined
+   117 78 MFU-VERSION                  value "9.0".
+   118 78 MFU-TC-METADATA-SETUP-PREFIX value "MFUM_".
+   119 78 MFU-TC-PREFIX                value "MFUT_".
+   120 78 MFU-TC-SETUP-PREFIX          value "MFUS_".
+   121 78 MFU-TC-TEARDOWN-PREFIX       value "MFUE_".
+   122 78 MFU-TC-SETUP-DD-PREFIX       value "MFUDS_".
+   123 78 MFU-TC-TEARDOWN-DD-PREFIX    value "MFUDE_".
+   124
+   125*> used to accept extra command line arguments, one per fixture
+   126 78 MFU-GLOBAL-COMMANDLINE-PREFIX value "MFUGA_".
+   127 78 MFU-GLOBAL-COMMANDLINE-LEN   value 128.
+   128
+   129*> used to declare a single shared metadata entry-point per fixture
+   130 78 MFU-GLOBAL-METADATA-PREFIX   value "MFUGM_".
+   131
+   132 78 MFU-ASSERT-FAIL              value "MFU_ASSERT_FAIL".
+   133 78 MFU-ASSERT-FAIL-Z            value "MFU_ASSERT_FAIL_Z".
+   134
+   135 78 MFUFMSG                      value "MFUFMSG".
+   136 78 MFUFMSGZ                     value "MFUFMSGZ".
+   137
+   138*> used by a test case to say if the test has failed or not
+   139 78 MFU-PASS-RETURN-CODE         value 0.
+   140 78 MFU-FAIL-RETURN-CODE         value 1.
+   141
+   142
+   143*> metadata constants
+   144 78 MFU-MD-TESTCASE-SIZE         value 31.
+   145 78 MFU-MD-TESTCASE-DESC-SIZE    value 128.
+   146 78 MFU-MD-TESTCASE-TRAITS-SIZE  value 128.
+   147
+   148 78 MFU-MD-TESTCASE-PRIORITY-HIGH    value 3000.
+   149 78 MFU-MD-TESTCASE-PRIORITY-MEDIUM  value 2000.
+   150 78 MFU-MD-TESTCASE-PRIORITY-LOW     value 1000.
+   151
+   152 78 MFU-MD-TESTCASE-PRIORITY-MAX     value 999999999.
+   153$end
+   154
+   155*> metadata external definitions
+   156 01 MFU-MD-TESTCASE             pic x(MFU-MD-TESTCASE-SIZE)
+   157                                is external.
+   158
+   159 01 MFU-MD-TESTCASE-DESCRIPTION pic x(MFU-MD-TESTCASE-DESC-SIZE)
+   160                                is external.
+   161
+   162 01 MFU-MD-TIMEOUT-IN-MS        pic 9(9) comp-5
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page   6
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp (C:\ed90\cp)
+*1209-I**********************************************                  (   0)**
+**    COMP-5 is machine specific format. (future occurrences not indicated)
+   163                                is external.
+   164
+   165 01 MFU-MD-TRAITS               pic x(MFU-MD-TESTCASE-TRAITS-SIZE)
+   166                                is external.
+   167
+   168 01 MFU-MD-SKIP-TESTCASE-FLAG   pic x is external.
+   169   88 MFU-MD-SKIP-TESTCASE      value "y", "Y", false "n".
+   170
+   171 01 MFU-MD-TESTCASE-PRIORITY    pic 9(9) comp-5
+   172                                is external.
+   173
+   174 01 MFU-GLOBAL-COMMANDLINE-ARG  pic x(MFU-GLOBAL-COMMANDLINE-LEN)
+   175                                is external.
+   176
+   177*> Data Driven test typedef/78's
+   178$if 78-OVERRIDE-MFU-DD-VALUE-SIZE defined
+   179X
+   180*> Copybook validation of 78-OVERRIDE-MFU-DD-VALUE-SIZE constant
+   181$if 78-OVERRIDE-MFU-DD-VALUE-SIZE < 255
+   182$display mfunit.cpy: Invalid 78-OVERRIDE-MFU-DD-VALUE-SIZE < 255
+   183Xrror - DO NOT COMPILE PAST HERE!
+   184$end
+   185X
+   186$if 78-OVERRIDE-MFU-DD-VALUE-SIZE > 62464
+   187$display mfunit.cpy: Invalid 78-OVERRIDE-MFU-DD-VALUE-SIZE > 62464
+   188Xrror - DO NOT COMPILE PAST HERE!
+   189$end
+   190X
+   191$end
+   192
+   193$if 78-OVERRIDE-MFU-DD-VALUE-SIZE defined
+   194X78 MFU-DD-VALUE-SIZE         value 78-OVERRIDE-MFU-DD-VALUE-SIZE.
+   195X01 MFU-DD-VALUE                pic x(MFU-DD-VALUE-SIZE) typedef.
+   196$else
+   197 78 MFU-DD-VALUE-SIZE           value 255.
+   198 01 MFU-DD-VALUE                pic x(MFU-DD-VALUE-SIZE) typedef.
+   199$end
+   200
+   201 78 MFU-DD-DIAG-MSG-SIZE         value 255.
+   202 78 MFU-MD-DD-CSV-FILT-COND-SIZE value 128.
+   203
+   204 01 MFU-DD is external.
+   205    03 MFU-MD-TESTDATA          pic x(128).
+   206    03 MFU-DD-DIAG-MSG          pic x(MFU-DD-DIAG-MSG-SIZE).
+   207    03 MFU-DD-DIAG-MSG-LENGTH   pic 9(9) comp-5.
+   208    03 MFU-MD-DD-DIAG-FLAG      pic x.
+   209    88 MFU-MD-DD-DIAG           value "y", false "n".
+   210    03 MFU-DD-CSV.
+   211      05 MFU-MD-DD-DSV          pic x.
+   212      05 MFU-MD-DD-CSV-FILT-COND
+   213         pic x(MFU-MD-DD-CSV-FILT-COND-SIZE).
+   214      05 MFU-MD-DD-VALUE-SIZE   pic 9(9) comp-5.
+   215
+   216*> JCL METADATA item
+   217 78 MFU-MD-JCL-FILE-NAME-SIZE   value 255.
+   218 01 MFU-MD-JCL is external.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page   7
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp (C:\ed90\cp)
+   219     03 MFU-MD-JCL-FILE-NAME     pic x(MFU-MD-JCL-FILE-NAME-SIZE).
+   220     03 MFU-MD-JCL-COND-TYPE     pic xx.
+   221      88 MFU-MD-JCL-COND-TYPE-RC    value 'c', 'C'.
+   222      88 MFU-MD-JCL-COND-TYPE-ERR   value 'e', 'E'.
+   223      88 MFU-MD-JCL-COND-TYPE-RTS   value 'r', 'R'.
+   224      88 MFU-MD-JCL-COND-TYPE-SYS   value 's', 'S'.
+   225      88 MFU-MD-JCL-COND-TYPE-USER  value 'u', 'U'.
+   226      88 MFU-MD-JCL-CASSUB-FAIL     value " z".
+   227     03 MFU-MD-JCL-COND-CODE     pic 9(5).
+   228     03 MFU-MD-JCL-JOB-NBR       pic 9(7).
+   229     03 MFU-MD-JCL-TESTCASE-PASSED-FLAG pic x.
+   230      88 MFU-MD-JCL-TESTCASE-PASSED  value "y", false "n".
+   231     03 MFU-MD-JCL-COPY-DD-FLAG      pic x.
+   232      88 MFU-MD-JCL-COPY-DD          value "y", false "n".
+   233     03 MFU-MD-JCL-FLUSH-JOB-FLAG    pic x.
+   234      88 MFU-MD-JCL-FLUSH-JOB        value "y", false "n".
+   235     03 MFU-MD-JCL-SHOW-DD-FLAG      pic x.
+   236      88 MFU-MD-JCL-SHOW-DD          value "y", false "n".
+   237
+   238 78 MFU-JCL-SYSPRINT-FN-SUFFIX   value "-SYSPRINT ".
+   239 78 MFU-JCL-JESYSMSG-FN-SUFFIX   value "-JESYSMSG ".
+   240 78 MFU-JCL-SYSUT3-FN-SUFFIX     value "-SYSUT3 ".
+   241
+   242 78 MFU-CATALOG-COPY             value "MFUCATCP".
+   243 78 MFU-CATALOG-COPY-Z           value "MFUCATCPZ".
+   244
+   245 78 MFU-GET-FILE                 value "MFUGETF".
+   246 78 MFU-GET-FILENAME-SIZE        value 255.
+   247
+   248 78 MFU-MD-TESTCASE-OWNER-SIZE   value 128.
+   249 01 MFU-MD-TESTCASE-OWNER        pic x(MFU-MD-TESTCASE-OWNER-SIZE)
+   250                                 is external.
+   251
+   252 78 MFU-MD-PP-CONTROLLER-SIZE    value 80.
+   253 01 MFU-MD-PP-CONTROLLER         pic x(MFU-MD-PP-CONTROLLER-SIZE)
+   254                                 is external.
+   255
+   256 78 MFU-MD-PP-REDIRECTOR-SIZE    value 80.
+   257 01 MFU-MD-PP-REDIRECTOR         pic x(MFU-MD-PP-REDIRECTOR-SIZE)
+   258                                 is external.
+   259
+   260 78 MFU-MD-EXEC-CONTROLLER-SIZE  value 80.
+   261 01 MFU-MD-EXEC-CONTROLLER      pic x(MFU-MD-EXEC-CONTROLLER-SIZE)
+   262                                is external.
+   263
+   264$if MFU-PP-ACTION-GOBACK NOT DEFINED
+   265 78 MFU-PP-ACTION-DO-NOTHING     value 1.
+   266 78 MFU-PP-ACTION-GOBACK         value 2.
+   267 78 MFU-PP-ACTION-REDIRECT       value 3.
+   268
+   269 78 MFU-PP-CONTROLLER-PRG-SIZE   value 80.
+   270 78 MFU-PP-REDIRECT-PRG-SIZE     value 80.
+   271$end
+   272
+   273$if MFU-PP-MOCK-EXEC-CICS NOT DEFINED
+   274 78 MFU-PP-MOCK-EXEC-CICS        value 1.
+   275 78 MFU-PP-MOCK-EXEC-SQL         value 2.
+   276
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page   8
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp (C:\ed90\cp)
+   277 78 MFU-PP_MOCK-EXEC-CUR-VERID           value 1.
+   278 78 MFU-PP-MOCK-EXEC-MAX-SIZE            value 8192.
+   279
+   280 78 MFU-PP-MOCK-EXEC-FUNCTION-SIZE       value 35.
+   281 78 MFU-PP-MOCK-EXEC-ID-SIZE             value 50.
+   282 78 MFU-PP-MOCK-EXEC-CRC-SIZE            value 8.
+   283
+   284 01 MFU-PP-MOCK-EXEC-INFO   typedef.
+   285    03 MFU-PP-MOCK-EXEC-VERID            Pic 9.
+   286    03 MFU-PP-MOCK-EXEC-FUNCTION
+   287         Pic x(MFU-PP-MOCK-EXEC-FUNCTION-SIZE).
+   288    03 MFU-PP-MOCK-EXEC-ID
+   289         Pic x(MFU-PP-MOCK-EXEC-ID-SIZE).
+   290    03 MFU-PP-MOCK-EXEC-CRC
+   291         Pic x(MFU-PP-MOCK-EXEC-CRC-SIZE).
+   292    78 MFU-PP-MOCK-EXEC-PARAMS-SIZE
+   293         value MFU-PP-MOCK-EXEC-MAX-SIZE - 35.
+   294    03 MFU-PP-MOCK-EXEC-PARAMS
+   295         pic x(MFU-PP-MOCK-EXEC-PARAMS-SIZE).
+   296$end
+   297 77 TEST-WS-SRV-AMT-9            PIC 9(7)v99.
+   298 77 TEST-WS-SRV-AMT-9-X          PIC 9(9)
+   299                                 redefines TEST-WS-SRV-AMT-9.
+   300
+   301 77 TEST-WS-SRV-AMT-D            PIC 9(3).99.
+   302 77 TEST-WS-SRV-RES-D            PIC 9(3).99.
+   303
+   304*> data driven externals
+   305 01 mfu-dd-WS-SRV-AMT            is MFU-DD-VALUE external.
+* 001 000       $SET    change-message"1078 R"
+   306 01 mfu-dd-EXP-RESULT            is MFU-DD-VALUE external.
+   306$SET    change-message"1078 R"
+* 001 000       $SET    change-message"628 R"
+   306$SET    change-message"628 R"
+* 001 000       $SET    change-message"1006 R"
+   306$SET    change-message"1006 R"
+* 001 000       $SET    change-message"634 R"
+   306$SET    change-message"634 R"
+* 001 000       $SET    change-message"1138 R"
+   306$SET    change-message"1138 R"
+* 001 000       $SET    change-message"1036 R"
+   306$SET    change-message"1036 R"
+* 001 000         01 MFUPP--REDIR-PROG  PIC X(80).
+* 001 000         01 MFUPP--EP-SCRATCH  PIC X(80).
+* 001 000         01 MFUPP--RETURN-CODE PIC S9(9) COMP.
+* 001 000         01 MFUPP--MEXECI.
+* 001 000         03 MFUPP--MEXEC-VERID  PIC 9.
+* 001 000         03 MFUPP--MEXEC-FUNC  PIC X(35).
+* 001 000         03 MFUPP--MEXEC-ID  PIC X(50).
+* 001 000         03 MFUPP--MEXEC-CRC  PIC X(8).
+* 001 000         03 MFUPP--MEXEC-PARAMS  PIC X(8157).
+* 001 000         01 MFUPP--DFHCOMMAREA-PTR POINTER VALUE NULL.
+* 032 000        01  WS-MISC-STORAGE.
+   306  01 MFUPP--REDIR-PROG  PIC X(80).
+   306  01 MFUPP--EP-SCRATCH  PIC X(80).
+   306  01 MFUPP--RETURN-CODE PIC S9(9) COMP.
+   306  01 MFUPP--MEXECI.
+   306  03 MFUPP--MEXEC-VERID  PIC 9.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page   9
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+   306  03 MFUPP--MEXEC-FUNC  PIC X(35).
+   306  03 MFUPP--MEXEC-ID  PIC X(50).
+   306  03 MFUPP--MEXEC-CRC  PIC X(8).
+   306  03 MFUPP--MEXEC-PARAMS  PIC X(8157).
+   306  01 MFUPP--DFHCOMMAREA-PTR POINTER VALUE NULL.
+* 032 000          05  WS-PROGRAM-ID                         PIC X(8)
+   307 01  WS-MISC-STORAGE.
+* 032 000              VALUE 'BBANK30P'.
+* 032 000          05  WS-INPUT-FLAG                         PIC X(1).
+   308   05  WS-PROGRAM-ID                         PIC X(8)
+   309       VALUE 'BBANK30P'.
+* 032 000            88  INPUT-OK                            VALUE '0'.
+   310   05  WS-INPUT-FLAG                         PIC X(1).
+* 032 000            88  INPUT-ERROR                         VALUE '1'.
+* 032 000          05  WS-RETURN-FLAG                        PIC X(1).
+   311     88  INPUT-OK                            VALUE '0'.
+   312     88  INPUT-ERROR                         VALUE '1'.
+* 032 000            88  WS-RETURN-FLAG-OFF                  VALUE LOW-VALUES.
+   313   05  WS-RETURN-FLAG                        PIC X(1).
+* 032 000            88  WS-RETURN-FLAG-ON                   VALUE '1'.
+* 032 000          05  WS-RETURN-MSG                         PIC X(75).
+   314     88  WS-RETURN-FLAG-OFF                  VALUE LOW-VALUES.
+   315     88  WS-RETURN-FLAG-ON                   VALUE '1'.
+* 032 000            88  WS-RETURN-MSG-OFF                   VALUE SPACES.
+   316   05  WS-RETURN-MSG                         PIC X(75).
+* 032 000          05  WS-PFK-FLAG                           PIC X(1).
+   317     88  WS-RETURN-MSG-OFF                   VALUE SPACES.
+* 032 000            88  PFK-VALID                           VALUE '0'.
+   318   05  WS-PFK-FLAG                           PIC X(1).
+* 032 000            88  PFK-INVALID                         VALUE '1'.
+* 032 000          05  WS-ERROR-MSG                          PIC X(75).
+   319     88  PFK-VALID                           VALUE '0'.
+   320     88  PFK-INVALID                         VALUE '1'.
+* 032 000          05  WS-SUB1                               PIC S9(4) COMP.
+   321   05  WS-ERROR-MSG                          PIC X(75).
+* 032 000          05  WS-SUB-LIMIT                          PIC S9(4) COMP.
+   322   05  WS-SUB1                               PIC S9(4) COMP.
+* 032 000          05  WS-EDIT-BALANCE                       PIC Z,ZZZ,ZZ9.99-.
+   323   05  WS-SUB-LIMIT                          PIC S9(4) COMP.
+* 032 000          05  WS-DYNAMIC-PGM                        PIC X(8)
+   324   05  WS-EDIT-BALANCE                       PIC Z,ZZZ,ZZ9.99-.
+* 032 000              VALUE 'UNKNOWN'.
+* 032 000
+* 032 000        01  WS-SERVICE-CHARGES.
+   325   05  WS-DYNAMIC-PGM                        PIC X(8)
+   326       VALUE 'UNKNOWN'.
+   327
+* 032 000          05  WS-SRV-MSG.
+   328 01  WS-SERVICE-CHARGES.
+* 032 000            10  FILLER                              PIC X(43)
+   329   05  WS-SRV-MSG.
+* 032 000                VALUE 'Service charges are estimated based on your'.
+* 032 000            10  FILLER                              PIC X(19)
+   330     10  FILLER                              PIC X(43)
+   331         VALUE 'Service charges are estimated based on your'.
+* 032 000                VALUE ' existing balances '.
+* 032 000          05  WS-SRV-BAL                            PIC X(9).
+   332     10  FILLER                              PIC X(19)
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  10
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+   333         VALUE ' existing balances '.
+* 032 000          05  WS-SRV-BAL-N REDEFINES WS-SRV-BAL     PIC S9(7)V99.
+   334   05  WS-SRV-BAL                            PIC X(9).
+* 032 000          05  WS-SRV-CHARGE                         PIC ZZ9.99
+   335   05  WS-SRV-BAL-N REDEFINES WS-SRV-BAL     PIC S9(7)V99.
+* 032 000                                                    BLANK ZERO.
+* 032 000          05  WS-SRV-AMT                            PIC 9(3)V99.
+   336   05  WS-SRV-CHARGE                         PIC ZZ9.99
+   337                                             BLANK ZERO.
+* 032 000          05  WS-SRV-CHARGE-LIMITS.
+   338   05  WS-SRV-AMT                            PIC 9(3)V99.
+* 032 000            10  WS-SRV-BAND0.
+   339   05  WS-SRV-CHARGE-LIMITS.
+* 032 000              15  WS-SRV-BAL0     VALUE 9999999       PIC S9(7).
+   340     10  WS-SRV-BAND0.
+* 032 000              15  WS-SRV-CHG0     VALUE 050.00        PIC 9(3)V99.
+   341       15  WS-SRV-BAL0     VALUE 9999999       PIC S9(7).
+* 032 000            10  WS-SRV-BAND1.
+   342       15  WS-SRV-CHG0     VALUE 050.00        PIC 9(3)V99.
+* 032 000              15  WS-SRV-BAL1     VALUE 0000000       PIC S9(7).
+   343     10  WS-SRV-BAND1.
+* 032 000              15  WS-SRV-CHG1     VALUE 025.00        PIC 9(3)V99.
+   344       15  WS-SRV-BAL1     VALUE 0000000       PIC S9(7).
+* 032 000            10  WS-SRV-BAND2.
+   345       15  WS-SRV-CHG1     VALUE 025.00        PIC 9(3)V99.
+* 032 000              15  WS-SRV-BAL2     VALUE 0001000       PIC S9(7).
+   346     10  WS-SRV-BAND2.
+* 032 000              15  WS-SRV-CHG2     VALUE 020.00        PIC 9(3)V99.
+   347       15  WS-SRV-BAL2     VALUE 0001000       PIC S9(7).
+* 032 000            10  WS-SRV-BAND3.
+   348       15  WS-SRV-CHG2     VALUE 020.00        PIC 9(3)V99.
+* 032 000              15  WS-SRV-BAL3     VALUE 0005000       PIC S9(7).
+   349     10  WS-SRV-BAND3.
+* 032 000              15  WS-SRV-CHG3     VALUE 015.00        PIC 9(3)V99.
+   350       15  WS-SRV-BAL3     VALUE 0005000       PIC S9(7).
+* 032 000            10  WS-SRV-BAND4.
+   351       15  WS-SRV-CHG3     VALUE 015.00        PIC 9(3)V99.
+* 032 000              15  WS-SRV-BAL4     VALUE 0010000       PIC S9(7).
+   352     10  WS-SRV-BAND4.
+* 032 000              15  WS-SRV-CHG4     VALUE 010.00        PIC 9(3)V99.
+   353       15  WS-SRV-BAL4     VALUE 0010000       PIC S9(7).
+* 032 000            10  WS-SRV-BAND5.
+   354       15  WS-SRV-CHG4     VALUE 010.00        PIC 9(3)V99.
+* 032 000              15  WS-SRV-BAL5     VALUE 0100000       PIC S9(7).
+   355     10  WS-SRV-BAND5.
+* 032 000              15  WS-SRV-CHG5     VALUE 000.00        PIC 9(3)V99.
+   356       15  WS-SRV-BAL5     VALUE 0100000       PIC S9(7).
+* 032 000
+* 032 000        01  WS-TIME-DATE-WORK-AREA.
+   357       15  WS-SRV-CHG5     VALUE 000.00        PIC 9(3)V99.
+   358
+* 032 000        COPY CDATED.
+   359 01  WS-TIME-DATE-WORK-AREA.
+   360*COPY CDATED.
+   361*****************************************************************
+   362*                                                               *
+   363* Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+   364* This software may be used, modified, and distributed          *
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  11
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   365* (provided this notice is included without modification)       *
+   366* solely for internal demonstration purposes with other         *
+   367* Micro Focus software, and is otherwise subject to the EULA at *
+   368* https://www.microfocus.com/en-us/legal/software-licensing.    *
+   369*                                                               *
+   370* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+   371* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+   372* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+   373* SHALL NOT APPLY.                                              *
+   374* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+   375* MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+   376* WITH THIS SOFTWARE.                                           *
+   377*                                                               *
+   378*****************************************************************
+   379
+   380*****************************************************************
+   381* CDATED.CPY                                                    *
+   382*---------------------------------------------------------------*
+   383* Area used to pass data to/from date conversion routine        *
+   384*****************************************************************
+   385   05  DD-AREAS.
+   386     10  DD-ENV                              PIC X(4).
+   387       88  DD-ENV-NULL                       VALUE LOW-VALUES.
+   388       88  DD-ENV-CICS                       VALUE 'CICS'.
+   389       88  DD-ENV-IMS                        VALUE 'IMS'.
+   390       88  DD-ENV-INET                       VALUE 'INET'.
+   391     10  DD-TIME-AREAS.
+   392       15  DD-TIME-INPUT                     PIC X(7).
+   393       15  DD-TIME-INPUT-N REDEFINES DD-TIME-INPUT
+   394                                             PIC 9(7).
+   395       15  DD-TIME-OUTPUT.
+   396         20  DD-TIME-OUTPUT-HH               PIC X(2).
+   397         20  DD-TIME-OUTPUT-SEP1             PIC X(1).
+   398         20  DD-TIME-OUTPUT-MM               PIC X(2).
+   399         20  DD-TIME-OUTPUT-SEP2             PIC X(1).
+   400         20  DD-TIME-OUTPUT-SS               PIC X(2).
+   401     10  DD-DATE-AREAS.
+   402       15  DD-INPUT.
+   403         20  DDI-TYPE                        PIC X(1).
+   404           88  DDI-ISO                       VALUE '0'.
+   405           88  DDI-YYYYMMDD                  VALUE '1'.
+   406           88  DDI-YYMMDD                    VALUE '2'.
+   407           88  DDI-YYDDD                     VALUE '3'.
+   408         20  DDI-DATA                        PIC X(20).
+   409         20  DDI-DATA-ISO REDEFINES DDI-DATA.
+   410           25  DDI-DATA-ISO-YYYY             PIC X(4).
+   411           25  DDI-DATA-ISO-YYYY-N REDEFINES
+   412               DDI-DATA-ISO-YYYY             PIC 9(4).
+   413           25  DDI-DATA-ISO-DASH1            PIC X(1).
+   414           25  DDI-DATA-ISO-MM               PIC X(2).
+   415           25  DDI-DATA-ISO-MM-N REDEFINES
+   416               DDI-DATA-ISO-MM               PIC 9(2).
+   417           25  DDI-DATA-ISO-DASH2            PIC X(1).
+   418           25  DDI-DATA-ISO-DD               PIC X(2).
+   419           25  DDI-DATA-ISO-DD-N REDEFINES
+   420               DDI-DATA-ISO-DD               PIC 9(2).
+   421         20  DDI-DATA-YYYYMMDD REDEFINES DDI-DATA.
+   422           25  DDI-DATA-YYYYMMDD-YYYY        PIC X(4).
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  12
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   423           25  DDI-DATA-YYYYMMDD-YYYY-N REDEFINES
+   424               DDI-DATA-YYYYMMDD-YYYY        PIC 9(4).
+   425           25  DDI-DATA-YYYYMMDD-MM          PIC X(2).
+   426           25  DDI-DATA-YYYYMMDD-MM-N REDEFINES
+   427               DDI-DATA-YYYYMMDD-MM          PIC 9(2).
+   428           25  DDI-DATA-YYYYMMDD-DD          PIC X(2).
+   429           25  DDI-DATA-YYYYMMDD-DD-N REDEFINES
+   430               DDI-DATA-YYYYMMDD-DD          PIC 9(2).
+   431         20  DDI-DATA-YYMMDD REDEFINES DDI-DATA.
+   432           25  DDI-DATA-YYMMDD-YY            PIC X(2).
+   433           25  DDI-DATA-YYMMDD-YY-N REDEFINES
+   434               DDI-DATA-YYMMDD-YY            PIC 9(2).
+   435           25  DDI-DATA-YYMMDD-MM            PIC X(2).
+   436           25  DDI-DATA-YYMMDD-MM-N REDEFINES
+   437               DDI-DATA-YYMMDD-MM            PIC 9(2).
+   438           25  DDI-DATA-YYMMDD-DD            PIC X(2).
+   439           25  DDI-DATA-YYMMDD-DD-N REDEFINES
+   440               DDI-DATA-YYMMDD-DD            PIC 9(2).
+   441         20  DDI-DATA-YYDDD REDEFINES DDI-DATA.
+   442           25  DDI-DATA-YYDDD-YYDDD          PIC X(5).
+   443           25  DDI-DATA-YYDDD-YYDDD-N REDEFINES
+   444               DDI-DATA-YYDDD-YYDDD          PIC 9(5).
+   445           25  DDI-DATA-YYDDD-YYDDD-SPLIT REDEFINES
+   446               DDI-DATA-YYDDD-YYDDD.
+   447             30  DDI-DATA-YYDDD-YY           PIC X(2).
+   448             30  DDI-DATA-YYDDD-YY-N REDEFINES
+   449                 DDI-DATA-YYDDD-YY           PIC 9(2).
+   450             30  DDI-DATA-YYDDD-DDD          PIC X(3).
+   451             30  DDI-DATA-YYDDD-DDD-N REDEFINES
+   452                 DDI-DATA-YYDDD-DDD          PIC 9(3).
+   453
+   454       15  DD-OUTPUT.
+   455         20  DDO-TYPE                        PIC X(1).
+   456           88  DDO-DD-MMM-YY                 VALUE '1'.
+   457           88  DDO-DD-MMM-YYYY               VALUE '2'.
+   458         20  DDO-DATA                        PIC X(20).
+   459         20  DDO-DATA-DD-MMM-YY REDEFINES DDO-DATA.
+   460           25  DDO-DATA-DD-MMM-YY-DD         PIC X(2).
+   461           25  DDO-DATA-DD-MMM-YY-DOT1       PIC X(1).
+   462           25  DDO-DATA-DD-MMM-YY-MMM        PIC X(3).
+   463           25  DDO-DATA-DD-MMM-YY-DOT2       PIC X(1).
+   464           25  DDO-DATA-DD-MMM-YY-YY         PIC X(2).
+   465         20  DDO-DATA-DD-MMM-YYYY REDEFINES DDO-DATA.
+   466           25  DDO-DATA-DD-MMM-YYYY-DD       PIC X(2).
+   467           25  DDO-DATA-DD-MMM-YYYY-DOT1     PIC X(1).
+   468           25  DDO-DATA-DD-MMM-YYYY-MMM      PIC X(3).
+   469           25  DDO-DATA-DD-MMM-YYYY-DOT2     PIC X(1).
+* 032 000
+* 032 000        01  WS-BANK-DATA.
+   470           25  DDO-DATA-DD-MMM-YYYY-YYYY     PIC X(4).
+   471
+   472* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+   473
+* 032 000        COPY CBANKDAT.
+   474 01  WS-BANK-DATA.
+   475*COPY CBANKDAT.
+   476*****************************************************************
+   477*                                                               *
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  13
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   478* Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+   479* This software may be used, modified, and distributed          *
+   480* (provided this notice is included without modification)       *
+   481* solely for internal demonstration purposes with other         *
+   482* Micro Focus software, and is otherwise subject to the EULA at *
+   483* https://www.microfocus.com/en-us/legal/software-licensing.    *
+   484*                                                               *
+   485* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+   486* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+   487* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+   488* SHALL NOT APPLY.                                              *
+   489* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+   490* MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+   491* WITH THIS SOFTWARE.                                           *
+   492*                                                               *
+   493*****************************************************************
+   494
+   495*****************************************************************
+   496* CBANKDAT.CPY                                                  *
+   497*---------------------------------------------------------------*
+   498* Common data passed between the major components               *
+   499*****************************************************************
+   500     10  BANK-EVERYTHING                     PIC X(6144).
+   501*    10  FILLER REDEFINES BANK-EVERYTHING.
+   502     10  BANK-EVERYTHING-R REDEFINES BANK-EVERYTHING.
+   503       15  BANK-PREFIX                       PIC X(22).
+   504       15  BANK-IMS-PREFIX REDEFINES BANK-PREFIX.
+   505         20  BANK-IMS-SPA-LL                 PIC S9(8) COMP.
+   506         20  BANK-IMS-SPA-ZZ                 PIC X(2).
+   507         20  BANK-IMS-SPA-TRANCODE           PIC X(8).
+   508         20  BANK-IMS-SPA-PASSED-DATA        PIC X(8).
+   509         20  BANK-IMS-SPA-PASSED-DATA-R1 REDEFINES
+   510             BANK-IMS-SPA-PASSED-DATA.
+   511           25  BANK-IMS-IO-PCB-DATE          PIC S9(7) COMP-3.
+   512           25  BANK-IMS-IO-PCB-TIME          PIC S9(7) COMP-3.
+   513         20  BANK-IMS-SPA-PASSED-DATA-R2 REDEFINES
+   514             BANK-IMS-SPA-PASSED-DATA.
+   515           25  BANK-IMS-SPA-PASSED-LITERAL   PIC X(7).
+   516           25  BANK-IMS-SPA-PASSED-COLOUR    PIC X(1).
+   517       15  BANK-CICS-PREFIX REDEFINES BANK-PREFIX.
+   518         20  BANK-CICS-LL                    PIC S9(4) COMP.
+   519         20  FILLER                          PIC X(4).
+   520         20  BANK-CICS-TRANCODE-PLUS4        PIC X(8).
+   521         20  FILLER REDEFINES BANK-CICS-TRANCODE-PLUS4.
+   522           25  BANK-CICS-TRANCODE            PIC X(4).
+   523           25  FILLER                        PIC X(4).
+   524       15  BANK-CONTROL-FIELDS.
+   525         20  BANK-ENV                        PIC X(4).
+   526           88  BANK-ENV-NULL                 VALUE LOW-VALUES.
+   527           88  BANK-ENV-CICS                 VALUE 'CICS'.
+   528           88  BANK-ENV-IMS                  VALUE 'IMS '.
+   529           88  BANK-ENV-INET                 VALUE 'INET'.
+   530         20  BANK-COLOUR-SETTING             PIC X(1).
+   531           88  COLOUR-ON                     VALUE '1'.
+   532           88  COLOUR-OFF                    VALUE '0'.
+   533         20  BANK-CONVERSATION               PIC X(1).
+   534           88  BANK-NO-CONV-IN-PROGRESS      VALUE '0'.
+   535           88  BANK-CONV-IN-PROGRESS         VALUE '1'.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  14
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   536         20  BANK-TS-QUEUE-NAME              PIC X(8).
+   537         20  BANK-AID                        PIC X(5).
+   538           88  BANK-AID-ENTER                VALUE 'ENTER'.
+   539           88  BANK-AID-CLEAR                VALUE 'CLEAR'.
+   540           88  BANK-AID-PA1                  VALUE 'PA1  '.
+   541           88  BANK-AID-PA2                  VALUE 'PA2  '.
+   542           88  BANK-AID-PFK01                VALUE 'PFK01'.
+   543           88  BANK-AID-PFK02                VALUE 'PFK02'.
+   544           88  BANK-AID-PFK03                VALUE 'PFK03'.
+   545           88  BANK-AID-PFK04                VALUE 'PFK04'.
+   546           88  BANK-AID-PFK05                VALUE 'PFK05'.
+   547           88  BANK-AID-PFK06                VALUE 'PFK06'.
+   548           88  BANK-AID-PFK07                VALUE 'PFK07'.
+   549           88  BANK-AID-PFK08                VALUE 'PFK08'.
+   550           88  BANK-AID-PFK09                VALUE 'PFK09'.
+   551           88  BANK-AID-PFK10                VALUE 'PFK10'.
+   552           88  BANK-AID-PFK11                VALUE 'PFK11'.
+   553           88  BANK-AID-PFK12                VALUE 'PFK12'.
+   554         20  BANK-LAST-PROG                  PIC X(8).
+   555         20  BANK-NEXT-PROG                  PIC X(8).
+   556         20  BANK-RETURN-TO-PROG             PIC X(8).
+   557         20  BANK-LAST-MAPSET                PIC X(7).
+   558         20  BANK-LAST-MAP                   PIC X(7).
+   559         20  BANK-NEXT-MAPSET                PIC X(7).
+   560         20  BANK-NEXT-MAP                   PIC X(7).
+   561         20  BANK-MAP-FUNCTION               PIC X(3).
+   562           88  BANK-MAP-FUNCTION-GET         VALUE 'GET'.
+   563           88  BANK-MAP-FUNCTION-PUT         VALUE 'PUT'.
+   564         20  BANK-HELP-FIELDS.
+   565           25  BANK-HELP-FLAG                PIC X(4).
+   566             88  BANK-HELP-ACTIVE            VALUE 'HELP'.
+   567             88  BANK-HELP-INACTIVE          VALUE LOW-VALUES.
+   568           25  BANK-HELP-SCREEN              PIC 9(2).
+   569         20  BANK-PAGING-FIELDS.
+   570           25  BANK-PAGING-STATUS            PIC X(1).
+   571             88  BANK-PAGING-OFF             VALUE LOW-VALUES.
+   572             88  BANK-PAGING-FIRST           VALUE '1'.
+   573             88  BANK-PAGING-MIDDLE          VALUE '2'.
+   574             88  BANK-PAGING-LAST            VALUE '3'.
+   575           25  BANK-PAGING-FIRST-ENTRY       PIC X(26).
+   576           25  BANK-PAGING-LAST-ENTRY        PIC X(26).
+   577         20  BANK-RETURN-FLAG                PIC X(1).
+   578           88  BANK-RETURN-FLAG-OFF          VALUE LOW-VALUES.
+   579           88  BANK-RETURN-FLAG-ON           VALUE '1'.
+   580         20  BANK-RETURN-MSG                 PIC X(75).
+   581           88  BANK-RETURN-MSG-OFF           VALUE LOW-VALUES.
+   582       15  BANK-ERROR-MSG                    PIC X(75).
+   583       15  BANK-USER-DETAILS.
+   584         20  BANK-SIGNON-ID                  PIC X(5).
+   585         20  FILLER REDEFINES BANK-SIGNON-ID.
+   586           25  BANK-SIGNON-ID-1              PIC X(1).
+   587             88  PROBLEM-USER                VALUE 'Z'.
+   588           25  BANK-SIGNON-ID-2-5            PIC X(4).
+   589         20  BANK-USERID                     PIC X(5).
+   590           88  GUEST                         VALUE 'GUEST'.
+   591         20  BANK-USERID-NAME                PIC X(25).
+   592         20  BANK-PSWD                       PIC X(8).
+   593       15  BANK-HELP-DATA.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  15
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   594         20  BANK-HELP-SCRN                  PIC X(6).
+   595         20  BANK-HELP-STATUS                PIC X(1).
+   596           88 BANK-HELP-FOUND                VALUE 'Y'.
+   597           88 BANK-HELP-NOT-FOUND            VALUE 'N'.
+   598         20  BANK-HELP-LINE                  PIC X(75)
+   599             OCCURS 19 TIMES.
+   600       15  BANK-SCREEN-DATA.
+   601         20  BANK-SCREEN10-DATA.
+   602           25  FILLER                        PIC X(1).
+   603         20  BANK-SCREEN20-DATA.
+   604           25  BANK-SCR20-SEL1ID             PIC X(1).
+   605           25  BANK-SCR20-SEL1IP             PIC X(1).
+   606           25  BANK-SCR20-SEL1TX             PIC X(40).
+   607           25  BANK-SCR20-SEL2ID             PIC X(1).
+   608           25  BANK-SCR20-SEL2IP             PIC X(1).
+   609           25  BANK-SCR20-SEL2TX             PIC X(40).
+   610           25  BANK-SCR20-SEL3ID             PIC X(1).
+   611           25  BANK-SCR20-SEL3IP             PIC X(1).
+   612           25  BANK-SCR20-SEL3TX             PIC X(40).
+   613           25  BANK-SCR20-SEL4ID             PIC X(1).
+   614           25  BANK-SCR20-SEL4IP             PIC X(1).
+   615           25  BANK-SCR20-SEL4TX             PIC X(40).
+   616           25  BANK-SCR20-SEL5ID             PIC X(1).
+   617           25  BANK-SCR20-SEL5IP             PIC X(1).
+   618           25  BANK-SCR20-SEL5TX             PIC X(40).
+   619           25  BANK-SCR20-SEL6ID             PIC X(1).
+   620           25  BANK-SCR20-SEL6IP             PIC X(1).
+   621           25  BANK-SCR20-SEL6TX             PIC X(40).
+   622           25  BANK-SCR20-SEL7ID             PIC X(1).
+   623           25  BANK-SCR20-SEL7IP             PIC X(1).
+   624           25  BANK-SCR20-SEL7TX             PIC X(40).
+   625         20  BANK-SCREEN20-DATA-R REDEFINES BANK-SCREEN20-DATA.
+   626           25  BANK-SCREEN20-FIELD           OCCURS 7 TIMES.
+   627             30  BANK-SCR20-ID               PIC X(1).
+   628             30  BANK-SCR20-IP               PIC X(1).
+   629             30  BANK-SCR20-TX               PIC X(40).
+   630         20  BANK-SCREEN30-DATA.
+   631           25  BANK-SCR30-DET1               PIC X(1).
+   632           25  BANK-SCR30-ACC1               PIC X(9).
+   633           25  BANK-SCR30-DSC1               PIC X(15).
+   634           25  BANK-SCR30-BAL1               PIC X(13).
+   635           25  BANK-SCR30-SRV1               PIC X(6).
+   636           25  BANK-SCR30-DTE1               PIC X(11).
+   637           25  BANK-SCR30-TXN1               PIC X(1).
+   638           25  BANK-SCR30-DET2               PIC X(1).
+   639           25  BANK-SCR30-ACC2               PIC X(9).
+   640           25  BANK-SCR30-DSC2               PIC X(15).
+   641           25  BANK-SCR30-BAL2               PIC X(13).
+   642           25  BANK-SCR30-SRV2               PIC X(6).
+   643           25  BANK-SCR30-DTE2               PIC X(11).
+   644           25  BANK-SCR30-TXN2               PIC X(1).
+   645           25  BANK-SCR30-DET3               PIC X(1).
+   646           25  BANK-SCR30-ACC3               PIC X(9).
+   647           25  BANK-SCR30-DSC3               PIC X(15).
+   648           25  BANK-SCR30-BAL3               PIC X(13).
+   649           25  BANK-SCR30-SRV3               PIC X(6).
+   650           25  BANK-SCR30-DTE3               PIC X(11).
+   651           25  BANK-SCR30-TXN3               PIC X(1).
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  16
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   652           25  BANK-SCR30-DET4               PIC X(1).
+   653           25  BANK-SCR30-ACC4               PIC X(9).
+   654           25  BANK-SCR30-DSC4               PIC X(15).
+   655           25  BANK-SCR30-BAL4               PIC X(13).
+   656           25  BANK-SCR30-SRV4               PIC X(6).
+   657           25  BANK-SCR30-DTE4               PIC X(11).
+   658           25  BANK-SCR30-TXN4               PIC X(1).
+   659           25  BANK-SCR30-DET5               PIC X(1).
+   660           25  BANK-SCR30-ACC5               PIC X(9).
+   661           25  BANK-SCR30-DSC5               PIC X(15).
+   662           25  BANK-SCR30-BAL5               PIC X(13).
+   663           25  BANK-SCR30-SRV5               PIC X(6).
+   664           25  BANK-SCR30-DTE5               PIC X(11).
+   665           25  BANK-SCR30-TXN5               PIC X(1).
+   666           25  BANK-SCR30-DET6               PIC X(1).
+   667           25  BANK-SCR30-ACC6               PIC X(9).
+   668           25  BANK-SCR30-DSC6               PIC X(15).
+   669           25  BANK-SCR30-BAL6               PIC X(13).
+   670           25  BANK-SCR30-SRV6               PIC X(6).
+   671           25  BANK-SCR30-DTE6               PIC X(11).
+   672           25  BANK-SCR30-TXN6               PIC X(1).
+   673           25  BANK-SCR30-SRVMSG             PIC X(62).
+   674         20  BANK-SCREEN30-DATA-R REDEFINES BANK-SCREEN30-DATA.
+   675           25  BANK-SCREEN30-INPUT-DATA.
+   676             30  BANK-SCREEN30-INPUT         OCCURS 6 TIMES.
+   677               35  BANK-SCR30-DET            PIC X(1).
+   678               35  BANK-SCR30-ACC            PIC X(9).
+   679               35  BANK-SCR30-DSC            PIC X(15).
+   680               35  BANK-SCR30-BAL            PIC X(13).
+   681               35  BANK-SCR30-SRV            PIC X(6).
+   682               35  BANK-SCR30-DTE            PIC X(11).
+   683               35  BANK-SCR30-TXN            PIC X(1).
+   684                 88  BANK-SCR30-TXN-PRESENT  VALUE '*'.
+   685         20  BANK-SCREEN35-DATA.
+   686           25  BANK-SCR35-ACC                PIC X(9).
+   687           25  BANK-SCR35-DSC                PIC X(15).
+   688           25  BANK-SCR35-BAL                PIC X(13).
+   689           25  BANK-SCR35-DTE                PIC X(11).
+   690           25  BANK-SCR35-TRANS              PIC X(5).
+   691           25  BANK-SCR35-ATM-FIELDS.
+   692             30  BANK-SCR35-ATM-ENABLED      PIC X(1).
+   693             30  BANK-SCR35-ATM-LIM          PIC X(3).
+   694             30  BANK-SCR35-ATM-LDTE         PIC X(11).
+   695             30  BANK-SCR35-ATM-LAMT         PIC X(3).
+   696           25  BANK-SCR35-RP-FIELDS.
+   697             30  BANK-SCR35-RP1-FIELDS.
+   698               35  BANK-SCR35-RP1DAY         PIC X(2).
+   699               35  BANK-SCR35-RP1AMT         PIC X(10).
+   700               35  BANK-SCR35-RP1PID         PIC X(5).
+   701               35  BANK-SCR35-RP1ACC         PIC X(9).
+   702               35  BANK-SCR35-RP1DTE         PIC X(11).
+   703             30  BANK-SCR35-RP2-FIELDS.
+   704               35  BANK-SCR35-RP2DAY         PIC X(2).
+   705               35  BANK-SCR35-RP2AMT         PIC X(10).
+   706               35  BANK-SCR35-RP2PID         PIC X(5).
+   707               35  BANK-SCR35-RP2ACC         PIC X(9).
+   708               35  BANK-SCR35-RP2DTE         PIC X(11).
+   709             30  BANK-SCR35-RP3-FIELDS.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  17
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   710               35  BANK-SCR35-RP3DAY         PIC X(2).
+   711               35  BANK-SCR35-RP3AMT         PIC X(10).
+   712               35  BANK-SCR35-RP3PID         PIC X(5).
+   713               35  BANK-SCR35-RP3ACC         PIC X(9).
+   714               35  BANK-SCR35-RP3DTE         PIC X(11).
+   715         20  BANK-SCREEN40-DATA.
+   716           25  BANK-SCR40-ACC                PIC X(9).
+   717           25  BANK-SCR40-ACCTYPE            PIC X(15).
+   718           25  BANK-SCR40-TXN-FIELDS.
+   719             30  BANK-SCR40-DAT1             PIC X(11).
+   720             30  BANK-SCR40-TIM1             PIC X(8).
+   721             30  BANK-SCR40-AMT1             PIC X(13).
+   722             30  BANK-SCR40-DSC1             PIC X(30).
+   723             30  BANK-SCR40-DAT2             PIC X(11).
+   724             30  BANK-SCR40-TIM2             PIC X(8).
+   725             30  BANK-SCR40-AMT2             PIC X(13).
+   726             30  BANK-SCR40-DSC2             PIC X(30).
+   727             30  BANK-SCR40-DAT3             PIC X(11).
+   728             30  BANK-SCR40-TIM3             PIC X(8).
+   729             30  BANK-SCR40-AMT3             PIC X(13).
+   730             30  BANK-SCR40-DSC3             PIC X(30).
+   731             30  BANK-SCR40-DAT4             PIC X(11).
+   732             30  BANK-SCR40-TIM4             PIC X(8).
+   733             30  BANK-SCR40-AMT4             PIC X(13).
+   734             30  BANK-SCR40-DSC4             PIC X(30).
+   735             30  BANK-SCR40-DAT5             PIC X(11).
+   736             30  BANK-SCR40-TIM5             PIC X(8).
+   737             30  BANK-SCR40-AMT5             PIC X(13).
+   738             30  BANK-SCR40-DSC5             PIC X(30).
+   739             30  BANK-SCR40-DAT6             PIC X(11).
+   740             30  BANK-SCR40-TIM6             PIC X(8).
+   741             30  BANK-SCR40-AMT6             PIC X(13).
+   742             30  BANK-SCR40-DSC6             PIC X(30).
+   743             30  BANK-SCR40-DAT7             PIC X(11).
+   744             30  BANK-SCR40-TIM7             PIC X(8).
+   745             30  BANK-SCR40-AMT7             PIC X(13).
+   746             30  BANK-SCR40-DSC7             PIC X(30).
+   747             30  BANK-SCR40-DAT8             PIC X(11).
+   748             30  BANK-SCR40-TIM8             PIC X(8).
+   749             30  BANK-SCR40-AMT8             PIC X(13).
+   750             30  BANK-SCR40-DSC8             PIC X(30).
+   751         20  BANK-SCREEN40-DATA-R REDEFINES BANK-SCREEN40-DATA.
+   752           25  BANK-SCR40-ACC-R              PIC X(9).
+   753           25  BANK-SCR40-ACCTYPE-R          PIC X(15).
+   754           25  BANK-SCREEN40-TXNS            OCCURS 8 TIMES.
+   755             30  BANK-SCR40-DATE             PIC X(11).
+   756             30  BANK-SCR40-TIME             PIC X(8).
+   757             30  BANK-SCR40-AMNT             PIC X(13).
+   758             30  BANK-SCR40-DESC             PIC X(30).
+   759         20  BANK-SCREEN50-DATA.
+   760           25  BANK-SCR50-XFER               PIC X(8).
+   761           25  BANK-SCR50-FRM1               PIC X(1).
+   762           25  BANK-SCR50-TO1                PIC X(1).
+   763           25  BANK-SCR50-ACC1               PIC X(9).
+   764           25  BANK-SCR50-DSC1               PIC X(15).
+   765           25  BANK-SCR50-BAL1               PIC X(13).
+   766           25  BANK-SCR50-FRM2               PIC X(1).
+   767           25  BANK-SCR50-TO2                PIC X(1).
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  18
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   768           25  BANK-SCR50-ACC2               PIC X(9).
+   769           25  BANK-SCR50-DSC2               PIC X(15).
+   770           25  BANK-SCR50-BAL2               PIC X(13).
+   771           25  BANK-SCR50-FRM3               PIC X(1).
+   772           25  BANK-SCR50-TO3                PIC X(1).
+   773           25  BANK-SCR50-ACC3               PIC X(9).
+   774           25  BANK-SCR50-DSC3               PIC X(15).
+   775           25  BANK-SCR50-BAL3               PIC X(13).
+   776           25  BANK-SCR50-FRM4               PIC X(1).
+   777           25  BANK-SCR50-TO4                PIC X(1).
+   778           25  BANK-SCR50-ACC4               PIC X(9).
+   779           25  BANK-SCR50-DSC4               PIC X(15).
+   780           25  BANK-SCR50-BAL4               PIC X(13).
+   781           25  BANK-SCR50-FRM5               PIC X(1).
+   782           25  BANK-SCR50-TO5                PIC X(1).
+   783           25  BANK-SCR50-ACC5               PIC X(9).
+   784           25  BANK-SCR50-DSC5               PIC X(15).
+   785           25  BANK-SCR50-BAL5               PIC X(13).
+   786           25  BANK-SCR50-FRM6               PIC X(1).
+   787           25  BANK-SCR50-TO6                PIC X(1).
+   788           25  BANK-SCR50-ACC6               PIC X(9).
+   789           25  BANK-SCR50-DSC6               PIC X(15).
+   790           25  BANK-SCR50-BAL6               PIC X(13).
+   791           25  BANK-SCR50-ERRMSG             PIC X(62).
+   792         20  BANK-SCREEN60-DATA.
+   793           25  BANK-SCR60-RETURN-TO          PIC X(8).
+   794           25  BANK-SCR60-CONTACT-ID         PIC X(5).
+   795           25  BANK-SCR60-CONTACT-NAME       PIC X(25).
+   796           25  BANK-SCR60-CHANGE-ACTION      PIC X(1).
+   797             88  ADDR-CHANGE-REQUEST         VALUE ' '.
+   798             88  ADDR-CHANGE-VERIFY          VALUE 'V'.
+   799             88  ADDR-CHANGE-COMMIT          VALUE 'U'.
+   800           25  BANK-SCR60-OLD-DETS.
+   801             30  BANK-SCR60-OLD-ADDR1        PIC X(25).
+   802             30  BANK-SCR60-OLD-ADDR2        PIC X(25).
+   803             30  BANK-SCR60-OLD-STATE        PIC X(2).
+   804             30  BANK-SCR60-OLD-CNTRY        PIC X(6).
+   805             30  BANK-SCR60-OLD-PSTCDE       PIC X(6).
+   806             30  BANK-SCR60-OLD-TELNO        PIC X(12).
+   807             30  BANK-SCR60-OLD-EMAIL        PIC X(30).
+   808             30  BANK-SCR60-OLD-SEND-MAIL    PIC X(1).
+   809             30  BANK-SCR60-OLD-SEND-EMAIL   PIC X(1).
+   810           25  BANK-SCR60-NEW-DETS.
+   811             30  BANK-SCR60-NEW-ADDR1        PIC X(25).
+   812             30  BANK-SCR60-NEW-ADDR2        PIC X(25).
+   813             30  BANK-SCR60-NEW-STATE        PIC X(2).
+   814             30  BANK-SCR60-NEW-CNTRY        PIC X(6).
+   815             30  BANK-SCR60-NEW-PSTCDE       PIC X(6).
+   816             30  BANK-SCR60-NEW-TELNO        PIC X(12).
+   817             30  BANK-SCR60-NEW-EMAIL        PIC X(30).
+   818             30  BANK-SCR60-NEW-SEND-MAIL    PIC X(1).
+   819             30  BANK-SCR60-NEW-SEND-EMAIL   PIC X(1).
+   820         20  BANK-SCREEN70-DATA.
+   821           25  BANK-SCR70-AMOUNT             PIC X(7).
+   822           25  BANK-SCR70-RATE               PIC X(7).
+   823           25  BANK-SCR70-TERM               PIC X(5).
+   824           25  BANK-SCR70-PAYMENT            PIC X(9).
+   825         20  BANK-SCREEN80-DATA.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  19
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   826           25  BANK-SCR80-CONTACT-ID         PIC X(5).
+   827           25  BANK-SCR80-CONTACT-NAME       PIC X(25).
+   828           25  BANK-SCR80-PRINT-ACTION       PIC X(1).
+   829             88  PRINT-REQUEST               VALUE ' '.
+   830             88  PRINT-CONFIRM               VALUE 'C'.
+   831           25  BANK-SCR80-DETS.
+   832             30  BANK-SCR80-ADDR1            PIC X(25).
+   833             30  BANK-SCR80-ADDR2            PIC X(25).
+   834             30  BANK-SCR80-STATE            PIC X(2).
+   835             30  BANK-SCR80-CNTRY            PIC X(6).
+   836             30  BANK-SCR80-PSTCDE           PIC X(6).
+   837             30  BANK-SCR80-EMAIL            PIC X(30).
+   838             30  BANK-SCR80-OPT1             PIC X(1).
+   839             30  BANK-SCR80-OPT2             PIC X(1).
+   840          20  BANK-SCREEN90-DATA.
+   841           25  BANK-SCR90-SCRN               PIC X(6).
+   842           25  BANK-SCR90-SCRN-STATUS        PIC X(1).
+   843           25 BANK-SCR90-LINE                PIC X(75)
+   844               OCCURS 19 TIMES.
+   845         20  BANK-SCREENZZ-DATA.
+   846           25  BANK-SCRZZ-SEL1ID             PIC X(1).
+   847           25  BANK-SCRZZ-SEL1IP             PIC X(1).
+   848           25  BANK-SCRZZ-SEL1TX             PIC X(40).
+   849           25  BANK-SCRZZ-SEL2ID             PIC X(1).
+   850           25  BANK-SCRZZ-SEL2IP             PIC X(1).
+   851           25  BANK-SCRZZ-SEL2TX             PIC X(40).
+   852           25  BANK-SCRZZ-SEL3ID             PIC X(1).
+   853           25  BANK-SCRZZ-SEL3IP             PIC X(1).
+   854           25  BANK-SCRZZ-SEL3TX             PIC X(40).
+   855           25  BANK-SCRZZ-SEL4ID             PIC X(1).
+   856           25  BANK-SCRZZ-SEL4IP             PIC X(1).
+   857           25  BANK-SCRZZ-SEL4TX             PIC X(40).
+   858           25  BANK-SCRZZ-SEL5ID             PIC X(1).
+   859           25  BANK-SCRZZ-SEL5IP             PIC X(1).
+   860           25  BANK-SCRZZ-SEL5TX             PIC X(40).
+   861           25  BANK-SCRZZ-SEL6ID             PIC X(1).
+   862           25  BANK-SCRZZ-SEL6IP             PIC X(1).
+   863           25  BANK-SCRZZ-SEL6TX             PIC X(40).
+   864           25  BANK-SCRZZ-SEL7ID             PIC X(1).
+   865           25  BANK-SCRZZ-SEL7IP             PIC X(1).
+   866           25  BANK-SCRZZ-SEL7TX             PIC X(40).
+   867           25  BANK-SCRZZ-SEL8ID             PIC X(1).
+   868           25  BANK-SCRZZ-SEL8IP             PIC X(1).
+   869           25  BANK-SCRZZ-SEL8TX             PIC X(40).
+   870         20  BANK-SCREENZZ-DATA-R REDEFINES BANK-SCREENZZ-DATA.
+   871           25  BANK-SCREENZZ-FIELD           OCCURS 8 TIMES.
+   872             30  BANK-SCRZZ-ID               PIC X(1).
+   873             30  BANK-SCRZZ-IP               PIC X(1).
+* 032 000
+* 032 000        01  WS-HELP-DATA.
+   874             30  BANK-SCRZZ-TX               PIC X(40).
+   875
+   876* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+   877
+* 032 000        COPY CHELPD01.
+   878 01  WS-HELP-DATA.
+   879*COPY CHELPD01.
+   880*****************************************************************
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  20
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   881*                                                               *
+   882* Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+   883* This software may be used, modified, and distributed          *
+   884* (provided this notice is included without modification)       *
+   885* solely for internal demonstration purposes with other         *
+   886* Micro Focus software, and is otherwise subject to the EULA at *
+   887* https://www.microfocus.com/en-us/legal/software-licensing.    *
+   888*                                                               *
+   889* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+   890* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+   891* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+   892* SHALL NOT APPLY.                                              *
+   893* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+   894* MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+   895* WITH THIS SOFTWARE.                                           *
+   896*                                                               *
+   897*****************************************************************
+   898
+   899*****************************************************************
+   900* CHELPD01.CPY                                                  *
+   901*---------------------------------------------------------------*
+   902* This area is used to pass data between a requesting program   *
+   903* and the I/O program (DHELP01P) which retrieves screen help    *
+   904* information.                                                  *
+   905*****************************************************************
+   906   05  HELP01-DATA.
+   907     10  HELPO1I-DATA.
+   908       15  HELP01I-SCRN                      PIC X(6).
+   909     10  HELP01O-DATA.
+   910       15  HELP01O-SCRN                      PIC X(6).
+   911       15  HELP01O-FOUND                     PIC X(1).
+   912         88 HELP-FOUND                       VALUE 'Y'.
+   913         88 HELP-NOT-FOUND                   VALUE 'N'.
+   914       15  HELP01O-INDIVIDUAL-LINES.
+   915         20  HELP01O-L01                     PIC X(75).
+   916         20  HELP01O-L02                     PIC X(75).
+   917         20  HELP01O-L03                     PIC X(75).
+   918         20  HELP01O-L04                     PIC X(75).
+   919         20  HELP01O-L05                     PIC X(75).
+   920         20  HELP01O-L06                     PIC X(75).
+   921         20  HELP01O-L07                     PIC X(75).
+   922         20  HELP01O-L08                     PIC X(75).
+   923         20  HELP01O-L09                     PIC X(75).
+   924         20  HELP01O-L10                     PIC X(75).
+   925         20  HELP01O-L11                     PIC X(75).
+   926         20  HELP01O-L12                     PIC X(75).
+   927         20  HELP01O-L13                     PIC X(75).
+   928         20  HELP01O-L14                     PIC X(75).
+   929         20  HELP01O-L15                     PIC X(75).
+   930         20  HELP01O-L16                     PIC X(75).
+   931         20  HELP01O-L17                     PIC X(75).
+   932         20  HELP01O-L18                     PIC X(75).
+   933         20  HELP01O-L19                     PIC X(75).
+   934       15  FILLER REDEFINES HELP01O-INDIVIDUAL-LINES.
+* 032 000
+* 032 000        01  WS-ACCOUNT-DATA.
+   935         20  HELP01O-LINE                    PIC X(75)
+   936             OCCURS 19 TIMES.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  21
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+   937
+   938* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+   939
+* 032 000        COPY CBANKD03.
+   940 01  WS-ACCOUNT-DATA.
+   941*COPY CBANKD03.
+   942*****************************************************************
+   943*                                                               *
+   944* Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+   945* This software may be used, modified, and distributed          *
+   946* (provided this notice is included without modification)       *
+   947* solely for internal demonstration purposes with other         *
+   948* Micro Focus software, and is otherwise subject to the EULA at *
+   949* https://www.microfocus.com/en-us/legal/software-licensing.    *
+   950*                                                               *
+   951* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+   952* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+   953* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+   954* SHALL NOT APPLY.                                              *
+   955* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+   956* MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+   957* WITH THIS SOFTWARE.                                           *
+   958*                                                               *
+   959*****************************************************************
+   960
+   961*****************************************************************
+   962* CBANKD03.CPY          SHOW HIS TO RRD                         *
+   963*---------------------------------------------------------------*
+   964* This area is used to pass data between a requesting program   *
+   965* and the I/O program (DBANK03P) which retrieves information    *
+   966* regarding customer's accounts                                 *
+   967*****************************************************************
+   968   05  CD03-DATA.
+   969     10  CD03I-DATA.
+   970       15  CD03I-CONTACT-ID                  PIC X(5).
+   971     10  CD03O-DATA.
+   972       15  CD03O-ACC1                        PIC X(9).
+   973       15  CD03O-DSC1                        PIC X(15).
+   974       15  CD03O-BAL1                        PIC X(9).
+   975       15  CD03O-BAL1N REDEFINES CD03O-BAL1  PIC S9(7)V99.
+   976       15  CD03O-DTE1                        PIC X(10).
+   977       15  CD03O-TXN1                        PIC X(1).
+   978       15  CD03O-ACC2                        PIC X(9).
+   979       15  CD03O-DSC2                        PIC X(15).
+   980       15  CD03O-BAL2                        PIC X(9).
+   981       15  CD03O-BAL2N REDEFINES CD03O-BAL2  PIC S9(7)V99.
+   982       15  CD03O-DTE2                        PIC X(10).
+   983       15  CD03O-TXN2                        PIC X(1).
+   984       15  CD03O-ACC3                        PIC X(9).
+   985       15  CD03O-DSC3                        PIC X(15).
+   986       15  CD03O-BAL3                        PIC X(9).
+   987       15  CD03O-BAL3N REDEFINES CD03O-BAL3  PIC S9(7)V99.
+   988       15  CD03O-DTE3                        PIC X(10).
+   989       15  CD03O-TXN3                        PIC X(1).
+   990       15  CD03O-ACC4                        PIC X(9).
+   991       15  CD03O-DSC4                        PIC X(15).
+   992       15  CD03O-BAL4                        PIC X(9).
+   993       15  CD03O-BAL4N REDEFINES CD03O-BAL4  PIC S9(7)V99.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  22
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+   994       15  CD03O-DTE4                        PIC X(10).
+   995       15  CD03O-TXN4                        PIC X(1).
+   996       15  CD03O-ACC5                        PIC X(9).
+   997       15  CD03O-DSC5                        PIC X(15).
+   998       15  CD03O-BAL5                        PIC X(9).
+   999       15  CD03O-BAL5N REDEFINES CD03O-BAL5  PIC S9(7)V99.
+  1000       15  CD03O-DTE5                        PIC X(10).
+  1001       15  CD03O-TXN5                        PIC X(1).
+  1002       15  CD03O-ACC6                        PIC X(9).
+  1003       15  CD03O-DSC6                        PIC X(15).
+  1004       15  CD03O-BAL6                        PIC X(9).
+  1005       15  CD03O-BAL6N REDEFINES CD03O-BAL6  PIC S9(7)V99.
+  1006       15  CD03O-DTE6                        PIC X(10).
+  1007       15  CD03O-TXN6                        PIC X(1).
+  1008     10  CD03O-DATA-R REDEFINES CD03O-DATA.
+  1009       15  CD03O-ACC-INFO                    OCCURS 6 TIMES.
+  1010         20  CD03O-ACC-NO                    PIC X(9).
+  1011         20  CD03O-ACC-DESC                  PIC X(15).
+  1012         20  CD03O-ACC-BAL                   PIC X(9).
+  1013         20  CD03O-ACC-BAL-N REDEFINES CD03O-ACC-BAL
+  1014                                             PIC S9(7)V99.
+  1015         20  CD03O-DTE                       PIC X(10).
+* 032 000
+* 032 000        COPY CABENDD.
+  1016         20  CD03O-TXN                       PIC X(1).
+  1017
+  1018* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+  1019
+  1020*COPY CABENDD.
+  1021*****************************************************************
+  1022*                                                               *
+  1023* Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+  1024* This software may be used, modified, and distributed          *
+  1025* (provided this notice is included without modification)       *
+  1026* solely for internal demonstration purposes with other         *
+  1027* Micro Focus software, and is otherwise subject to the EULA at *
+  1028* https://www.microfocus.com/en-us/legal/software-licensing.    *
+  1029*                                                               *
+  1030* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+  1031* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+  1032* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+  1033* SHALL NOT APPLY.                                              *
+  1034* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+  1035* MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+  1036* WITH THIS SOFTWARE.                                           *
+  1037*                                                               *
+  1038*****************************************************************
+  1039
+  1040*****************************************************************
+  1041* CABENDD.CPY                                                   *
+  1042*---------------------------------------------------------------*
+  1043* Work areas for abend routine                                  *
+  1044*****************************************************************
+  1045 01  ABEND-DATA.
+  1046   05  ABEND-CODE                            PIC X(4)
+  1047       VALUE SPACES.
+  1048   05  ABEND-CULPRIT                         PIC X(8)
+  1049       VALUE SPACES.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  23
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+  1050   05  ABEND-REASON                          PIC X(50)
+  1051       VALUE SPACES.
+* 032 000
+* 001 000        LOCAL-STORAGE SECTION.
+* 001 000        LINKAGE SECTION.
+* 001 000       $SET    change-message"1036 N"
+  1052   05  ABEND-MSG                             PIC X(72)
+  1053       VALUE SPACES.
+  1054
+  1055* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+  1056
+  1056 LOCAL-STORAGE SECTION.
+  1056 LINKAGE SECTION.
+  1056$SET    change-message"1036 N"
+* 001 000       $SET    change-message"1138 N"
+  1056$SET    change-message"1138 N"
+* 001 000       $SET    change-message"634 N"
+  1056$SET    change-message"634 N"
+* 001 000       $SET    change-message"1006 N"
+  1056$SET    change-message"1006 N"
+* 001 000       $SET    change-message"628 N"
+  1056$SET    change-message"628 N"
+* 001 000       $SET    change-message"1078 N"
+  1056$SET    change-message"1078 N"
+* 001 000            COPY "MFULK_BBANK30P".
+  1056*    COPY "MFULK_BBANK30P".
+  1057 01 lnk-program                  pic x(128).
+  1058 01 lnk-program-len              pic s9(9) comp-5.
+  1059 01 lnk-exec-style               pic s9(9) comp-5.
+  1060 01 lnk-exec-info                pic x.
+* 001 000       $SET    change-message"1078 R"
+  1061 01 lnk-exec-cics-info           MFU-PP-MOCK-EXEC-INFO.
+  1061$SET    change-message"1078 R"
+* 001 000       $SET    change-message"628 R"
+  1061$SET    change-message"628 R"
+* 001 000       $SET    change-message"1006 R"
+  1061$SET    change-message"1006 R"
+* 001 000       $SET    change-message"634 R"
+  1061$SET    change-message"634 R"
+* 001 000       $SET    change-message"1138 R"
+  1061$SET    change-message"1138 R"
+* 001 000       $SET    change-message"1036 R"
+  1061$SET    change-message"1036 R"
+* 032 000
+* 032 000        01  DFHCOMMAREA.
+  1062
+* 032 000          05  LK-COMMAREA                           PIC X(6144).
+  1063 01  DFHCOMMAREA.
+* 032 000
+* 032 000        COPY CENTRY.
+  1064   05  LK-COMMAREA                           PIC X(6144).
+  1065
+  1066*COPY CENTRY.
+* 032 000       *****************************************************************
+* 032 000       * Make ourselves re-entrant                                     *
+* 032 000       *****************************************************************
+* 032 000            MOVE SPACES TO WS-ERROR-MSG.
+  1067*****************************************************************
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  24
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+  1068*                                                               *
+  1069* Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+  1070* This software may be used, modified, and distributed          *
+  1071* (provided this notice is included without modification)       *
+  1072* solely for internal demonstration purposes with other         *
+  1073* Micro Focus software, and is otherwise subject to the EULA at *
+  1074* https://www.microfocus.com/en-us/legal/software-licensing.    *
+  1075*                                                               *
+  1076* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+  1077* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+  1078* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+  1079* SHALL NOT APPLY.                                              *
+  1080* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+  1081* MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+  1082* WITH THIS SOFTWARE.                                           *
+  1083*                                                               *
+  1084*****************************************************************
+  1085
+  1086*****************************************************************
+  1087* CENTRY.CPY (CICS Version)                                     *
+  1088*---------------------------------------------------------------*
+  1089* This copybook is used to provide an entry point for modules   *
+  1090* so that they may be insensitive to their environment.         *
+  1091* There are different versions for CICS, IMS and INET.          *
+  1092*****************************************************************
+  1093 PROCEDURE DIVISION.
+  1094
+  1095* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+  1096*****************************************************************
+  1097* Make ourselves re-entrant                                     *
+  1098*****************************************************************
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * Move the passed area to our area                              *
+* 032 000       *****************************************************************
+* 032 000            MOVE DFHCOMMAREA (1:LENGTH OF WS-BANK-DATA) TO WS-BANK-DATA.
+  1099     MOVE SPACES TO WS-ERROR-MSG.
+  1100
+  1101*****************************************************************
+  1102* Move the passed area to our area                              *
+  1103*****************************************************************
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * Ensure error message is cleared                               *
+* 032 000       *****************************************************************
+* 032 000            MOVE SPACES TO BANK-ERROR-MSG.
+  1104     MOVE DFHCOMMAREA (1:LENGTH OF WS-BANK-DATA) TO WS-BANK-DATA.
+  1105
+  1106*****************************************************************
+  1107* Ensure error message is cleared                               *
+  1108*****************************************************************
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * This is the main process                                      *
+* 032 000       *****************************************************************
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * Save the passed return flag and then turn it off              *
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  25
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000       *****************************************************************
+* 032 000            MOVE BANK-RETURN-FLAG TO WS-RETURN-FLAG.
+  1109     MOVE SPACES TO BANK-ERROR-MSG.
+  1110
+  1111*****************************************************************
+  1112* This is the main process                                      *
+  1113*****************************************************************
+  1114
+  1115*****************************************************************
+  1116* Save the passed return flag and then turn it off              *
+  1117*****************************************************************
+* 032 000            SET BANK-RETURN-FLAG-OFF TO TRUE.
+  1118     MOVE BANK-RETURN-FLAG TO WS-RETURN-FLAG.
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * Check the AID to see if its valid at this point               *
+* 032 000       *****************************************************************
+* 032 000            SET PFK-INVALID TO TRUE.
+  1119     SET BANK-RETURN-FLAG-OFF TO TRUE.
+  1120
+  1121*****************************************************************
+  1122* Check the AID to see if its valid at this point               *
+  1123*****************************************************************
+* 032 000            IF BANK-AID-ENTER OR
+  1124     SET PFK-INVALID TO TRUE.
+* 032 000               BANK-AID-PFK03 OR
+* 032 000               BANK-AID-PFK04 OR
+* 032 000               BANK-AID-PFK06
+* 032 000               SET PFK-VALID TO TRUE
+  1125     IF BANK-AID-ENTER OR
+  1126        BANK-AID-PFK03 OR
+  1127        BANK-AID-PFK04 OR
+  1128        BANK-AID-PFK06
+* 032 000            END-IF.
+* 032 000            IF BANK-AID-PFK01 AND
+  1129        SET PFK-VALID TO TRUE
+  1130     END-IF.
+* 032 000               BANK-HELP-INACTIVE
+* 032 000               SET BANK-HELP-ACTIVE TO TRUE
+  1131     IF BANK-AID-PFK01 AND
+  1132        BANK-HELP-INACTIVE
+* 032 000               SET PFK-VALID TO TRUE
+  1133        SET BANK-HELP-ACTIVE TO TRUE
+* 032 000            END-IF.
+* 032 000            IF PFK-INVALID
+  1134        SET PFK-VALID TO TRUE
+  1135     END-IF.
+* 032 000               SET BANK-AID-ENTER TO TRUE
+  1136     IF PFK-INVALID
+* 032 000            END-IF.
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * Check the AID to see if we have to quit                       *
+* 032 000       *****************************************************************
+* 032 000            IF BANK-AID-PFK03
+  1137        SET BANK-AID-ENTER TO TRUE
+  1138     END-IF.
+  1139
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  26
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+  1140*****************************************************************
+  1141* Check the AID to see if we have to quit                       *
+  1142*****************************************************************
+* 032 000               MOVE 'BBANK30P' TO BANK-LAST-PROG
+  1143     IF BANK-AID-PFK03
+* 032 000               MOVE 'BBANK99P' TO BANK-NEXT-PROG
+  1144        MOVE 'BBANK30P' TO BANK-LAST-PROG
+* 032 000               MOVE 'MBANK99' TO BANK-NEXT-MAPSET
+  1145        MOVE 'BBANK99P' TO BANK-NEXT-PROG
+* 032 000               MOVE 'BANK99A' TO BANK-NEXT-MAP
+  1146        MOVE 'MBANK99' TO BANK-NEXT-MAPSET
+* 032 000               GO TO COMMON-RETURN
+  1147        MOVE 'BANK99A' TO BANK-NEXT-MAP
+* 032 000            END-IF.
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * Check the to see if user needs or has been using help         *
+* 032 000       *****************************************************************
+* 032 000            IF BANK-HELP-ACTIVE
+  1148        GO TO COMMON-RETURN
+  1149     END-IF.
+  1150
+  1151*****************************************************************
+  1152* Check the to see if user needs or has been using help         *
+  1153*****************************************************************
+* 032 000               IF BANK-AID-PFK04
+  1154     IF BANK-HELP-ACTIVE
+* 032 000                  SET BANK-HELP-INACTIVE TO TRUE
+  1155        IF BANK-AID-PFK04
+* 032 000                  MOVE 00 TO BANK-HELP-SCREEN
+  1156           SET BANK-HELP-INACTIVE TO TRUE
+* 032 000                  MOVE 'BBANK30P' TO BANK-LAST-PROG
+  1157           MOVE 00 TO BANK-HELP-SCREEN
+* 032 000                  MOVE 'BBANK30P' TO BANK-NEXT-PROG
+  1158           MOVE 'BBANK30P' TO BANK-LAST-PROG
+* 032 000                  MOVE 'MBANK30' TO BANK-LAST-MAPSET
+  1159           MOVE 'BBANK30P' TO BANK-NEXT-PROG
+* 032 000                  MOVE 'HELP30A' TO BANK-LAST-MAP
+  1160           MOVE 'MBANK30' TO BANK-LAST-MAPSET
+* 032 000                  MOVE 'MBANK30' TO BANK-NEXT-MAPSET
+  1161           MOVE 'HELP30A' TO BANK-LAST-MAP
+* 032 000                  MOVE 'BANK30A' TO BANK-NEXT-MAP
+  1162           MOVE 'MBANK30' TO BANK-NEXT-MAPSET
+* 032 000                  GO TO COMMON-RETURN
+  1163           MOVE 'BANK30A' TO BANK-NEXT-MAP
+* 032 000               ELSE
+* 032 000                  MOVE 01 TO BANK-HELP-SCREEN
+  1164           GO TO COMMON-RETURN
+  1165        ELSE
+* 032 000                  MOVE 'BBANK30P' TO BANK-LAST-PROG
+  1166           MOVE 01 TO BANK-HELP-SCREEN
+* 032 000                  MOVE 'BBANK30P' TO BANK-NEXT-PROG
+  1167           MOVE 'BBANK30P' TO BANK-LAST-PROG
+* 032 000                  MOVE 'MBANK30' TO BANK-LAST-MAPSET
+  1168           MOVE 'BBANK30P' TO BANK-NEXT-PROG
+* 032 000                  MOVE 'BANK30A' TO BANK-LAST-MAP
+  1169           MOVE 'MBANK30' TO BANK-LAST-MAPSET
+* 032 000                  MOVE 'MBANK30' TO BANK-NEXT-MAPSET
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  27
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+  1170           MOVE 'BANK30A' TO BANK-LAST-MAP
+* 032 000                  MOVE 'HELP30A' TO BANK-NEXT-MAP
+  1171           MOVE 'MBANK30' TO BANK-NEXT-MAPSET
+* 032 000                  MOVE 'BANK30' TO HELP01I-SCRN
+  1172           MOVE 'HELP30A' TO BANK-NEXT-MAP
+* 032 000                  COPY CHELPX01.
+  1173           MOVE 'BANK30' TO HELP01I-SCRN
+  1174*          COPY CHELPX01.
+  1175*****************************************************************
+  1176*                                                               *
+  1177* Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+  1178* This software may be used, modified, and distributed          *
+  1179* (provided this notice is included without modification)       *
+  1180* solely for internal demonstration purposes with other         *
+  1181* Micro Focus software, and is otherwise subject to the EULA at *
+  1182* https://www.microfocus.com/en-us/legal/software-licensing.    *
+  1183*                                                               *
+  1184* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+  1185* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+  1186* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+  1187* SHALL NOT APPLY.                                              *
+  1188* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+  1189* MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+  1190* WITH THIS SOFTWARE.                                           *
+  1191*                                                               *
+  1192*****************************************************************
+  1193
+  1194*****************************************************************
+  1195* CHELPX01.CPY (CICS Version)                                   *
+  1196*---------------------------------------------------------------*
+  1197* This copybook is used to provide an common means of calling   *
+  1198* data access module DHELP01P so that the that module using     *
+  1199* this copy book is insensitive to it environment.              *
+  1200* There are different versions for CICS, IMS and INET.          *
+  1201*****************************************************************
+  1202* by default use CICS commands to call the module
+  1203
+  1204* MFUPP-CID LINK2DHELP01P
+  1205     EXEC CICS LINK PROGRAM('DHELP01P')
+* 472-S********                                                        (   5)**
+**    No CICS directives have been set
+* 032 000                  MOVE HELP01O-DATA TO BANK-HELP-DATA
+  1206                    COMMAREA(HELP01-DATA)
+  1207                    LENGTH(LENGTH OF HELP01-DATA)
+  1208     END-EXEC
+  1209*    CALL 'DHELP01P' USING HELP01-DATA
+  1210
+  1211* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+* 032 000                  GO TO COMMON-RETURN
+  1212           MOVE HELP01O-DATA TO BANK-HELP-DATA
+* 032 000            END-IF.
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * Check the AID to see if we have to return to previous screen  *
+* 032 000       *****************************************************************
+* 032 000            IF BANK-AID-PFK04
+  1213           GO TO COMMON-RETURN
+  1214     END-IF.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  28
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+  1215
+  1216*****************************************************************
+  1217* Check the AID to see if we have to return to previous screen  *
+  1218*****************************************************************
+* 032 000               MOVE 'BBANK30P' TO BANK-LAST-PROG
+  1219     IF BANK-AID-PFK04
+* 032 000               MOVE 'BBANK20P' TO BANK-NEXT-PROG
+  1220        MOVE 'BBANK30P' TO BANK-LAST-PROG
+* 032 000               MOVE 'MBANK20' TO BANK-NEXT-MAPSET
+  1221        MOVE 'BBANK20P' TO BANK-NEXT-PROG
+* 032 000               MOVE 'BANK20A' TO BANK-NEXT-MAP
+  1222        MOVE 'MBANK20' TO BANK-NEXT-MAPSET
+* 032 000               SET BANK-AID-ENTER TO TRUE
+  1223        MOVE 'BANK20A' TO BANK-NEXT-MAP
+* 032 000               GO TO COMMON-RETURN
+  1224        SET BANK-AID-ENTER TO TRUE
+* 032 000            END-IF.
+* 032 000
+* 032 000       * Check if we have set the screen up before or is this 1st time
+* 032 000            IF BANK-LAST-MAPSET IS NOT EQUAL TO 'MBANK30'
+  1225        GO TO COMMON-RETURN
+  1226     END-IF.
+  1227
+  1228* Check if we have set the screen up before or is this 1st time
+* 032 000               MOVE WS-RETURN-MSG TO BANK-ERROR-MSG
+  1229     IF BANK-LAST-MAPSET IS NOT EQUAL TO 'MBANK30'
+* 032 000               MOVE 'BBANK30P' TO BANK-LAST-PROG
+  1230        MOVE WS-RETURN-MSG TO BANK-ERROR-MSG
+* 032 000               MOVE 'BBANK30P' TO BANK-NEXT-PROG
+  1231        MOVE 'BBANK30P' TO BANK-LAST-PROG
+* 032 000               MOVE 'MBANK30' TO BANK-LAST-MAPSET
+  1232        MOVE 'BBANK30P' TO BANK-NEXT-PROG
+* 032 000               MOVE 'BANK30A' TO BANK-LAST-MAP
+  1233        MOVE 'MBANK30' TO BANK-LAST-MAPSET
+* 032 000               MOVE 'MBANK30' TO BANK-NEXT-MAPSET
+  1234        MOVE 'BANK30A' TO BANK-LAST-MAP
+* 032 000               MOVE 'BANK30A' TO BANK-NEXT-MAP
+  1235        MOVE 'MBANK30' TO BANK-NEXT-MAPSET
+* 032 000               PERFORM POPULATE-SCREEN-DATA THRU
+  1236        MOVE 'BANK30A' TO BANK-NEXT-MAP
+* 032 000                       POPULATE-SCREEN-DATA-EXIT
+* 032 000               GO TO COMMON-RETURN
+  1237        PERFORM POPULATE-SCREEN-DATA THRU
+  1238                POPULATE-SCREEN-DATA-EXIT
+* 032 000            END-IF.
+* 032 000
+* 032 000            MOVE 0 TO WS-SUB1.
+  1239        GO TO COMMON-RETURN
+  1240     END-IF.
+  1241
+* 032 000            MOVE SPACES TO BANK-SCR40-ACC.
+  1242     MOVE 0 TO WS-SUB1.
+* 032 000       * Calculate no of entries in table
+* 032 000            DIVIDE LENGTH OF BANK-SCREEN30-INPUT (1)
+  1243     MOVE SPACES TO BANK-SCR40-ACC.
+  1244* Calculate no of entries in table
+* 032 000              INTO LENGTH OF BANK-SCREEN30-INPUT-DATA
+* 032 000                GIVING WS-SUB-LIMIT.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  29
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000        SCAN-INPUT-LOOP.
+  1245     DIVIDE LENGTH OF BANK-SCREEN30-INPUT (1)
+  1246       INTO LENGTH OF BANK-SCREEN30-INPUT-DATA
+  1247         GIVING WS-SUB-LIMIT.
+* 032 000            ADD 1 TO WS-SUB1.
+  1248 SCAN-INPUT-LOOP.
+* 032 000            IF BANK-SCR30-DET (WS-SUB1) IS NOT = LOW-VALUES
+  1249     ADD 1 TO WS-SUB1.
+* 032 000               MOVE LOW-VALUES TO BANK-SCR30-DET (WS-SUB1)
+  1250     IF BANK-SCR30-DET (WS-SUB1) IS NOT = LOW-VALUES
+* 032 000               IF BANK-AID-ENTER
+  1251        MOVE LOW-VALUES TO BANK-SCR30-DET (WS-SUB1)
+* 032 000                  MOVE BANK-SCR30-ACC (WS-SUB1) TO BANK-SCR35-ACC
+  1252        IF BANK-AID-ENTER
+* 032 000                  MOVE BANK-SCR30-DSC (WS-SUB1) TO BANK-SCR35-DSC
+  1253           MOVE BANK-SCR30-ACC (WS-SUB1) TO BANK-SCR35-ACC
+* 032 000                  MOVE BANK-SCR30-BAL (WS-SUB1) TO BANK-SCR35-BAL
+  1254           MOVE BANK-SCR30-DSC (WS-SUB1) TO BANK-SCR35-DSC
+* 032 000                  MOVE BANK-SCR30-DTE (WS-SUB1) TO BANK-SCR35-DTE
+  1255           MOVE BANK-SCR30-BAL (WS-SUB1) TO BANK-SCR35-BAL
+* 032 000                  MOVE BANK-SCR30-TXN (WS-SUB1) TO BANK-SCR35-TRANS
+  1256           MOVE BANK-SCR30-DTE (WS-SUB1) TO BANK-SCR35-DTE
+* 032 000                  MOVE 'BBANK30P' TO BANK-LAST-PROG
+  1257           MOVE BANK-SCR30-TXN (WS-SUB1) TO BANK-SCR35-TRANS
+* 032 000                  MOVE 'BBANK35P' TO BANK-NEXT-PROG
+  1258           MOVE 'BBANK30P' TO BANK-LAST-PROG
+* 032 000                  MOVE 'BBANK30P' TO BANK-RETURN-TO-PROG
+  1259           MOVE 'BBANK35P' TO BANK-NEXT-PROG
+* 032 000                  GO TO COMMON-RETURN
+  1260           MOVE 'BBANK30P' TO BANK-RETURN-TO-PROG
+* 032 000               END-IF
+* 032 000               IF BANK-AID-PFK06
+  1261           GO TO COMMON-RETURN
+  1262        END-IF
+* 032 000                  IF BANK-SCR30-TXN (WS-SUB1) IS NOT EQUAL TO SPACES
+  1263        IF BANK-AID-PFK06
+* 032 000                     MOVE BANK-SCR30-ACC (WS-SUB1) TO BANK-SCR40-ACC
+  1264           IF BANK-SCR30-TXN (WS-SUB1) IS NOT EQUAL TO SPACES
+* 032 000                     MOVE BANK-SCR30-DSC (WS-SUB1) TO BANK-SCR40-ACCTYPE
+  1265              MOVE BANK-SCR30-ACC (WS-SUB1) TO BANK-SCR40-ACC
+* 032 000                     MOVE 'BBANK30P' TO BANK-LAST-PROG
+  1266              MOVE BANK-SCR30-DSC (WS-SUB1) TO BANK-SCR40-ACCTYPE
+* 032 000                     MOVE 'BBANK40P' TO BANK-NEXT-PROG
+  1267              MOVE 'BBANK30P' TO BANK-LAST-PROG
+* 032 000                     MOVE 'BBANK30P' TO BANK-RETURN-TO-PROG
+  1268              MOVE 'BBANK40P' TO BANK-NEXT-PROG
+* 032 000                     GO TO COMMON-RETURN
+  1269              MOVE 'BBANK30P' TO BANK-RETURN-TO-PROG
+* 032 000                  ELSE
+* 032 000                     MOVE 'No transactions to show' TO WS-ERROR-MSG
+  1270              GO TO COMMON-RETURN
+  1271           ELSE
+* 032 000                     MOVE WS-ERROR-MSG TO BANK-ERROR-MSG
+  1272              MOVE 'No transactions to show' TO WS-ERROR-MSG
+* 032 000                     MOVE 'BBANK30P' TO BANK-LAST-PROG
+  1273              MOVE WS-ERROR-MSG TO BANK-ERROR-MSG
+* 032 000                     MOVE 'BBANK30P' TO BANK-NEXT-PROG
+  1274              MOVE 'BBANK30P' TO BANK-LAST-PROG
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  30
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000                     MOVE 'MBANK30' TO BANK-LAST-MAPSET
+  1275              MOVE 'BBANK30P' TO BANK-NEXT-PROG
+* 032 000                     MOVE 'BANK30A' TO BANK-LAST-MAP
+  1276              MOVE 'MBANK30' TO BANK-LAST-MAPSET
+* 032 000                     MOVE 'MBANK30' TO BANK-NEXT-MAPSET
+  1277              MOVE 'BANK30A' TO BANK-LAST-MAP
+* 032 000                     MOVE 'BANK30A' TO BANK-NEXT-MAP
+  1278              MOVE 'MBANK30' TO BANK-NEXT-MAPSET
+* 032 000                     GO TO COMMON-RETURN
+  1279              MOVE 'BANK30A' TO BANK-NEXT-MAP
+* 032 000                  END-IF
+* 032 000               END-IF
+* 032 000            END-IF.
+* 032 000
+* 032 000            IF WS-SUB1 IS LESS THAN WS-SUB-LIMIT
+  1280              GO TO COMMON-RETURN
+  1281           END-IF
+  1282        END-IF
+  1283     END-IF.
+  1284
+* 032 000               GO TO SCAN-INPUT-LOOP
+  1285     IF WS-SUB1 IS LESS THAN WS-SUB-LIMIT
+* 032 000            END-IF.
+* 032 000
+* 032 000       * As this is a display screen we need PFK03/4 to get out so we
+* 032 000       * will just redisplay the data
+* 032 000            PERFORM POPULATE-SCREEN-DATA THRU
+  1286        GO TO SCAN-INPUT-LOOP
+  1287     END-IF.
+  1288
+  1289* As this is a display screen we need PFK03/4 to get out so we
+  1290* will just redisplay the data
+* 032 000                    POPULATE-SCREEN-DATA-EXIT.
+* 032 000
+* 032 000            GO TO COMMON-RETURN.
+  1291     PERFORM POPULATE-SCREEN-DATA THRU
+  1292             POPULATE-SCREEN-DATA-EXIT.
+  1293
+* 032 000
+* 032 000        COMMON-RETURN.
+  1294     GO TO COMMON-RETURN.
+  1295
+* 032 000            MOVE WS-BANK-DATA TO DFHCOMMAREA (1:LENGTH OF WS-BANK-DATA).
+  1296 COMMON-RETURN.
+* 032 000        COPY CRETURN.
+  1297     MOVE WS-BANK-DATA TO DFHCOMMAREA (1:LENGTH OF WS-BANK-DATA).
+  1298*COPY CRETURN.
+  1299*****************************************************************
+  1300*                                                               *
+  1301* Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+  1302* This software may be used, modified, and distributed          *
+  1303* (provided this notice is included without modification)       *
+  1304* solely for internal demonstration purposes with other         *
+  1305* Micro Focus software, and is otherwise subject to the EULA at *
+  1306* https://www.microfocus.com/en-us/legal/software-licensing.    *
+  1307*                                                               *
+  1308* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+  1309* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  31
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+  1310* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+  1311* SHALL NOT APPLY.                                              *
+  1312* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+  1313* MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+  1314* WITH THIS SOFTWARE.                                           *
+  1315*                                                               *
+  1316*****************************************************************
+  1317
+  1318****************************************************************
+  1319* CRETURN.CPY (CICS Version)  rbc                              *
+  1320*--------------------------------------------------------------*
+  1321* This copybook is used to provide an exit point for modules   *
+  1322* so that they may be insensitive to their environment.        *
+  1323* There are different versions for CICS, IMS and INET.         *
+  1324****************************************************************
+  1325     EXEC CICS RETURN
+* 472-S********                                                        (  27)**
+**    No CICS directives have been set
+  1326     END-EXEC.
+* 032 000
+* 032 000        VALIDATE-DATA.
+  1327     GOBACK.
+  1328
+  1329* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+  1330
+* 032 000            SET INPUT-OK TO TRUE.
+  1331 VALIDATE-DATA.
+* 032 000            GO TO VALIDATE-DATA-EXIT.
+  1332     SET INPUT-OK TO TRUE.
+* 032 000
+* 032 000        VALIDATE-DATA-ERROR.
+  1333     GO TO VALIDATE-DATA-EXIT.
+  1334
+* 032 000            SET INPUT-ERROR TO TRUE.
+  1335 VALIDATE-DATA-ERROR.
+* 032 000        VALIDATE-DATA-EXIT.
+  1336     SET INPUT-ERROR TO TRUE.
+* 032 000            EXIT.
+  1337 VALIDATE-DATA-EXIT.
+* 032 000
+* 032 000        POPULATE-SCREEN-DATA.
+  1338     EXIT.
+  1339
+* 032 000            MOVE SPACES TO CD03-DATA.
+  1340 POPULATE-SCREEN-DATA.
+* 032 000            MOVE BANK-USERID TO CD03I-CONTACT-ID.
+  1341     MOVE SPACES TO CD03-DATA.
+* 032 000       * Now go get the data
+* 032 000        COPY CBANKX03.
+  1342     MOVE BANK-USERID TO CD03I-CONTACT-ID.
+  1343* Now go get the data
+  1344*COPY CBANKX03.
+  1345*****************************************************************
+  1346*                                                               *
+  1347* Copyright (C) 2010-2023 Micro Focus.  All Rights Reserved     *
+  1348* This software may be used, modified, and distributed          *
+  1349* (provided this notice is included without modification)       *
+  1350* solely for internal demonstration purposes with other         *
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  32
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp ("C:\Users\)
+  1351* Micro Focus software, and is otherwise subject to the EULA at *
+  1352* https://www.microfocus.com/en-us/legal/software-licensing.    *
+  1353*                                                               *
+  1354* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED             *
+  1355* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF               *
+  1356* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,         *
+  1357* SHALL NOT APPLY.                                              *
+  1358* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+  1359* MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION       *
+  1360* WITH THIS SOFTWARE.                                           *
+  1361*                                                               *
+  1362*****************************************************************
+  1363
+  1364*****************************************************************
+  1365* CBANKX03.CPY (CICS Version)                                   *
+  1366*---------------------------------------------------------------*
+  1367* This copybook is used to provide an common means of calling   *
+  1368* data access module DBANK03P so that the that module using     *
+  1369* this copy book is insensitive to it environment.              *
+  1370* There are different versions for CICS, IMS and INET.          *
+  1371*****************************************************************
+  1372* by default use CICS commands to call the module
+  1373
+  1374* MFUPP-CID LINK2DBANK03P
+  1375     EXEC CICS LINK PROGRAM('DBANK03P')
+* 472-S********                                                        (  31)**
+**    No CICS directives have been set
+* 032 000            MOVE CD03O-ACC1 TO BANK-SCR30-ACC1.
+  1376                    COMMAREA(CD03-DATA)
+  1377                    LENGTH(LENGTH OF CD03-DATA)
+  1378     END-EXEC
+  1379*    CALL 'DBANK03P' USING CD01-DATA
+  1380
+  1381* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+* 032 000            MOVE CD03O-DSC1 TO BANK-SCR30-DSC1.
+  1382     MOVE CD03O-ACC1 TO BANK-SCR30-ACC1.
+* 032 000            IF CD03O-BAL1 IS EQUAL TO SPACES
+  1383     MOVE CD03O-DSC1 TO BANK-SCR30-DSC1.
+* 032 000               MOVE CD03O-BAL1 TO BANK-SCR30-BAL1
+  1384     IF CD03O-BAL1 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-BAL1N TO WS-EDIT-BALANCE
+  1385        MOVE CD03O-BAL1 TO BANK-SCR30-BAL1
+  1386     ELSE
+* 032 000               MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL1
+  1387        MOVE CD03O-BAL1N TO WS-EDIT-BALANCE
+* 032 000            END-IF.
+* 032 000            MOVE CD03O-BAL1 TO WS-SRV-BAL.
+  1388        MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL1
+  1389     END-IF.
+* 032 000            PERFORM CALC-SERVICE-CHARGE THRU
+  1390     MOVE CD03O-BAL1 TO WS-SRV-BAL.
+* 032 000                    CALC-SERVICE-CHARGE-EXIT.
+* 032 000            MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV1.
+  1391     PERFORM CALC-SERVICE-CHARGE THRU
+  1392             CALC-SERVICE-CHARGE-EXIT.
+* 032 000            IF CD03O-DTE1 IS EQUAL TO SPACES
+  1393     MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV1.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  33
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000               MOVE CD03O-DTE1 TO BANK-SCR30-DTE1
+  1394     IF CD03O-DTE1 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-DTE1 TO DDI-DATA
+  1395        MOVE CD03O-DTE1 TO BANK-SCR30-DTE1
+  1396     ELSE
+* 032 000               SET DDI-ISO TO TRUE
+  1397        MOVE CD03O-DTE1 TO DDI-DATA
+* 032 000               SET DDO-DD-MMM-YYYY TO TRUE
+  1398        SET DDI-ISO TO TRUE
+* 032 000               PERFORM CALL-DATECONV THRU
+  1399        SET DDO-DD-MMM-YYYY TO TRUE
+* 032 000                      CALL-DATECONV-EXIT
+* 032 000               MOVE DDO-DATA TO BANK-SCR30-DTE1
+  1400        PERFORM CALL-DATECONV THRU
+  1401               CALL-DATECONV-EXIT
+* 032 000            END-IF.
+* 032 000            MOVE CD03O-TXN1 TO BANK-SCR30-TXN1.
+  1402        MOVE DDO-DATA TO BANK-SCR30-DTE1
+  1403     END-IF.
+* 032 000
+* 032 000            MOVE CD03O-ACC2 TO BANK-SCR30-ACC2.
+  1404     MOVE CD03O-TXN1 TO BANK-SCR30-TXN1.
+  1405
+* 032 000            MOVE CD03O-DSC2 TO BANK-SCR30-DSC2.
+  1406     MOVE CD03O-ACC2 TO BANK-SCR30-ACC2.
+* 032 000            IF CD03O-BAL2 IS EQUAL TO SPACES
+  1407     MOVE CD03O-DSC2 TO BANK-SCR30-DSC2.
+* 032 000               MOVE CD03O-BAL2 TO BANK-SCR30-BAL2
+  1408     IF CD03O-BAL2 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-BAL2N TO WS-EDIT-BALANCE
+  1409        MOVE CD03O-BAL2 TO BANK-SCR30-BAL2
+  1410     ELSE
+* 032 000               MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL2
+  1411        MOVE CD03O-BAL2N TO WS-EDIT-BALANCE
+* 032 000            END-IF.
+* 032 000            MOVE CD03O-BAL2 TO WS-SRV-BAL
+  1412        MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL2
+  1413     END-IF.
+* 032 000            PERFORM CALC-SERVICE-CHARGE THRU
+  1414     MOVE CD03O-BAL2 TO WS-SRV-BAL
+* 032 000                    CALC-SERVICE-CHARGE-EXIT.
+* 032 000            MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV2.
+  1415     PERFORM CALC-SERVICE-CHARGE THRU
+  1416             CALC-SERVICE-CHARGE-EXIT.
+* 032 000            IF CD03O-DTE2 IS EQUAL TO SPACES
+  1417     MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV2.
+* 032 000               MOVE CD03O-DTE2 TO BANK-SCR30-DTE2
+  1418     IF CD03O-DTE2 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-DTE2 TO DDI-DATA
+  1419        MOVE CD03O-DTE2 TO BANK-SCR30-DTE2
+  1420     ELSE
+* 032 000               SET DDI-ISO TO TRUE
+  1421        MOVE CD03O-DTE2 TO DDI-DATA
+* 032 000               SET DDO-DD-MMM-YYYY TO TRUE
+  1422        SET DDI-ISO TO TRUE
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  34
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000               PERFORM CALL-DATECONV THRU
+  1423        SET DDO-DD-MMM-YYYY TO TRUE
+* 032 000                       CALL-DATECONV-EXIT
+* 032 000               MOVE DDO-DATA TO BANK-SCR30-DTE2
+  1424        PERFORM CALL-DATECONV THRU
+  1425                CALL-DATECONV-EXIT
+* 032 000            END-IF.
+* 032 000            MOVE CD03O-TXN2 TO BANK-SCR30-TXN2.
+  1426        MOVE DDO-DATA TO BANK-SCR30-DTE2
+  1427     END-IF.
+* 032 000
+* 032 000            MOVE CD03O-ACC3 TO BANK-SCR30-ACC3.
+  1428     MOVE CD03O-TXN2 TO BANK-SCR30-TXN2.
+  1429
+* 032 000            MOVE CD03O-DSC3 TO BANK-SCR30-DSC3.
+  1430     MOVE CD03O-ACC3 TO BANK-SCR30-ACC3.
+* 032 000            IF CD03O-BAL3 IS EQUAL TO SPACES
+  1431     MOVE CD03O-DSC3 TO BANK-SCR30-DSC3.
+* 032 000               MOVE CD03O-BAL3 TO BANK-SCR30-BAL3
+  1432     IF CD03O-BAL3 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-BAL3N TO WS-EDIT-BALANCE
+  1433        MOVE CD03O-BAL3 TO BANK-SCR30-BAL3
+  1434     ELSE
+* 032 000               MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL3
+  1435        MOVE CD03O-BAL3N TO WS-EDIT-BALANCE
+* 032 000            END-IF.
+* 032 000            MOVE CD03O-BAL3 TO WS-SRV-BAL.
+  1436        MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL3
+  1437     END-IF.
+* 032 000            PERFORM CALC-SERVICE-CHARGE THRU
+  1438     MOVE CD03O-BAL3 TO WS-SRV-BAL.
+* 032 000                    CALC-SERVICE-CHARGE-EXIT.
+* 032 000            MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV3.
+  1439     PERFORM CALC-SERVICE-CHARGE THRU
+  1440             CALC-SERVICE-CHARGE-EXIT.
+* 032 000            IF CD03O-DTE3 IS EQUAL TO SPACES
+  1441     MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV3.
+* 032 000               MOVE CD03O-DTE3 TO BANK-SCR30-DTE3
+  1442     IF CD03O-DTE3 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-DTE3 TO DDI-DATA
+  1443        MOVE CD03O-DTE3 TO BANK-SCR30-DTE3
+  1444     ELSE
+* 032 000               SET DDI-ISO TO TRUE
+  1445        MOVE CD03O-DTE3 TO DDI-DATA
+* 032 000               SET DDO-DD-MMM-YYYY TO TRUE
+  1446        SET DDI-ISO TO TRUE
+* 032 000               PERFORM CALL-DATECONV THRU
+  1447        SET DDO-DD-MMM-YYYY TO TRUE
+* 032 000                       CALL-DATECONV-EXIT
+* 032 000               MOVE DDO-DATA TO BANK-SCR30-DTE3
+  1448        PERFORM CALL-DATECONV THRU
+  1449                CALL-DATECONV-EXIT
+* 032 000            END-IF.
+* 032 000            MOVE CD03O-TXN3 TO BANK-SCR30-TXN3.
+  1450        MOVE DDO-DATA TO BANK-SCR30-DTE3
+  1451     END-IF.
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  35
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000
+* 032 000            MOVE CD03O-ACC4 TO BANK-SCR30-ACC4.
+  1452     MOVE CD03O-TXN3 TO BANK-SCR30-TXN3.
+  1453
+* 032 000            MOVE CD03O-DSC4 TO BANK-SCR30-DSC4.
+  1454     MOVE CD03O-ACC4 TO BANK-SCR30-ACC4.
+* 032 000            IF CD03O-BAL4 IS EQUAL TO SPACES
+  1455     MOVE CD03O-DSC4 TO BANK-SCR30-DSC4.
+* 032 000               MOVE CD03O-BAL4 TO BANK-SCR30-BAL4
+  1456     IF CD03O-BAL4 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-BAL4N TO WS-EDIT-BALANCE
+  1457        MOVE CD03O-BAL4 TO BANK-SCR30-BAL4
+  1458     ELSE
+* 032 000               MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL4
+  1459        MOVE CD03O-BAL4N TO WS-EDIT-BALANCE
+* 032 000            END-IF.
+* 032 000            MOVE CD03O-BAL4 TO WS-SRV-BAL.
+  1460        MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL4
+  1461     END-IF.
+* 032 000            PERFORM CALC-SERVICE-CHARGE THRU
+  1462     MOVE CD03O-BAL4 TO WS-SRV-BAL.
+* 032 000                    CALC-SERVICE-CHARGE-EXIT.
+* 032 000            MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV4.
+  1463     PERFORM CALC-SERVICE-CHARGE THRU
+  1464             CALC-SERVICE-CHARGE-EXIT.
+* 032 000            IF CD03O-DTE4 IS EQUAL TO SPACES
+  1465     MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV4.
+* 032 000               MOVE CD03O-DTE4 TO BANK-SCR30-DTE4
+  1466     IF CD03O-DTE4 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-DTE4 TO DDI-DATA
+  1467        MOVE CD03O-DTE4 TO BANK-SCR30-DTE4
+  1468     ELSE
+* 032 000               SET DDI-ISO TO TRUE
+  1469        MOVE CD03O-DTE4 TO DDI-DATA
+* 032 000               SET DDO-DD-MMM-YYYY TO TRUE
+  1470        SET DDI-ISO TO TRUE
+* 032 000               PERFORM CALL-DATECONV THRU
+  1471        SET DDO-DD-MMM-YYYY TO TRUE
+* 032 000                       CALL-DATECONV-EXIT
+* 032 000               MOVE DDO-DATA TO BANK-SCR30-DTE4
+  1472        PERFORM CALL-DATECONV THRU
+  1473                CALL-DATECONV-EXIT
+* 032 000            END-IF.
+* 032 000            MOVE CD03O-TXN4 TO BANK-SCR30-TXN4.
+  1474        MOVE DDO-DATA TO BANK-SCR30-DTE4
+  1475     END-IF.
+* 032 000
+* 032 000            MOVE CD03O-ACC5 TO BANK-SCR30-ACC5.
+  1476     MOVE CD03O-TXN4 TO BANK-SCR30-TXN4.
+  1477
+* 032 000            MOVE CD03O-DSC5 TO BANK-SCR30-DSC5.
+  1478     MOVE CD03O-ACC5 TO BANK-SCR30-ACC5.
+* 032 000            IF CD03O-BAL5 IS EQUAL TO SPACES
+  1479     MOVE CD03O-DSC5 TO BANK-SCR30-DSC5.
+* 032 000               MOVE CD03O-BAL5 TO BANK-SCR30-BAL5
+  1480     IF CD03O-BAL5 IS EQUAL TO SPACES
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  36
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000            ELSE
+* 032 000               MOVE CD03O-BAL5N TO WS-EDIT-BALANCE
+  1481        MOVE CD03O-BAL5 TO BANK-SCR30-BAL5
+  1482     ELSE
+* 032 000               MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL5
+  1483        MOVE CD03O-BAL5N TO WS-EDIT-BALANCE
+* 032 000            END-IF.
+* 032 000
+* 032 000            MOVE CD03O-BAL5 TO WS-SRV-BAL.
+  1484        MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL5
+  1485     END-IF.
+  1486
+* 032 000            PERFORM CALC-SERVICE-CHARGE THRU
+  1487     MOVE CD03O-BAL5 TO WS-SRV-BAL.
+* 032 000                    CALC-SERVICE-CHARGE-EXIT.
+* 032 000            MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV5.
+  1488     PERFORM CALC-SERVICE-CHARGE THRU
+  1489             CALC-SERVICE-CHARGE-EXIT.
+* 032 000            IF CD03O-DTE5 IS EQUAL TO SPACES
+  1490     MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV5.
+* 032 000               MOVE CD03O-DTE5 TO BANK-SCR30-DTE5
+  1491     IF CD03O-DTE5 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-DTE5 TO DDI-DATA
+  1492        MOVE CD03O-DTE5 TO BANK-SCR30-DTE5
+  1493     ELSE
+* 032 000               SET DDI-ISO TO TRUE
+  1494        MOVE CD03O-DTE5 TO DDI-DATA
+* 032 000               SET DDO-DD-MMM-YYYY TO TRUE
+  1495        SET DDI-ISO TO TRUE
+* 032 000               PERFORM CALL-DATECONV THRU
+  1496        SET DDO-DD-MMM-YYYY TO TRUE
+* 032 000                       CALL-DATECONV-EXIT
+* 032 000               MOVE DDO-DATA TO BANK-SCR30-DTE5
+  1497        PERFORM CALL-DATECONV THRU
+  1498                CALL-DATECONV-EXIT
+* 032 000            END-IF.
+* 032 000            MOVE CD03O-TXN5 TO BANK-SCR30-TXN5.
+  1499        MOVE DDO-DATA TO BANK-SCR30-DTE5
+  1500     END-IF.
+* 032 000
+* 032 000            MOVE CD03O-ACC6 TO BANK-SCR30-ACC6.
+  1501     MOVE CD03O-TXN5 TO BANK-SCR30-TXN5.
+  1502
+* 032 000            MOVE CD03O-DSC6 TO BANK-SCR30-DSC6.
+  1503     MOVE CD03O-ACC6 TO BANK-SCR30-ACC6.
+* 032 000            IF CD03O-BAL6 IS EQUAL TO SPACES
+  1504     MOVE CD03O-DSC6 TO BANK-SCR30-DSC6.
+* 032 000               MOVE CD03O-BAL6 TO BANK-SCR30-BAL6
+  1505     IF CD03O-BAL6 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-BAL6N TO WS-EDIT-BALANCE
+  1506        MOVE CD03O-BAL6 TO BANK-SCR30-BAL6
+  1507     ELSE
+* 032 000               MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL6
+  1508        MOVE CD03O-BAL6N TO WS-EDIT-BALANCE
+* 032 000            END-IF.
+* 032 000
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  37
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000            MOVE CD03O-BAL6 TO WS-SRV-BAL.
+  1509        MOVE WS-EDIT-BALANCE TO BANK-SCR30-BAL6
+  1510     END-IF.
+  1511
+* 032 000            PERFORM CALC-SERVICE-CHARGE THRU
+  1512     MOVE CD03O-BAL6 TO WS-SRV-BAL.
+* 032 000                    CALC-SERVICE-CHARGE-EXIT.
+* 032 000            MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV6.
+  1513     PERFORM CALC-SERVICE-CHARGE THRU
+  1514             CALC-SERVICE-CHARGE-EXIT.
+* 032 000            IF CD03O-DTE6 IS EQUAL TO SPACES
+  1515     MOVE WS-SRV-CHARGE TO BANK-SCR30-SRV6.
+* 032 000               MOVE CD03O-DTE6 TO BANK-SCR30-DTE6
+  1516     IF CD03O-DTE6 IS EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE CD03O-DTE6 TO DDI-DATA
+  1517        MOVE CD03O-DTE6 TO BANK-SCR30-DTE6
+  1518     ELSE
+* 032 000               SET DDI-ISO TO TRUE
+  1519        MOVE CD03O-DTE6 TO DDI-DATA
+* 032 000               SET DDO-DD-MMM-YYYY TO TRUE
+  1520        SET DDI-ISO TO TRUE
+* 032 000               PERFORM CALL-DATECONV THRU
+  1521        SET DDO-DD-MMM-YYYY TO TRUE
+* 032 000                       CALL-DATECONV-EXIT
+* 032 000               MOVE DDO-DATA TO BANK-SCR30-DTE6
+  1522        PERFORM CALL-DATECONV THRU
+  1523                CALL-DATECONV-EXIT
+* 032 000            END-IF.
+* 032 000            MOVE CD03O-TXN6 TO BANK-SCR30-TXN6.
+  1524        MOVE DDO-DATA TO BANK-SCR30-DTE6
+  1525     END-IF.
+* 032 000
+* 032 000            IF BANK-SCR30-SRV1 IS NOT EQUAL TO SPACES OR
+  1526     MOVE CD03O-TXN6 TO BANK-SCR30-TXN6.
+  1527
+* 032 000               BANK-SCR30-SRV2 IS NOT EQUAL TO SPACES OR
+* 032 000               BANK-SCR30-SRV3 IS NOT EQUAL TO SPACES OR
+* 032 000               BANK-SCR30-SRV4 IS NOT EQUAL TO SPACES OR
+* 032 000               BANK-SCR30-SRV5 IS NOT EQUAL TO SPACES OR
+* 032 000               BANK-SCR30-SRV6 IS NOT EQUAL TO SPACES
+* 032 000               MOVE WS-SRV-MSG TO BANK-SCR30-SRVMSG
+  1528     IF BANK-SCR30-SRV1 IS NOT EQUAL TO SPACES OR
+  1529        BANK-SCR30-SRV2 IS NOT EQUAL TO SPACES OR
+  1530        BANK-SCR30-SRV3 IS NOT EQUAL TO SPACES OR
+  1531        BANK-SCR30-SRV4 IS NOT EQUAL TO SPACES OR
+  1532        BANK-SCR30-SRV5 IS NOT EQUAL TO SPACES OR
+  1533        BANK-SCR30-SRV6 IS NOT EQUAL TO SPACES
+* 032 000            ELSE
+* 032 000               MOVE SPACES TO BANK-SCR30-SRVMSG
+  1534        MOVE WS-SRV-MSG TO BANK-SCR30-SRVMSG
+  1535     ELSE
+* 032 000            END-IF.
+* 032 000
+* 032 000        POPULATE-SCREEN-DATA-EXIT.
+  1536        MOVE SPACES TO BANK-SCR30-SRVMSG
+  1537     END-IF.
+  1538
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  38
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000            EXIT.
+  1539 POPULATE-SCREEN-DATA-EXIT.
+* 032 000
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * Calculate any service charges based on provided balance       *
+* 032 000       *****************************************************************
+* 032 000        CALC-SERVICE-CHARGE.
+  1540     EXIT.
+  1541
+  1542
+  1543*****************************************************************
+  1544* Calculate any service charges based on provided balance       *
+  1545*****************************************************************
+* 032 000            IF WS-SRV-BAL IS EQUAL TO SPACES
+  1546 CALC-SERVICE-CHARGE.
+* 032 000               MOVE 0 TO WS-SRV-AMT
+  1547     IF WS-SRV-BAL IS EQUAL TO SPACES
+* 032 000               GO TO CALC-SERVICE-CHARGE-EDIT
+  1548        MOVE 0 TO WS-SRV-AMT
+* 032 000            END-IF.
+* 032 000            IF WS-SRV-BAL-N IS GREATER THAN WS-SRV-BAL5
+  1549        GO TO CALC-SERVICE-CHARGE-EDIT
+  1550     END-IF.
+* 032 000               MOVE WS-SRV-CHG5 TO WS-SRV-AMT
+  1551     IF WS-SRV-BAL-N IS GREATER THAN WS-SRV-BAL5
+* 032 000               GO TO CALC-SERVICE-CHARGE-EDIT
+  1552        MOVE WS-SRV-CHG5 TO WS-SRV-AMT
+* 032 000            END-IF.
+* 032 000            IF WS-SRV-BAL-N IS GREATER THAN WS-SRV-BAL4
+  1553        GO TO CALC-SERVICE-CHARGE-EDIT
+  1554     END-IF.
+* 032 000               MOVE WS-SRV-CHG4 TO WS-SRV-AMT
+  1555     IF WS-SRV-BAL-N IS GREATER THAN WS-SRV-BAL4
+* 032 000               GO TO CALC-SERVICE-CHARGE-EDIT
+  1556        MOVE WS-SRV-CHG4 TO WS-SRV-AMT
+* 032 000            END-IF.
+* 032 000            IF WS-SRV-BAL-N IS GREATER THAN WS-SRV-BAL3
+  1557        GO TO CALC-SERVICE-CHARGE-EDIT
+  1558     END-IF.
+* 032 000               MOVE WS-SRV-CHG3 TO WS-SRV-AMT
+  1559     IF WS-SRV-BAL-N IS GREATER THAN WS-SRV-BAL3
+* 032 000               GO TO CALC-SERVICE-CHARGE-EDIT
+  1560        MOVE WS-SRV-CHG3 TO WS-SRV-AMT
+* 032 000            END-IF.
+* 032 000            IF WS-SRV-BAL-N IS GREATER THAN WS-SRV-BAL2
+  1561        GO TO CALC-SERVICE-CHARGE-EDIT
+  1562     END-IF.
+* 032 000               MOVE WS-SRV-CHG2 TO WS-SRV-AMT
+  1563     IF WS-SRV-BAL-N IS GREATER THAN WS-SRV-BAL2
+* 032 000               GO TO CALC-SERVICE-CHARGE-EDIT
+  1564        MOVE WS-SRV-CHG2 TO WS-SRV-AMT
+* 032 000            END-IF.
+* 032 000            IF WS-SRV-BAL-N IS GREATER THAN WS-SRV-BAL1
+  1565        GO TO CALC-SERVICE-CHARGE-EDIT
+  1566     END-IF.
+* 032 000               MOVE WS-SRV-CHG1 TO WS-SRV-AMT
+  1567     IF WS-SRV-BAL-N IS GREATER THAN WS-SRV-BAL1
+* Micro Focus COBOL                  V9.0 revision 000 21-Mar-23 15:23 Page  39
+* "C:\Users\Stephen Gennard\Micro-Focus-Unit-Testing-Framework-Samp
+* 032 000               GO TO CALC-SERVICE-CHARGE-EDIT
+  1568        MOVE WS-SRV-CHG1 TO WS-SRV-AMT
+* 032 000            ELSE
+* 032 000               MOVE WS-SRV-CHG0 TO WS-SRV-AMT
+  1569        GO TO CALC-SERVICE-CHARGE-EDIT
+  1570     ELSE
+* 032 000               GO TO CALC-SERVICE-CHARGE-EDIT
+  1571        MOVE WS-SRV-CHG0 TO WS-SRV-AMT
+* 032 000            END-IF.
+* 032 000        CALC-SERVICE-CHARGE-EDIT.
+  1572        GO TO CALC-SERVICE-CHARGE-EDIT
+  1573     END-IF.
+* 032 000            MOVE WS-SRV-AMT TO WS-SRV-CHARGE.
+  1574 CALC-SERVICE-CHARGE-EDIT.
+* 032 000        CALC-SERVICE-CHARGE-EXIT.
+  1575     MOVE WS-SRV-AMT TO WS-SRV-CHARGE.
+* 032 000            EXIT.
+  1576 CALC-SERVICE-CHARGE-EXIT.
+* 032 000
+* 032 000       *****************************************************************
+* 032 000       * Call common routine to perform date conversions               *
+* 032 000       *****************************************************************
+* 032 000        CALL-DATECONV.
+  1577     EXIT.
+  1578
+  1579*****************************************************************
+  1580* Call common routine to perform date conversions               *
+  1581*****************************************************************
+* 032 000            MOVE BANK-ENV TO DD-ENV.
+  1582 CALL-DATECONV.
+* 032 000            MOVE 'UDATECNV' TO WS-DYNAMIC-PGM.
+  1583     MOVE BANK-ENV TO DD-ENV.
+* 032 000            CALL WS-DYNAMIC-PGM USING WS-TIME-DATE-WORK-AREA.
+  1584     MOVE 'UDATECNV' TO WS-DYNAMIC-PGM.
+* 032 000        CALL-DATECONV-EXIT.
+  1585     CALL WS-DYNAMIC-PGM USING WS-TIME-DATE-WORK-AREA.
+* 032 000            EXIT.
+  1586 CALL-DATECONV-EXIT.
+* 032 000
+* 032 000       * $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+* 000 000
+  1587     EXIT.
+  1588
+  1589* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+* Micro Focus COBOL                  V9.0 revision 000 Compiler
+* (C) Copyright 1984-2023 Micro Focus or one of its affiliates.
+*                                                        REF GNR-034900000AM
+* Last message on page:   32
+* Total Messages:     4
+* Unrecoverable :     0                    Severe  :     3
+* Errors        :     0                    Warnings:     0
+* Informational :     1                    Flags   :     0
