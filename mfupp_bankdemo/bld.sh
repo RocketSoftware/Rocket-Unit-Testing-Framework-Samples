@@ -1,7 +1,7 @@
 #!/bin/sh
 TARGET=native
 SRC_NOEXT="BBANK30P BBANK70P"
-MFUPP_DIR="-C p(mfupp) CONFIRM VERBOSE CICS(IGNORE) MOCK(CICS) EXEC-REPORT-FILE p(cp) endp endp"
+MFUPP_DIR="-C p(mfupp) CONFIRM VERBOSE CICS(IGNORE) MOCK(CICS) p(cp) endp endp"
 MF_RM="rm -f"
 NAME=bankdemo
 
