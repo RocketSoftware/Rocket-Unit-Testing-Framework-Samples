@@ -2,7 +2,7 @@
 setlocal
 
 set TARGET=native
-set NAME=fizzbuzz
+set NAME=getCustomerId
 
 :top_args
 if .%1 == . goto args_end
@@ -31,7 +31,7 @@ echo TARGET is %TARGET%
 echo REPORT_ARGS is %REPORT_ARGS%
 
 set COBCPY=%CD%\cpylib;%CD%\tests;%COBCPY%;.
-set "MFUPP_DIR=p(mfupp) CONFIRM VERBOSE endp"
+set "MFUPP_DIR=p(mfupp) CONFIRM VERBOSE MOCK SQL(IGNORE) endp"
 
 set MFU_DS=%CD%\tests
 
@@ -63,7 +63,8 @@ goto theend
 :bld_native
 call :check_native_extra
 echo Compiling Sources:
-for %%i in (*.cbl) do cobol %%i omf(obj) anim %MFUPP_DIR%;
+for %%i in (*.cbl tests\*.cbl) do cobol %%i omf(obj) anim %MFUPP_DIR%;
+move tests\*.obj .
 dir/b *.obj >examples.lnk
 cbllink -Dexamples.dll @examples.lnk
 mfurun %REPORT_ARGS% -generate-mfu examples.dll
@@ -75,6 +76,9 @@ goto theend
 call :check_jvm_extra
 mkdir jbin >nul: 2>&1
 for %%i in (*.cbl) do cobol %%i jvmgen(sub) anim  iloutput"jbin" ilnamespace"com.microfocus.test" %MFUPP_DIR%;
+cd tests
+for %%i in (*.cbl) do cobol %%i jvmgen(sub) anim  iloutput"..\jbin" ilnamespace"com.microfocus.test" %MFUPP_DIR%;
+cd ..
 jar cvf  examples.jar -C jbin .
 call mfjarprogmap.bat -jar examples.jar
 call mfurunj.bat %REPORT_ARGS% -generate-mfu examples.jar
