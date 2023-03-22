@@ -78,10 +78,10 @@ call mfurunj.bat %extra_arg% -outdir:results -verbose examples.mfu
 goto theend
 
 :bld_net6
+if not exist results md results
 pushd dn6
 dotnet build /t:clean
 dotnet build "/p:MFUnitRunnerCommandGenerateArguments=%REPORT_ARGS%" /t:rebuild /t:run
-if not exist results md results
 copy bin\Debug\net6.0\*report.txt ..\results
 copy bin\Debug\net6.0\TEST*xml ..\results
 dotnet build /t:clean
