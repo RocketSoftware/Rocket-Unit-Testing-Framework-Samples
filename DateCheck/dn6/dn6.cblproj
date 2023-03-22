@@ -15,7 +15,11 @@
     <IdyCollectionName>$(MSBuildProjectName)</IdyCollectionName>
     <SourceFormat>variable</SourceFormat>
     <DebugSymbols>true</DebugSymbols>
-    <AdditionalDirectives>nolitlink change-message"987 N"</AdditionalDirectives>
+    <AdditionalDirectives>nolitlink 
+    change-message"987 N"
+    change-message"1205 N"
+    change-message"1209 N"
+    </AdditionalDirectives>
     <WarningLevel>3</WarningLevel>
 
     <MFEnableDotNetRunCommand>True</MFEnableDotNetRunCommand>
@@ -39,7 +43,6 @@
   <ItemGroup>
     <!-- Reference MicroFocus.COBOL.MFUNIT in order for MFU* APIs to be resolved -->
     <PackageReference Include="MicroFocus.COBOL.MFUNIT" Version="6.90.*" />
-    <PackageReference Include="MicroFocus.COBOL.Runtime" Version="3.90.*" />
     <None Include="global.json" />
   </ItemGroup>
 
