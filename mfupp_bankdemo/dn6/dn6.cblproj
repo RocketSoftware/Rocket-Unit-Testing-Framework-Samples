@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <MFUnitTestProject>true</MFUnitTestProject>
-    <UseManagedCompiler>true</UseManagedCompiler>
     <TargetFramework Condition="'$(TargetFrameworkOverride)' == ''">net6.0</TargetFramework>
     <TargetFramework Condition="'$(TargetFrameworkOverride)' != ''">TargetFrameworkOverride</TargetFramework>
     <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
