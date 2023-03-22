@@ -15,7 +15,9 @@
     <IdyCollectionName>$(MSBuildProjectName)</IdyCollectionName>
     <SourceFormat>variable</SourceFormat>
     <DebugSymbols>true</DebugSymbols>
-    <AdditionalDirectives>p(mfupp) endp</AdditionalDirectives>
+    <AdditionalDirectives>
+    change-message"1209 N"
+    p(mfupp) endp</AdditionalDirectives>
     <WarningLevel>3</WarningLevel>
     <MFDependencyPaths>..\tests</MFDependencyPaths>
 
@@ -40,7 +42,6 @@
   <ItemGroup>
     <!-- Reference MicroFocus.COBOL.MFUNIT in order for MFU* APIs to be resolved -->
     <PackageReference Include="MicroFocus.COBOL.MFUNIT" Version="6.90.*" />
-    <PackageReference Include="MicroFocus.COBOL.Runtime" Version="3.90.*" />
     <None Include="global.json" />
   </ItemGroup>
 
