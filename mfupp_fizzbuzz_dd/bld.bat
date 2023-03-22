@@ -2,6 +2,8 @@
 setlocal
 
 set TARGET=native
+set NAME=fizzbuzz_dd
+
 :top_args
 if .%1 == . goto args_end
 if /I .%1 == .jvm (
@@ -22,7 +24,11 @@ shift
 goto top_args
 :args_end
 
+set JUNIT_PACKAGE=com.microfocus.sample.%TARGET%
+set REPORT_NAME=%NAME%_%TARGET%-report.txt
+set "REPORT_ARGS=-report:junit -junit-packname:%JUNIT_PACKAGE% -report:printfile -reportfile:%REPORT_NAME%"
 echo TARGET is %TARGET%
+echo REPORT_ARGS is %REPORT_ARGS%
 
 set COBCPY=%CD%\cpylib;%CD%\tests;%COBCPY%;.
 set "MFUPP_DIR=p(mfupp) CONFIRM VERBOSE endp"
@@ -61,9 +67,9 @@ echo Compiling Sources:
 for %%i in (*.cbl) do cobol %%i omf(obj) anim %MFUPP_DIR%;
 dir/b *.obj >examples.lnk
 cbllink -Dexamples.dll @examples.lnk
-rem mfurun -generate-mfu examples.dll
-mfurun %extra_arg% -report:junit -jit:nodebug -verbose examples.dll
-@REM @del examples.mfu examples.dll *.obj *.idy examples.lnk examples.mfgcf
+mfurun %REPORT_ARGS% -generate-mfu examples.dll
+mfurun %extra_arg% -outdir:results -jit:nodebug -verbose examples.mfu
+@del examples.mfu examples.dll *.obj *.idy examples.lnk examples.mfgcf
 goto theend
 
 :bld_jvm
@@ -72,15 +78,19 @@ mkdir jbin >nul: 2>&1
 for %%i in (*.cbl) do cobol %%i jvmgen(sub) anim  iloutput"jbin" ilnamespace"com.microfocus.test" %MFUPP_DIR%;
 jar cvf  examples.jar -C jbin .
 call mfjarprogmap.bat -jar examples.jar
-@REM call mfurunj -generate-mfu examples.jar
-call mfurunj.bat %extra_arg% -report:junit -verbose examples.jar
+call mfurunj.bat %REPORT_ARGS% -generate-mfu examples.jar
+call mfurunj.bat %extra_arg% -outdir:results -verbose examples.mfu
 
 @del examples.mfu examples.jar *.obj *.idy examples.lnk examples.mfgcf
 goto theend
 
 :bld_net6
+if not exist results md results
 pushd dn6
-dotnet build /t:rebuild /t:run
+dotnet build /t:clean
+dotnet build "/p:MFUnitRunnerCommandGenerateArguments=%REPORT_ARGS%" /t:rebuild /t:run
+copy bin\Debug\net6.0\*report.txt ..\results
+copy bin\Debug\net6.0\TEST*xml ..\results
 dotnet build /t:clean
 popd
 goto theend
