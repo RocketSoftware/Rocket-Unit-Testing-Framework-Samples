@@ -1,0 +1,14 @@
+*.dll
+*.so
+*.obj
+*.lnk
+*.class
+*.cbldat
+*.bak
+*.idy
+*.zip
+TEST*xml
+*report.txt
+*/dn6/bin/*
+*/dn6/obj/*
+
