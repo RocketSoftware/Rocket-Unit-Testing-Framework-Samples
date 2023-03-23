@@ -19,7 +19,7 @@ This repo contains a collection of samples that demonstrate the features include
 | Fizzbuzz data driven sample                                 | VC/ED v7              | Section based & data driven test case                       | [Directory](mfupp_fizzbuzz_dd/)         | Yes | Yes        | Yes               |
 | Customer id sample                                          | VC/ED v9              | Program based test case (including sql) with a mock program | [Directory](mfupp_getCustomerId/)       |     |            | No                |
 | Simplified bankdemo sample                                  | ED v9                 | Program/Section based test cases with mock cics             | [Directory](mfupp_bankdemo/)            | --  | --         | No                |
-| Simple CISC 'Hello World'                                   | ED v9                 | Section based tests with mock cis                           | [Directory](mfupp_cics_hello/)          | --  | --         | No                |
+| Simple CISC 'Hello World'                                   | ED v9                 | Section based tests with mock CICS                           | [Directory](mfupp_cics_hello/)          | --  | --         | No                |
 | Employee table scanner sample                               | VC/ED v9              | Program based test with mock sql                            | [Directory](mfupp_scan_employee_table/) |     |            | No                |
 
 *VC/ED = Visual COBOL and Enterprise Developer
