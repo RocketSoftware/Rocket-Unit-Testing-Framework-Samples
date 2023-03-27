@@ -1,4 +1,6 @@
 *.dll
+*.int
+*.gnt
 *.so
 *.obj
 *.lnk
@@ -7,8 +9,16 @@
 *.bak
 *.idy
 *.zip
+*.o
+*mfunit-state.dat
+*.il
+*.jar
+*mfunit_cobconfig*.cfg
+*.mfupp-et
 TEST*xml
 *report.txt
 */dn6/bin/*
 */dn6/obj/*
+
+*.lst
 

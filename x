@@ -1,0 +1,10 @@
+./DateCheck/
+./FlyerLevel/
+./mfupp_bankdemo/
+./mfupp_cics_hello/
+./mfupp_fizzbuzz/
+./mfupp_fizzbuzz_dd/
+./mfupp_getCustomerId/
+./mfupp_scan_employee_table/
+./MyFirstFail/
+./MyFirstTest/

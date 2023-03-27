@@ -1,0 +1,3 @@
+mock(sql)
+sql(ignore) 
+diag-no-cdq-calls
