@@ -17,7 +17,7 @@
     <AdditionalDirectives>nolitlink
     change-message"1205 N"
     change-message"1209 N"
-    p(mfupp)  SQL(IGNORE) MOCK(SQL) cp()    endp
+    p(mfupp)  SQL(IGNORE) MOCK(SQL) p(cp) endp    endp
     </AdditionalDirectives>
     <WarningLevel>3</WarningLevel>
     <MFDependencyPaths>..\cpylib;..\tests</MFDependencyPaths>

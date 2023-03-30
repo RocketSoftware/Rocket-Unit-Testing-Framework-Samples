@@ -20,7 +20,7 @@
     change-message"1205 N"
     change-message"1209 N"
     change-message"1125 N"
-    p(mfupp)  cp()    endp
+    p(mfupp)  p(cp) endp    endp
     </AdditionalDirectives>
     <WarningLevel>3</WarningLevel>
     <MFDependencyPaths>..\cpylib;..\tests</MFDependencyPaths>
