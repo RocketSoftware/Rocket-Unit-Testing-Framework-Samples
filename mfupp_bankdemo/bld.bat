@@ -1,5 +1,15 @@
 @echo off
-setlocal
+setlocal enableextensions 
+setlocal enabledelayedexpansion
+
+call bld_is_enterprise.bat
+if .%_SQLCA_FILE% == . (
+  SET "CDIR=%~dp0"
+  SET "CDIR=!CDIR:~0,-1!"
+  FOR %%i IN ("!CDIR!") DO SET "PARENTFOLDERNAME=%%~nxi"
+  echo Sorry demo !PARENTFOLDERNAME! is not supported for use with this product
+  goto theend
+)
 
 set TARGET=native
 set NAME=bankdemo
