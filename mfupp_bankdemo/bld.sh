@@ -5,6 +5,14 @@ MFUPP_DIR="-C p(mfupp) CONFIRM VERBOSE CICS(IGNORE) MOCK(CICS) p(cp) endp endp"
 MF_RM="rm -f"
 NAME=bankdemo
 
+. ./bld_is_enterprise.sh
+if [ "x$_DFHEIBLK_FILE" = "x" ]
+then
+	echo Sorry demo $NAME is not supported for use with this product
+	exit 1
+fi
+
+
 rm -f ./*.int ./*.so ./*.mfupp.txt ./*.lst
 COBCPY=$(pwd)/tests:$(pwd)/cpylib:.:$COBCPY
 export COBCPY

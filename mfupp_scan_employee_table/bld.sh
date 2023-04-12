@@ -7,6 +7,13 @@ JVMARGS="-C jvmclasspath(mfunit.jar) -C ilref(com.microfocus.cobol.mfunit.intern
 MF_RM="rm -f"
 NAME=scan_employee_table
 
+. ./bld_is_enterprise.sh
+if [ "x$_SQLCA_FILE" = "x" ]
+then
+	echo Sorry demo $NAME is not supported for use with this product
+	exit 1
+fi
+
 # ensure any copybook can be found
 COBCPY=./tests:$COBCPY
 export COBCPY

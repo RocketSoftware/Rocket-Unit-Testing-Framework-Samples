@@ -7,6 +7,13 @@ MFUPP_DIR="-C p(mfupp) verbose mock sql(ignore) endp"
 MF_RM="rm -f"
 NAME=customerid
 
+. ./bld_is_enterprise.sh
+if [ "x$_SQLCA_FILE" = "x" ]
+then
+	echo Sorry demo $NAME is not supported for use with this product
+	exit 1
+fi
+
 # ensure any copybook can be found
 COBCPY=./tests:$COBCPY
 export COBCPY
