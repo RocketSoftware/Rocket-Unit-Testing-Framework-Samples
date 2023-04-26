@@ -2,7 +2,6 @@
 
 This repo contains a collection of samples that demonstrate the features included with the [Micro Focus Unit Testing Framework](https://www.microfocus.com/documentation/enterprise-developer/ed80/ED-Eclipse/index.html?t=GUID-56868D50-F836-4FA3-9255-8BCE6F895D1B.html)
 
-
 ## Samples
 
 | Sample Name                                                 | Minimum Product Level | Feature                                                     | Link                                    | JVM | .NET 6 v9+ | Community Edition |
@@ -19,7 +18,7 @@ This repo contains a collection of samples that demonstrate the features include
 | Fizzbuzz data driven sample                                 | VC/ED v7              | Section based & data driven test case                       | [Directory](mfupp_fizzbuzz_dd/)         | Yes | Yes        | Yes               |
 | Customer id sample                                          | VC/ED v9              | Program based test case (including sql) with a mock program | [Directory](mfupp_getCustomerId/)       |     |            | No                |
 | Simplified bankdemo sample                                  | ED v9                 | Program/Section based test cases with mock cics             | [Directory](mfupp_bankdemo/)            | --  | --         | No                |
-| Simple CISC 'Hello World'                                   | ED v9                 | Section based tests with mock CICS                           | [Directory](mfupp_cics_hello/)          | --  | --         | No                |
+| Simple CISC 'Hello World'                                   | ED v9                 | Section based tests with mock CICS                          | [Directory](mfupp_cics_hello/)          | --  | --         | No                |
 | Employee table scanner sample                               | VC/ED v9              | Program based test with mock sql                            | [Directory](mfupp_scan_employee_table/) |     |            | No                |
 
 *VC/ED = Visual COBOL and Enterprise Developer
@@ -27,14 +26,14 @@ This repo contains a collection of samples that demonstrate the features include
 
 ## Other Unit Test Samples
 
-| Sample Name                                     | Link                                                                                                            |
-| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Visual COBOL For Java Developers Book/Chapter 7 | [Git Repo](https://github.com/MicroFocus/visual-cobol-for-java-developers-book/tree/master/chapter-07/MFUnit)   |
-| Visual COBOL For Java Developers Book/Chapter 9 | [Git Repo](https://github.com/MicroFocus/visual-cobol-for-java-developers-book/tree/master/chapter-09/complete) |
-| Airport Sample                                  | [Git Repo](https://github.com/MicroFocus/Airport-Sample)                                                        |
-
+| Sample Name                                     | Link                                                                                                            | Platform |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------- |
+| Visual COBOL For Java Developers Book/Chapter 7 | [Git Repo](https://github.com/MicroFocus/visual-cobol-for-java-developers-book/tree/master/chapter-07/MFUnit)   | JVM      |
+| Visual COBOL For Java Developers Book/Chapter 9 | [Git Repo](https://github.com/MicroFocus/visual-cobol-for-java-developers-book/tree/master/chapter-09/complete) | JVM      |
+| Airport Sample                                  | [Git Repo](https://github.com/MicroFocus/Airport-Sample)                                                        | Native   |
 
 ## License
+
 Copyright (C) 2023 Micro Focus. All Rights Reserved. This software may be used, modified, and distributed (provided this notice is included without modification) solely for internal demonstration purposes with other Micro Focus software, and is otherwise subject to the EULA at https://www.microfocus.com/en-us/legal/software-licensing.
 
 THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, SHALL NOT APPLY. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL MICRO FOCUS HAVE ANY LIABILITY WHATSOEVER IN CONNECTION WITH THIS SOFTWARE.
