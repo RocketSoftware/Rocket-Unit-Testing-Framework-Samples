@@ -18,7 +18,7 @@
 |                       | Feature: New APIs for a reading a file into memory (MFU_GET_FILE/MFUGETF)                                                                                                               |
 |                       | Feature: New scoping entryPoints for data driven tests (once per data driven test)                                                                                                      |
 | 7.0                   | Feature: Initial support for the [MFUPP](https://www.microfocus.com/documentation/visual-cobol/vc70/VS2017/GUID-155E6D83-1A98-43FF-B63B-1CD0426E8461.html) and mocking or stub programs |
-| 8.0                   | Feature: For .NET 6 added                                                                                                                                                               |
+| 8.0                   | Feature: Support For .NET 6, include Unit Test projects & templates added                                                                                                                                                               |
 | 9.0                   | Feature: EXEC CICS & EXEC SQL Ignoring                                                                                                                                                  |
 |                       | Feature: EXEC CICS & EXEC SQL Mocking                                                                                                                                                   |
 |                       | Feature: EXEC Mocking Snippet Code Generation                                                                                                                                           |
