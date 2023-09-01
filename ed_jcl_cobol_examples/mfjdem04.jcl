@@ -1,9 +1,9 @@
-//MFJDEM04 JOB 'MICRO FOCUS',CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID
+//MFJDEM04 JOB 'Open Text',CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID
 //*
 //* ------------------------------------------------------------------
 //*<CR_TAG_JCL\>
 //*
-//* Copyright (C) Micro Focus 1984 - 2019 or one of its affiliates.
+//* Copyright (C) Open Text 1984 - 2019 or one of its affiliates.
 //* This sample code is supplied for demonstration purposes only
 //* on an "as is" basis and "is for use at your own risk".
 //*

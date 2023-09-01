@@ -1,12 +1,12 @@
       ******************************************************************
       *
-      * Copyright (C) 2010-2022 Micro Focus or one of its affiliates.
+      * Copyright (C) 2010-2023 Open Text or one of its affiliates.
       *
-      * The only warranties for products and services of Micro Focus and
-      * its affiliates and licensors ("Micro Focus") are set forth in
+      * The only warranties for products and services of Open Text and
+      * its affiliates and licensors ("Open Text") are set forth in
       * the express warranty statements accompanying such products and
       * services. Nothing herein should be construed as constituting an
-      * additional warranty. Micro Focus shall not be liable for
+      * additional warranty. Open Text shall not be liable for
       * technical or editorial errors or omissions contained herein. The
       * information contained herein is subject to change without
       * notice.
