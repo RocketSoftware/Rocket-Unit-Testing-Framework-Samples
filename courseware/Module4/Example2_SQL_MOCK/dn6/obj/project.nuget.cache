@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "dgSpecHash": "iic29SFSanzajMGMDHtWMAl8S27O449+uu/v/i6Vbi3E6o00/tLJ1YwlDFK43JJEkS9z/qmFkwKSYehk3WaiRQ==",
+  "success": true,
+  "projectFilePath": "/home/spg/Documents/mfunit-7.0-enablement/git/Module4/Example2_SQL_MOCK/dn6/dn6.cblproj",
+  "expectedPackageFiles": [
+    "/home/spg/.nuget/packages/microfocus.cobol.cdi2/3.90.0/microfocus.cobol.cdi2.3.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.filehandler/3.90.0/microfocus.cobol.filehandler.3.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.filehandler.native/3.90.0/microfocus.cobol.filehandler.native.3.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.filehandler.safe/3.90.0/microfocus.cobol.filehandler.safe.3.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.mfunit/6.90.0/microfocus.cobol.mfunit.6.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime/3.90.0/microfocus.cobol.runtime.3.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime.adis/3.90.0/microfocus.cobol.runtime.adis.3.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime.core/3.90.0/microfocus.cobol.runtime.core.3.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime.json/3.90.0/microfocus.cobol.runtime.json.3.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime.slr/3.90.0/microfocus.cobol.runtime.slr.3.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime.xml/3.90.0/microfocus.cobol.runtime.xml.3.90.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.configuration.configurationmanager/6.0.0/system.configuration.configurationmanager.6.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.diagnostics.eventlog/6.0.0/system.diagnostics.eventlog.6.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.drawing.common/6.0.0/system.drawing.common.6.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.security.accesscontrol/6.0.0/system.security.accesscontrol.6.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.security.cryptography.protecteddata/6.0.0/system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.security.permissions/6.0.0/system.security.permissions.6.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.serviceprocess.servicecontroller/6.0.0/system.serviceprocess.servicecontroller.6.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.text.encoding.codepages/6.0.0/system.text.encoding.codepages.6.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
