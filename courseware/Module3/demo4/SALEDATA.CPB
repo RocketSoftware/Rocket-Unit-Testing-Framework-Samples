@@ -1,0 +1,59 @@
+
+      *****************************************************************
+      *   Data Block
+      *****************************************************************
+
+       01 DATA-BLOCK-VERSION-NO              PIC 9(8) COMP-5
+                                             VALUE 1.
+
+       01 VERSION-NO                         PIC 9(2) COMP-5 VALUE
+                                               2.
+
+       01 SET-BUILD-NO                       PIC 9(4) COMP-5
+                                             VALUE 2.
+
+       01 DATA-BLOCK.
+          03 SALES-GROUP.
+             04 SALES-GROUP-ITEM             OCCURS 100.
+                05 SALES-NAME                PIC X(20).
+                05 SALES-REGION              PIC X(4).
+                05 SALES-STATE               PIC X(2).
+          03 ACTION                          PIC 9.
+             88 ACTION-TRUE                  VALUE 1.
+          03 TMP-NAME                        PIC X(20).
+          03 TMP-REGION                      PIC X(4).
+          03 TMP-STATE                       PIC X(2).
+          03 FIRST-TIME-THRU                 PIC X.
+          03 NUMBER-OF-RECORDS               PIC 9(3).
+
+      *****************************************************************
+      *   End of Data Block
+      *****************************************************************
+
+      *****************************************************************
+      *   Field Numbers
+      *****************************************************************
+
+       01 FIELD-NUMBERS.
+          03 FLD-NO-SALES-NAME               PIC 9(4) COMP-5 VALUE
+                                               2.
+          03 FLD-NO-SALES-REGION             PIC 9(4) COMP-5 VALUE
+                                               3.
+          03 FLD-NO-SALES-STATE              PIC 9(4) COMP-5 VALUE
+                                               4.
+          03 FLD-NO-ACTION                   PIC 9(4) COMP-5 VALUE
+                                               5.
+          03 FLD-NO-TMP-NAME                 PIC 9(4) COMP-5 VALUE
+                                               6.
+          03 FLD-NO-TMP-REGION               PIC 9(4) COMP-5 VALUE
+                                               7.
+          03 FLD-NO-TMP-STATE                PIC 9(4) COMP-5 VALUE
+                                               8.
+          03 FLD-NO-FIRST-TIME-THRU          PIC 9(4) COMP-5 VALUE
+                                               9.
+          03 FLD-NO-NUMBER-OF-RECORDS        PIC 9(4) COMP-5 VALUE
+                                               10.
+
+      *****************************************************************
+      *   End of Field Numbers
+      *****************************************************************

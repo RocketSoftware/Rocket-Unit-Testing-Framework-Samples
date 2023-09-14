@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="..\..\XSLT\Overview.xslt" type="text/xsl"?>
+<sample>
+  <name>Dialog System SALEDATA sample</name>
+  <contents>
+    <content linkto="overview">Overview</content>
+    <content linkto="howToRun">How to Run the Sample</content>
+    <content linkto="projectsDescription">Project Description</content>
+  </contents>
+  <overview>
+    <heading>Overview</heading>
+    <directory>Samples\mfunit-mfupp\ds_saledata</directory>
+    <description>
+      This sample is based on the original SALEDATA sample that was supplied with Dialog System.
+
+      This sample now includes a unit test project that shows you how to create unit test using the mfunit 'mfupp' pre-processor.
+    </description>
+  </overview>
+  <howToRun>
+    <heading>How to Run the Sample</heading>
+    <steps>
+      <step>
+        <description>To run this sample in Visual Studio:</description>
+        <steps>
+          <step>Open SALEDATA.sln.</step>
+          <step>Build and run the application.</step>
+        </steps>
+      </step>
+    </steps>
+  </howToRun>
+</sample>

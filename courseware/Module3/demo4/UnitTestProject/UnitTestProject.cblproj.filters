@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Testcases">
+      <!-- COBOL Source filter. The file extensions are determined automatically. -->
+      <UniqueIdentifier>{b76c8401-8895-4863-80c0-b74f5f9e599c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Copybooks">
+      <!-- Copybooks filter. The file extensions are determined automatically. -->
+      <UniqueIdentifier>{b76c8402-8895-4863-80c0-b74f5f9e599c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <!-- Resources filter. The file extensions are determined automatically. -->
+      <UniqueIdentifier>{b76c8406-8895-4863-80c0-b74f5f9e599c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screensets">
+      <!-- Screensets filter. The file extensions are determined automatically. -->
+      <UniqueIdentifier>{b76c8415-8895-4863-80c0-b74f5f9e599c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service Interfaces">
+      <!-- Service Interfaces filter. The file extensions are determined automatically. -->
+      <UniqueIdentifier>{b76c8416-8895-4863-80c0-b74f5f9e599c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content">
+      <!-- Content filter. The file extensions are determined automatically. -->
+      <UniqueIdentifier>{b76c8417-8895-4863-80c0-b74f5f9e599c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Styles">
+      <!-- Styles filter. The file extensions are determined automatically. -->
+      <UniqueIdentifier>{b76c8418-8895-4863-80c0-b74f5f9e599c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts">
+      <!-- Scripts filter. The file extensions are determined automatically. -->
+      <UniqueIdentifier>{b76c8419-8895-4863-80c0-b74f5f9e599c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Images">
+      <!-- Images filter. The file extensions are determined automatically. -->
+      <UniqueIdentifier>{b76c841a-8895-4863-80c0-b74f5f9e599c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Embedded Testcases">
+      <Extensions>
+      </Extensions>
+      <UniqueIdentifier>{36eb4c7e-99fd-4ce4-a1b6-443a78a93631}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SALEDATA.CBL">
+      <Filter>Embedded Testcases</Filter>
+    </Compile>
+    <Compile Include="MFUT_SALEDATA.cbl">
+      <Filter>Embedded Testcases</Filter>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MFUPD_SALEDATA.cpy">
+      <Filter>Embedded Testcases</Filter>
+    </None>
+    <None Include="MFUWS_SALEDATA.cpy">
+      <Filter>Embedded Testcases</Filter>
+    </None>
+  </ItemGroup>
+</Project>

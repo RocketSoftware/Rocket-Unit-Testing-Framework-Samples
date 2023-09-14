@@ -1,0 +1,8 @@
+{
+  "Profiles": {
+    "UnitTestProject": {
+      "commandName": "Project",
+      "otherSettings": {}
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "Profiles": {
+    "Profile1": {
+      "commandName": "Project",
+      "otherSettings": {
+        "NativeDebugMultiProcess": "False",
+        "NativeDebugReturnToWaitState": "False",
+        "EnableRemoteDebugging": "False",
+        "MultiOutputDebugTarget": "SALEDATA.INT"
+      }
+    }
+  }
+}

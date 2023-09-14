@@ -1,0 +1,64 @@
+   *********************************************************************
+
+                      Micro Focus Dialog System V3.0
+
+                      SALEDATA Demonstration Program
+
+   *********************************************************************
+
+
+   SALEDATA Demonstration Program
+   ------------------------------
+
+
+   Overview
+   --------
+
+   This application provides a demonstration of simple list box handling.
+   Using an existing file the application loads a set of sales data to a
+   list box and allows you to Update (Insert, Change, Delete) entries or 
+   view the set of data in different sort orders.
+
+   Files Required
+   --------------
+
+   The files needed to build and run the demonstration program are:
+
+   Name of the file     Description of the file
+   ----------------     -----------------------------------------------------
+     SALEDATA.GS        The SALEDATA Dialog System screenset.
+
+     SALEDATA.CPB       The Dialog System data block copyfile for SALEDATA.GS.
+
+     SALEDATA.CBL       The SALEDATA COBOL program,
+      - ds-cntrl.mf     Dialog System control file.
+
+     SALEDATA.ASC       ASCII file containing the sales information.
+
+     SALEDATA.TXT       This SALEDATA document.
+
+     SALEDATA.APP       The Net Express project file supplied with the demo.
+
+
+
+
+   Compiling and Running The Demonstration Program
+   -----------------------------------------------
+
+   In order to run the SALEDATA demonstration, you need to compile the
+   SALEDATA.CBL demonstration program.
+
+   Load the supplied Net Express project file and select Rebuild All
+   from the Project menu.
+
+   Run the demonstration by selecting Run from the Animate menu.
+
+
+   Extra Notes
+   -----------
+
+   When you compile a program from within the Net Express IDE, the
+   INT and IDY files may (depending on your project's build type) be
+   placed in a directory below your working directory. When running the
+   demonstration outside of the IDE you must make sure the project build
+   directory is on your COBDIR.

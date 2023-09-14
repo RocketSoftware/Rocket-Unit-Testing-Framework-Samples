@@ -1,0 +1,182 @@
+  013 004 COPYEXT
+  013 004
+  013 004 NOCOPYLBR
+  013 004 SOURCEFORMAT
+  013 004   SOURCEFORMAT"VARIABLE"
+  013 004   SOURCETABSTOP"4"
+  013 004 NOSPZERO
+  013 004 AMODE
+  013 004 NOAMODE
+  013 004 CHARSET
+  013 004   CHARSET"ASCII"
+  013 004   CHECKDIV"ANSI"
+  013 004 NOCHECKREFMOD
+  013 004 REENTRANT
+  013 004 NOREENTRANT
+  013 004 P64
+  013 004 NOP64
+  013 004 DIRECTIVES-IN-COMMENTS
+  013 004 NODIRECTIVES-IN-COMMENTS
+  013 004 ILGEN
+  013 004 NOILGEN
+  032 000       $SET ANS85 MF
+  032 000        input-output section.
+  032 000        file-control.
+  032 000
+  032 000        select sales-data assign to "saledata.asc"
+  032 000            organization sequential.
+  032 000
+  032 000        fd sales-data
+  032 000            label records are standard.
+  032 000        01 sales-data-record.
+  032 000            03 sales-loc-state          pic x(2).
+  032 000            03 sales-rep                pic x(20).
+  032 000            03 sales-office             pic x(4).
+  032 000
+  032 000        working-storage section.
+  001 000       $set    constant MFUPP--PRGID"SALEDATA"
+  001 000       $set    constant MFUPP--RTS-API"mfunit_pp_runtime"
+  001 000       $set    constant MFUPP--RTS-SET-CTRLER"mfunit_pp_set_controller"
+  001 000       $set    constant MFUPP--RTS-REDIR-API"mfunit_pp_redir"
+  001 000       $set    constant MFUPP--RTS-EP-REDIR-API"mfunit_pp_ep_redir"
+  001 000       $set    constant MFUPP--RTS-NPRG-REDIR-API"mfunit_pp_subprg_redir"
+  001 000       $set    constant MFUPP--RTS-REDIR-ERR-API"mfunit_pp_redir_err"
+  001 000       $set    constant MFUPP--IS-PROGRAM(1)
+  001 000       $set    constant MFUPP--IS-ENTRY-POINT(2)
+  001 000       $set    constant MFUPP--IS-SUBPROGRAM(3)
+  001 000       $set    constant MFUPP--ACTION-DO-NOTHING(1)
+  001 000       $set    constant MFUPP--ACTION-GOBACK(2)
+  001 000       $set    constant MFUPP--ACTION-REDIRECT(3)
+  001 000            COPY 'MFUWS_SALEDATA.CPY'.
+  001 000        01 MFUPP--REDIR-PROG  PIC X(80).
+  001 000        01 MFUPP--EP-SCRATCH  PIC X(80).
+  032 000            copy "ds-cntrl.mf".
+  032 000            copy "saledata.cpb".
+  032 000
+  032 000        01 action-code                  pic 9.
+  032 000            78 exit-program                     value 1.
+  032 000            78 sort-by-name                     value 2.
+  032 000            78 sort-by-region                   value 3.
+  032 000            78 sort-by-state                    value 4.
+  032 000
+  032 000        01 end-of-file-flag              pic 9.
+  032 000            88 end-of-file                      value 1.
+  032 000
+  032 000        01 end-of-actions-flag           pic 9.
+  032 000            88 end-of-actions                   value 1.
+  032 000
+  032 000        01 sales-rec            occurs 100 times.
+  032 000            03 sales-rec-name               pic x(20).
+  032 000            03 sales-rec-region             pic x(4).
+  032 000            03 sales-rec-state              pic x(2).
+  032 000
+  032 000        01 indx                     pic 99   comp-5.
+  032 000
+  032 000        01 array-max                pic 99   comp-5 value 100.
+  032 000
+  032 000        procedure division.
+  032 000
+  001 000        MFUPP--TOP-OF-PROGRAM.
+  001 000             GO TO MFUPP--START-OF-PROGRAM.
+  001 000            COPY 'MFUPD_SALEDATA.CPY'.
+  001 000        MFUPP--START-OF-PROGRAM SECTION.
+  032 000        main-process.
+  032 000            perform program-initialize
+  032 000            perform call-screen-manager
+  032 000            perform process-actions until end-of-actions
+  032 000            stop run.
+  032 000
+  032 000        program-initialize.
+  032 000            initialize ds-control-block
+  032 000            initialize data-block
+  032 000            move ds-new-set to ds-control
+  032 000            move data-block-version-no to
+  032 000                  ds-data-block-version-no
+  032 000            move version-no to ds-version-no
+  032 000            move "saledata" to ds-set-name
+  032 000            perform initialize-data-block
+  032 000            move zero to end-of-actions-flag.
+  032 000
+  032 000        initialize-data-block.
+  032 000            open input sales-data
+  032 000            move zero to end-of-file-flag
+  032 000            move zero to number-of-records
+  032 000            move zero to indx
+  032 000            perform until end-of-file
+  032 000                read sales-data at end
+  032 000                    move 1 to end-of-file-flag
+  032 000                not at end
+  032 000                    add 1 to indx
+  032 000                    move sales-rep to sales-name(indx)
+  032 000                    move sales-office to sales-region(indx)
+  032 000                    move sales-loc-state to sales-state(indx)
+  032 000                    add 1 to number-of-records
+  032 000                end-read
+  032 000            end-perform.
+  032 000
+  032 000        process-actions.
+  032 000            move action to action-code
+  032 000            evaluate true
+  032 000                when action-code = exit-program
+  032 000                    move 1 to end-of-actions-flag
+  032 000                when action-code = sort-by-name
+  032 000                    perform sort-by-name-routine
+  032 000                when action-code = sort-by-region
+  032 000                    perform sort-by-region-routine
+  032 000                when action-code = sort-by-state
+  032 000                    perform sort-by-state-routine
+  032 000            end-evaluate
+  032 000            if not end-of-actions
+  032 000                perform call-screen-manager.
+  032 000
+  032 000        sort-by-name-routine.
+  032 000            perform initialize-array
+  032 000            perform fill-rec-from-data-block
+  032 000            sort sales-rec on ascending sales-rec-name
+  032 000            perform fill-data-block-from-rec.
+  032 000
+  032 000        sort-by-region-routine.
+  032 000            perform initialize-array
+  032 000            perform fill-rec-from-data-block
+  032 000            sort sales-rec on ascending sales-rec-region
+  032 000            perform fill-data-block-from-rec.
+  032 000
+  032 000        sort-by-state-routine.
+  032 000            perform initialize-array
+  032 000            perform fill-rec-from-data-block
+  032 000            sort sales-rec on ascending sales-rec-state
+  032 000            perform fill-data-block-from-rec.
+  032 000
+  032 000        initialize-array.
+  032 000            perform varying indx from 1 by 1
+  032 000                    until indx > array-max
+  032 000                move high-values to sales-rec-name(indx)
+  032 000                move high-values to sales-rec-region(indx)
+  032 000                move high-values to sales-rec-state(indx)
+  032 000            end-perform.
+  032 000
+  032 000        fill-rec-from-data-block.
+  032 000            perform varying indx from 1 by 1
+  032 000                    until indx > number-of-records
+  032 000                move sales-name(indx) to sales-rec-name(indx)
+  032 000                move sales-region(indx) to sales-rec-region(indx)
+  032 000                move sales-state(indx) to sales-rec-state(indx)
+  032 000            end-perform.
+  032 000
+  032 000        fill-data-block-from-rec.
+  032 000            perform varying indx from 1 by 1
+  032 000                    until indx > number-of-records
+  032 000                move sales-rec-name(indx) to sales-name(indx)
+  032 000                move sales-rec-region(indx) to sales-region(indx)
+  032 000                move sales-rec-state(indx) to sales-state(indx)
+  032 000            end-perform.
+  032 000
+  032 000        call-screen-manager.
+  032 000            call "DSRUN" using ds-control-block,
+  032 000                               data-block
+  032 000            if not ds-no-error
+  032 000                set end-of-actions to true
+  032 000                move 0 to action
+  032 000            end-if.
+  032 000
+  000 000

@@ -1,0 +1,58 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{7784AD54-F891-444C-A3C1-CA84D05ED5A0}</ProjectGuid>
+    <ProjectTypeGuids>{9B4C43C6-818D-4EE4-A817-4CC01335F561};{535C04D7-A2A5-47c7-83E0-B340A995CD1F}</ProjectTypeGuids>
+    <OutputName>UnitTestProject</OutputName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>UnitTestProject</RootNamespace>
+    <MFProjectType>Native</MFProjectType>
+    <IdyCollectionName>$(MSBuildProjectName)</IdyCollectionName>
+    <IsUnitTestProject>true</IsUnitTestProject>
+    <Preprocessors>
+      <PreprocessorList xmlns="MicroFocus.Preprocessors">
+        <Preprocessor Name="mfupp" Path="mfupp" Directives="verbose" />
+      </PreprocessorList>
+    </Preprocessors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>.\bin\x86\Debug\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <ManagedCode>False</ManagedCode>
+    <DebugSymbols>True</DebugSymbols>
+    <MaxError>100</MaxError>
+    <SourceFormat>Variable</SourceFormat>
+    <WarningLevel>3</WarningLevel>
+    <TestCover>True</TestCover>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>.\bin\x86\Release\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <ManagedCode>False</ManagedCode>
+    <DebugSymbols>True</DebugSymbols>
+    <MaxError>100</MaxError>
+    <SourceFormat>Variable</SourceFormat>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\SALEDATA.CBL">
+      <Link>SALEDATA.CBL</Link>
+      <Preprocessors>
+        <PreprocessorList xmlns="MicroFocus.Preprocessors">
+          <Preprocessor Name="mfupp" Path="mfupp" Directives="verbose confirm" />
+        </PreprocessorList>
+      </Preprocessors>
+      <AdditionalDirectives>preplist"saledata.prep" list"saledata.lst"</AdditionalDirectives>
+    </Compile>
+    <None Include="MFUPD_SALEDATA.cpy" />
+    <None Include="MFUWS_SALEDATA.cpy" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Micro Focus\Visual COBOL\v1.0\MicroFocus.COBOL.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
