@@ -1,0 +1,22 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Demo2",
+            "type": "shell",
+            "linux": {
+                "command": "./bld.sh"
+            },
+            "windows": {
+                "command": "bld.bat"
+            },
+            "problemMatcher": "$COBOLErrFormat3",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

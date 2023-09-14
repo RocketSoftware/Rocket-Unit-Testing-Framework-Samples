@@ -1,0 +1,15 @@
+<project name="tcbuild" default="report">
+ <property name="results.dir" value="report"/>
+ <property environment="env"/>
+
+<target name="report">
+    <mkdir dir="${results.dir}" />
+    <junitreport todir="${results.dir}">
+            <fileset dir=".">
+                    <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" styledir="${env.ANT_HOME}/etc" todir="${results.dir}"/>
+    </junitreport>
+</target>
+
+</project>
