@@ -1,14 +1,9 @@
 {
     "microFocusCOBOL.mfunit.discoverers": [
         {
-			"globPattern": "*.dll",
-			"is64Bit": false,
-			"runner": "mfurun",
-		},
-        {
-			"globPattern": "*.so",
+			"globPattern": "*.{dll,so}",
 			"is64Bit": true,
-			"runner": "cobmfurun_t"
+			"runner": "mfurun"
 		}
     ]
 }
