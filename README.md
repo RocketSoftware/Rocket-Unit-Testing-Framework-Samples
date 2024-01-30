@@ -1,4 +1,4 @@
-# Micro Focus Unit Testing Framework Samples for 9.0
+# Micro Focus Unit Testing Framework Samples
 
 This repo contains a collection of samples that demonstrate the features included with the [Micro Focus&trade; Unit Testing Framework](https://www.microfocus.com/documentation/enterprise-developer/ed80/ED-Eclipse/index.html?t=GUID-56868D50-F836-4FA3-9255-8BCE6F895D1B.html)
 
