@@ -2,7 +2,7 @@
 TEST_NOEXT="ScanEmployeeTable"
 SRC_NOEXT="$TEST_NOEXT"
 TARGET=native
-MFUPP_DIR="-C p(mfupp) verbose CONFIRM SQL(IGNORE) MOCK(SQL) endp"
+MFUPP_DIR="-C p(mfupp) verbose CONFIRM SQL(IGNORE) MOCK(SQL) MOCK(CICS) endp"
 JVMARGS="-C jvmclasspath(mfunit.jar) -C ilref(com.microfocus.cobol.mfunit.internal.mfunit_api_file) -C ilref(com.microfocus.cobol.mfunit.internal.mfunit_pp_runtime)"
 MF_RM="rm -f"
 NAME=scan_employee_table
@@ -15,7 +15,7 @@ then
 fi
 
 # ensure any copybook can be found
-COBCPY=./tests:$COBCPY
+COBCPY=$(pwd)/tests/:$COBCPY
 export COBCPY
 
 MFU_DD_DIR=$(pwd)/tests
@@ -77,14 +77,14 @@ bld_jvm() {
 	$MF_RM $i.o $i.int $i.idy $i.so examples.jar
 }
 
-bld_net6() {
-	cd dn6
+bld_net8() {
+	cd dn8
 	dotnet build /t:clean
 	dotnet build /t:rebuild "/p:MFUnitRunnerCommandGenerateArguments=$REPORT_ARGS" /t:run
 	cd ..
 	mkdir -p results
-	cp dn6/bin/*/net6.0/TEST*.xml results/
-	cp dn6/bin/*/net6.0/*-report.txt results/
+	cp dn8/bin/*/net8.0/TEST*.xml results/
+	cp dn8/bin/*/net8.0/*-report.txt results/
 }
 
 for i in $*
@@ -92,7 +92,7 @@ do
 	case .$i in
 		.native) TARGET=native ;;
 		.jvm) TARGET=jvm ;;
-		.net6) TARGET=net6 ;;
+		.net8) TARGET=net8 ;;
 		.norm) MF_RM="echo norm set: leaving files: " ;;
 		*) echo $0: Invalid argument $i
 		   exit 1 

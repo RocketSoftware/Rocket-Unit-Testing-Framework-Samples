@@ -23,8 +23,11 @@
        01               PIC X VALUE SPACES.
         88 QUIET-MODE   value "Y", FALSE " ".
 
+       LOCAL-STORAGE SECTION.
        LINKAGE SECTION.
+
        PROCEDURE DIVISION. 
+
        000-TOP.
            PERFORM 100-MAIN THROUGH 100-EXIT
            GOBACK.

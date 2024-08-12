@@ -1,0 +1,74 @@
+<Project Sdk="MicroFocus.Sdk">
+
+  <PropertyGroup>
+    <MFUnitTestProject>true</MFUnitTestProject>
+
+    <TargetFramework Condition="'$(TargetFrameworkOverride)' == ''">net8.0</TargetFramework>
+    <TargetFramework Condition="'$(TargetFrameworkOverride)' != ''">TargetFrameworkOverride</TargetFramework>
+    <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
+    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+
+    <LangVersion Condition="'$(langVersion)' != ''"></LangVersion>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <OutputName>examples</OutputName>
+    <PreserveCase>true</PreserveCase>
+    <IdyCollectionName>$(MSBuildProjectName)</IdyCollectionName>
+    <SourceFormat>variable</SourceFormat>
+    <DebugSymbols>true</DebugSymbols>
+    <AdditionalDirectives>nolitlink 
+    change-message"987 N"
+    change-message"1209 N"
+    </AdditionalDirectives>
+    <WarningLevel>3</WarningLevel>
+
+    <MFEnableDotNetRunCommand>True</MFEnableDotNetRunCommand>
+
+    <MFUnitRunnerCommand Condition="'$(IsLinux)'=='true'">cobmfurunil8</MFUnitRunnerCommand>
+    <MFUnitRunnerCommand Condition="'$(IsWindows)'=='true'">mfurunil8.exe</MFUnitRunnerCommand>
+    <MFUnitRunnerCommandArguments>-show-progress -verbose </MFUnitRunnerCommandArguments>
+    <MFUnitRunnerCommandGenerateArguments>-report:junit</MFUnitRunnerCommandGenerateArguments>
+
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\MFUT*.cbl" />
+  </ItemGroup>
+
+    <ItemGroup>
+    <TestCSVFiles Include="Test*.csv"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Reference MicroFocus.COBOL.MFUNIT in order for MFU* APIs to be resolved -->
+    <PackageReference Include="MicroFocus.COBOL.MFUNIT" Version="8.100.*" />
+    <None Include="global.json" />
+  </ItemGroup>
+
+  <!-- Support for enabling "dotnet run" to execute the test runner -->
+  <PropertyGroup Condition="'$(MFEnableDotNetRunCommand)'=='true'">
+    <RunWorkingDirectory>$(OutputPath)/$(TargetFramework)</RunWorkingDirectory>
+    <RunCommand>$(MFUnitRunnerCommand)</RunCommand>
+    <RunArguments>$(MFUnitRunnerCommandArguments) $(OutputName).mfu</RunArguments>
+  </PropertyGroup>
+
+  <!-- Ensure the fixture mfu is created after each build -->
+  <Target Name="RunAfterBuild" AfterTargets="Build">
+
+    <!-- Copy Test*.csv to the output directory -->
+    <Copy SourceFiles="@(TestCSVFiles)" DestinationFolder="$(OutputPath)" Condition="Exists('%(RootDir)%(Directory)%(Filename)%(Extension)')" />
+
+    <!-- Generate the test case .mfu file -->
+    <Delete Files="$(OutputPath)$(OutputName).mfu" />
+    <Exec Command="$(MFUnitRunnerCommand) $(MFUnitRunnerCommandArguments) $(MFUnitRunnerCommandGenerateArguments) -generate-mfu:$(OutputName).mfu $(OutputName).dll" StandardOutputImportance="low" StandardErrorImportance="high" WorkingDirectory="$(OutputPath)" EchoOff="true" />
+  </Target>
+
+  <!-- Ensure the fixture mfu & any Test*csv are removed when a cleanup is done -->
+  <Target Name="RunAfterBuildCleanup" AfterTargets="Clean">
+    <Delete Files="$(OutputPath)$(OutputName).mfu" />
+    <CreateItem Include="$(OutputPath)Test*.csv">
+      <Output ItemName="CSVFilesToBeDelete" TaskParameter="Include"/>
+    </CreateItem>
+    <Delete Files="@(CSVFilesToBeDelete)" />
+  </Target>
+</Project>
