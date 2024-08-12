@@ -4,7 +4,7 @@ This repo contains a collection of samples that demonstrate the features include
 
 ## Samples
 
-| Sample Name                                                 | Minimum Product Level | Feature                                                     | Link                                    | JVM | .NET 6 v9+ | Community Edition |
+| Sample Name                                                 | Minimum Product Level | Feature                                                     | Link                                    | JVM | .NET 8 v10+ | Community Edition |
 | ----------------------------------------------------------- | --------------------- | ----------------------------------------------------------- | --------------------------------------- | --- | ---------- | ----------------- |
 | Basic "PASS" test case sample                               |                       |                                                             | [Directory](MyFirstTest/)               | Yes | Yes        | Yes               |
 | Basic "FAIL" test case sample                               |                       |                                                             | [Directory](MyFirstFail/)               | Yes | Yes        | Yes               |
@@ -22,7 +22,7 @@ This repo contains a collection of samples that demonstrate the features include
 | Employee table scanner sample                               | VC/ED v9              | Program based test with mock sql                            | [Directory](mfupp_scan_employee_table/) |     |            | No                |
 
 *VC/ED = Visual COBOL and Enterprise Developer
-*N6 = Visual COBOL and Enterprise Developer v9+
+*N8 = Visual COBOL and Enterprise Developer v10+
 
 ## Other Unit Test Samples
 
