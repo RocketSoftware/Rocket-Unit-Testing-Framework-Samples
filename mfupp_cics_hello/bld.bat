@@ -21,8 +21,8 @@ if /I .%1 == .jvm (
   goto arg_okay
   )
 
-if /I .%1 == .net6 (
-  set TARGET=net6
+if /I .%1 == .net8 (
+  set TARGET=net8
   goto arg_okay
   )
 
@@ -93,13 +93,13 @@ call mfurunj.bat %extra_arg% -outdir:results -verbose examples.mfu
 @del examples.mfu examples.jar *.obj *.idy examples.lnk examples.mfgcf
 goto theend
 
-:bld_net6
+:bld_net8
 if not exist results md results
-pushd dn6
+pushd dn8
 dotnet build /t:clean
 dotnet build "/p:MFUnitRunnerCommandGenerateArguments=%REPORT_ARGS%" /t:rebuild /t:run
-copy bin\Debug\net6.0\*report.txt ..\results
-copy bin\Debug\net6.0\TEST*xml ..\results
+copy bin\Debug\net8.0\*report.txt ..\results
+copy bin\Debug\net8.0\TEST*xml ..\results
 @REM dotnet build /t:clean
 popd
 goto theend

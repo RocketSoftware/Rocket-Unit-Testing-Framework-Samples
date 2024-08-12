@@ -15,7 +15,7 @@ do
 	case .$i in
 		.native) TARGET=native ;;
 		.jvm) TARGET=jvm ;;
-		.net6) TARGET=net6 ;;
+		.net8) TARGET=net8 ;;
 		*) echo $0: Invalid argument $i
 		   exit 1 
 		   ;;
@@ -67,14 +67,14 @@ bld_jvm() {
 	cobmfurunj -verbose $MFU_ARG $REPORT_ARGS -outdir:results examples.jar
 }
 
-bld_net6() {
-	cd dn6
+bld_net8() {
+	cd dn8
 	dotnet build /t:rebuild "/p:MFUnitRunnerCommandGenerateArguments=$REPORT_ARGS" /t:run
 	dotnet build /t:clean
 	cd ..
 	mkdir -p results
-	cp dn6/bin/*/net6.0/TEST*.xml results/
-	cp dn6/bin/*/net6.0/*-report.txt results/
+	cp dn8/bin/*/net8.0/TEST*.xml results/
+	cp dn8/bin/*/net8.0/*-report.txt results/
 }
 
 echo TARGET is $TARGET

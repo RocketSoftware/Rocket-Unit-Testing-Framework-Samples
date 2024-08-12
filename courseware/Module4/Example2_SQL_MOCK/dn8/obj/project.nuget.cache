@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "M3bHbHsZu8B9dHBlb+OKQOwzYRsRHmnrpmufQZvQVgXEtcL4ZhsAewo2o/TaVynOBJrN4Zeq06e5rneFn5IoNA==",
+  "success": true,
+  "projectFilePath": "/home/spg/git/Micro-Focus-Unit-Testing-Framework-Samples/courseware/Module4/Example2_SQL_MOCK/dn8/dn8.cblproj",
+  "expectedPackageFiles": [
+    "/home/spg/.nuget/packages/microfocus.cobol.cdi2/4.100.0/microfocus.cobol.cdi2.4.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.filehandler/4.100.0/microfocus.cobol.filehandler.4.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.filehandler.native/4.100.0/microfocus.cobol.filehandler.native.4.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.filehandler.safe/4.100.0/microfocus.cobol.filehandler.safe.4.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.mfunit/8.100.0/microfocus.cobol.mfunit.8.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime/4.100.0/microfocus.cobol.runtime.4.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime.adis/4.100.0/microfocus.cobol.runtime.adis.4.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime.core/4.100.0/microfocus.cobol.runtime.core.4.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime.json/4.100.0/microfocus.cobol.runtime.json.4.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime.slr/4.100.0/microfocus.cobol.runtime.slr.4.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/microfocus.cobol.runtime.xml/4.100.0/microfocus.cobol.runtime.xml.4.100.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.configuration.configurationmanager/8.0.0/system.configuration.configurationmanager.8.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.diagnostics.eventlog/8.0.0/system.diagnostics.eventlog.8.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.security.cryptography.protecteddata/8.0.0/system.security.cryptography.protecteddata.8.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.security.permissions/8.0.0/system.security.permissions.8.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.serviceprocess.servicecontroller/8.0.0/system.serviceprocess.servicecontroller.8.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.text.encoding.codepages/8.0.0/system.text.encoding.codepages.8.0.0.nupkg.sha512",
+    "/home/spg/.nuget/packages/system.windows.extensions/8.0.0/system.windows.extensions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

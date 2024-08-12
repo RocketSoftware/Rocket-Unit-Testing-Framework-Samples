@@ -1,0 +1,1109 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "MicroFocus.COBOL.CDI2/4.100.0": {
+        "type": "package",
+        "dependencies": {
+          "MicroFocus.COBOL.FileHandler": "4.100.0"
+        },
+        "compile": {
+          "ref/net8.0/MicroFocus.COBOL.CDI2.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/MicroFocus.COBOL.CDI2.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.CDI2.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          }
+        }
+      },
+      "MicroFocus.COBOL.FileHandler/4.100.0": {
+        "type": "package",
+        "dependencies": {
+          "MicroFocus.COBOL.Runtime.Core": "4.100.0"
+        },
+        "compile": {
+          "ref/net8.0/MicroFocus.COBOL.FileHandler.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/MicroFocus.COBOL.FileHandler.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.FileHandler.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          }
+        }
+      },
+      "MicroFocus.COBOL.FileHandler.Native/4.100.0": {
+        "type": "package",
+        "dependencies": {
+          "MicroFocus.COBOL.Runtime.Core": "4.100.0"
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/net8.0/cobcallrb64.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/cobextsm64.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/cobmffh64.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/cobnativefilehandler64.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/cobrtload64_t.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/cobserver64_t.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/lang/default/cobgetmsg.lng": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/lang/default/extfh.lng": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/lang/default/fs.lng": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/lang/default/fttext.lng": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/lang/default/mfinfo.lng": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/lang/default/mfjsort.lng": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/lang/default/mfjtool.lng": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/lang/default/mfrh9000.lng": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/lang/default/rts.err": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/lang/default/rts.msg": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/libcobcrtn64.so.3": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/libcobctf64_t.so.3": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/libcobmisc64_t.so.3": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/libcobrts64_t.so.3": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/net8.0/libcobscreen64_t.so.4": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/win-x64/native/net8.0/cblctf.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/cblrtsm.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/cblsrvm.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/cblviom.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/lang/default/EXTFH.lng": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/lang/default/FS.lng": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/lang/default/FTTEXT.lng": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/lang/default/MFJSORT.lng": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/lang/default/MFJTOOL.lng": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/lang/default/MFRH9000.lng": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/lang/default/mfjava.msg": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/lang/default/mfole.msg": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/lang/default/rts.err": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/lang/default/rts.msg": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/net8.0/mffh.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/net8.0/cblctf.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/cblrtsm.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/cblsrvm.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/cblviom.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/lang/default/EXTFH.lng": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/lang/default/FS.lng": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/lang/default/FTTEXT.lng": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/lang/default/MFJSORT.lng": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/lang/default/MFJTOOL.lng": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/lang/default/MFRH9000.lng": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/lang/default/mfjava.msg": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/lang/default/mfole.msg": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/lang/default/rts.err": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/lang/default/rts.msg": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/net8.0/mffh.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "MicroFocus.COBOL.FileHandler.Safe/4.100.0": {
+        "type": "package",
+        "dependencies": {
+          "MicroFocus.COBOL.Runtime.Core": "4.100.0"
+        },
+        "compile": {
+          "ref/net8.0/MicroFocus.COBOL.FileHandler.Safe.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/MicroFocus.COBOL.FileHandler.Safe.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.FileHandler.Safe.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          }
+        }
+      },
+      "MicroFocus.COBOL.MFUNIT/8.100.0": {
+        "type": "package",
+        "dependencies": {
+          "MicroFocus.COBOL.Runtime": "4.100.0"
+        },
+        "compile": {
+          "ref/net8.0/MicroFocus.COBOL.MFUNIT.dll": {}
+        }
+      },
+      "MicroFocus.COBOL.Runtime/4.100.0": {
+        "type": "package",
+        "dependencies": {
+          "MicroFocus.COBOL.CDI2": "4.100.0",
+          "MicroFocus.COBOL.FileHandler": "4.100.0",
+          "MicroFocus.COBOL.FileHandler.Native": "4.100.0",
+          "MicroFocus.COBOL.FileHandler.Safe": "4.100.0",
+          "MicroFocus.COBOL.Runtime.ADIS": "4.100.0",
+          "MicroFocus.COBOL.Runtime.Core": "4.100.0",
+          "MicroFocus.COBOL.Runtime.JSON": "4.100.0",
+          "MicroFocus.COBOL.Runtime.SLR": "4.100.0",
+          "MicroFocus.COBOL.Runtime.XML": "4.100.0"
+        }
+      },
+      "MicroFocus.COBOL.Runtime.ADIS/4.100.0": {
+        "type": "package",
+        "dependencies": {
+          "MicroFocus.COBOL.FileHandler": "4.100.0"
+        },
+        "compile": {
+          "ref/net8.0/MicroFocus.COBOL.AcceptDisplay.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/MicroFocus.COBOL.AcceptDisplay.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.AcceptDisplay.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          }
+        }
+      },
+      "MicroFocus.COBOL.Runtime.Core/4.100.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "8.0.0",
+          "System.Security.Permissions": "8.0.0",
+          "System.ServiceProcess.ServiceController": "8.0.0",
+          "System.Text.Encoding.CodePages": "8.0.0"
+        },
+        "compile": {
+          "ref/net8.0/MicroFocus.COBOL.Runtime.dll": {},
+          "ref/net8.0/MicroFocus.COBOL.RuntimeServices.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/MicroFocus.COBOL.Runtime.dll": {},
+          "lib/net8.0/MicroFocus.COBOL.RuntimeServices.dll": {}
+        },
+        "resource": {
+          "lib/net8.0/en-GB/MicroFocus.COBOL.Messages.resources.dll": {
+            "locale": "en-GB"
+          },
+          "lib/net8.0/en-US/MicroFocus.COBOL.Messages.resources.dll": {
+            "locale": "en-US"
+          },
+          "lib/net8.0/ja/MicroFocus.COBOL.Messages.resources.dll": {
+            "locale": "ja"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.Messages.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          },
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.Runtime.Net.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          },
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.Runtime.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          },
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.RuntimeServices.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          },
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.Tracing.Net.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          },
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.Tracing.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          }
+        }
+      },
+      "MicroFocus.COBOL.Runtime.JSON/4.100.0": {
+        "type": "package",
+        "dependencies": {
+          "MicroFocus.COBOL.Runtime.Core": "4.100.0"
+        },
+        "compile": {
+          "ref/net8.0/MicroFocus.IMRT.JSON.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/MicroFocus.IMRT.JSON.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/any/lib/net8.0/MicroFocus.IMRT.JSON.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          }
+        }
+      },
+      "MicroFocus.COBOL.Runtime.SLR/4.100.0": {
+        "type": "package",
+        "dependencies": {
+          "MicroFocus.COBOL.FileHandler": "4.100.0"
+        },
+        "compile": {
+          "lib/net8.0/MicroFocus.COBOL.Runtime.SLR.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/MicroFocus.COBOL.Runtime.SLR.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.Runtime.SLR.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          }
+        }
+      },
+      "MicroFocus.COBOL.Runtime.XML/4.100.0": {
+        "type": "package",
+        "dependencies": {
+          "MicroFocus.COBOL.FileHandler": "4.100.0"
+        },
+        "compile": {
+          "ref/net8.0/MicroFocus.COBOL.XmlParse.dll": {},
+          "ref/net8.0/MicroFocus.COBOL.Xmlgen.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/MicroFocus.COBOL.XmlParse.dll": {},
+          "lib/net8.0/MicroFocus.COBOL.Xmlgen.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.XmlParse.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          },
+          "runtimes/any/lib/net8.0/MicroFocus.COBOL.Xmlgen.dll": {
+            "assetType": "runtime",
+            "rid": "any"
+          }
+        }
+      },
+      "System.Configuration.ConfigurationManager/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.EventLog": "8.0.0",
+          "System.Security.Cryptography.ProtectedData": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Configuration.ConfigurationManager.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Configuration.ConfigurationManager.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Diagnostics.EventLog/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Diagnostics.EventLog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Diagnostics.EventLog.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          },
+          "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Security.Cryptography.ProtectedData.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Security.Cryptography.ProtectedData.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Security.Permissions/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Windows.Extensions": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Security.Permissions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Security.Permissions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.ServiceProcess.ServiceController/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.EventLog": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.ServiceProcess.ServiceController.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.ServiceProcess.ServiceController.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.ServiceProcess.ServiceController.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Text.Encoding.CodePages/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Text.Encoding.CodePages.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Windows.Extensions/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Windows.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Windows.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Windows.Extensions.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MicroFocus.COBOL.CDI2/4.100.0": {
+      "sha512": "QmgI1AksOZ9UYmEWGbTj1GW+azgLI7fvitCxu80hPk9J8+jo1imqo1KqqKbDT3zP7ziLcUXBlkmACAtuCuffJQ==",
+      "type": "package",
+      "path": "microfocus.cobol.cdi2/4.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net8.0/MicroFocus.COBOL.CDI2.dll",
+        "microfocus.cobol.cdi2.4.100.0.nupkg.sha512",
+        "microfocus.cobol.cdi2.nuspec",
+        "ref/net8.0/MicroFocus.COBOL.CDI2.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.CDI2.dll"
+      ]
+    },
+    "MicroFocus.COBOL.FileHandler/4.100.0": {
+      "sha512": "EzYoiuOAr8JwODPsFlu9Y9I+tKH7zZQ642IanymASX7G16XgYF8PSoElDfYyJstZRvI4rW7PlBpfmElhbLdCtg==",
+      "type": "package",
+      "path": "microfocus.cobol.filehandler/4.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net8.0/MicroFocus.COBOL.FileHandler.dll",
+        "microfocus.cobol.filehandler.4.100.0.nupkg.sha512",
+        "microfocus.cobol.filehandler.nuspec",
+        "ref/net8.0/MicroFocus.COBOL.FileHandler.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.FileHandler.dll"
+      ]
+    },
+    "MicroFocus.COBOL.FileHandler.Native/4.100.0": {
+      "sha512": "QmXKj1z7aMtAGb2GxXuMDsoP5Vvk6HjXVVhAeoNlF7Ow7M3njkeoXsZa30xGADKkekWe4a263S5kgQP9/519gw==",
+      "type": "package",
+      "path": "microfocus.cobol.filehandler.native/4.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "microfocus.cobol.filehandler.native.4.100.0.nupkg.sha512",
+        "microfocus.cobol.filehandler.native.nuspec",
+        "runtimes/linux-x64/native/net8.0/cobcallrb64.so",
+        "runtimes/linux-x64/native/net8.0/cobextsm64.so",
+        "runtimes/linux-x64/native/net8.0/cobmffh64.so",
+        "runtimes/linux-x64/native/net8.0/cobnativefilehandler64.so",
+        "runtimes/linux-x64/native/net8.0/cobrtload64_t.so",
+        "runtimes/linux-x64/native/net8.0/cobserver64_t.so",
+        "runtimes/linux-x64/native/net8.0/lang/default/cobgetmsg.lng",
+        "runtimes/linux-x64/native/net8.0/lang/default/extfh.lng",
+        "runtimes/linux-x64/native/net8.0/lang/default/fs.lng",
+        "runtimes/linux-x64/native/net8.0/lang/default/fttext.lng",
+        "runtimes/linux-x64/native/net8.0/lang/default/mfinfo.lng",
+        "runtimes/linux-x64/native/net8.0/lang/default/mfjsort.lng",
+        "runtimes/linux-x64/native/net8.0/lang/default/mfjtool.lng",
+        "runtimes/linux-x64/native/net8.0/lang/default/mfrh9000.lng",
+        "runtimes/linux-x64/native/net8.0/lang/default/rts.err",
+        "runtimes/linux-x64/native/net8.0/lang/default/rts.msg",
+        "runtimes/linux-x64/native/net8.0/libcobcrtn64.so.3",
+        "runtimes/linux-x64/native/net8.0/libcobctf64_t.so.3",
+        "runtimes/linux-x64/native/net8.0/libcobmisc64_t.so.3",
+        "runtimes/linux-x64/native/net8.0/libcobrts64_t.so.3",
+        "runtimes/linux-x64/native/net8.0/libcobscreen64_t.so.4",
+        "runtimes/win-x64/native/net8.0/cblctf.dll",
+        "runtimes/win-x64/native/net8.0/cblrtsm.dll",
+        "runtimes/win-x64/native/net8.0/cblsrvm.dll",
+        "runtimes/win-x64/native/net8.0/cblviom.dll",
+        "runtimes/win-x64/native/net8.0/lang/default/EXTFH.lng",
+        "runtimes/win-x64/native/net8.0/lang/default/FS.lng",
+        "runtimes/win-x64/native/net8.0/lang/default/FTTEXT.lng",
+        "runtimes/win-x64/native/net8.0/lang/default/MFJSORT.lng",
+        "runtimes/win-x64/native/net8.0/lang/default/MFJTOOL.lng",
+        "runtimes/win-x64/native/net8.0/lang/default/MFRH9000.lng",
+        "runtimes/win-x64/native/net8.0/lang/default/mfjava.msg",
+        "runtimes/win-x64/native/net8.0/lang/default/mfole.msg",
+        "runtimes/win-x64/native/net8.0/lang/default/rts.err",
+        "runtimes/win-x64/native/net8.0/lang/default/rts.msg",
+        "runtimes/win-x64/native/net8.0/mffh.dll",
+        "runtimes/win-x86/native/net8.0/cblctf.dll",
+        "runtimes/win-x86/native/net8.0/cblrtsm.dll",
+        "runtimes/win-x86/native/net8.0/cblsrvm.dll",
+        "runtimes/win-x86/native/net8.0/cblviom.dll",
+        "runtimes/win-x86/native/net8.0/lang/default/EXTFH.lng",
+        "runtimes/win-x86/native/net8.0/lang/default/FS.lng",
+        "runtimes/win-x86/native/net8.0/lang/default/FTTEXT.lng",
+        "runtimes/win-x86/native/net8.0/lang/default/MFJSORT.lng",
+        "runtimes/win-x86/native/net8.0/lang/default/MFJTOOL.lng",
+        "runtimes/win-x86/native/net8.0/lang/default/MFRH9000.lng",
+        "runtimes/win-x86/native/net8.0/lang/default/mfjava.msg",
+        "runtimes/win-x86/native/net8.0/lang/default/mfole.msg",
+        "runtimes/win-x86/native/net8.0/lang/default/rts.err",
+        "runtimes/win-x86/native/net8.0/lang/default/rts.msg",
+        "runtimes/win-x86/native/net8.0/mffh.dll"
+      ]
+    },
+    "MicroFocus.COBOL.FileHandler.Safe/4.100.0": {
+      "sha512": "FPNmFL1MfX9ecBi4mrjYIr1WzjZQcwdP6iab/7lLtYzPRkfvXp80mQIgSc4eGJw3h/iE8fEY9sN4cqiFesEUlQ==",
+      "type": "package",
+      "path": "microfocus.cobol.filehandler.safe/4.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net8.0/MicroFocus.COBOL.FileHandler.Safe.dll",
+        "microfocus.cobol.filehandler.safe.4.100.0.nupkg.sha512",
+        "microfocus.cobol.filehandler.safe.nuspec",
+        "ref/net8.0/MicroFocus.COBOL.FileHandler.Safe.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.FileHandler.Safe.dll"
+      ]
+    },
+    "MicroFocus.COBOL.MFUNIT/8.100.0": {
+      "sha512": "eK8Hm0UNEIBaKbZnbBWWYjYaY/o6GSjkw8XNB8Yp4zwzcap37194z3XzTfltep/wDiL1hWoNcGBD7iyOpD09Vg==",
+      "type": "package",
+      "path": "microfocus.cobol.mfunit/8.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "microfocus.cobol.mfunit.8.100.0.nupkg.sha512",
+        "microfocus.cobol.mfunit.nuspec",
+        "ref/net8.0/MicroFocus.COBOL.MFUNIT.dll"
+      ]
+    },
+    "MicroFocus.COBOL.Runtime/4.100.0": {
+      "sha512": "7dlQBYSV85C/pqjxBxhSI/i5yqET5qJb0Sheq6uDFrN2fR1p7vOWn8QEAoWNdkNwdk7T8u7vPZEkPlI98CGSUw==",
+      "type": "package",
+      "path": "microfocus.cobol.runtime/4.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "microfocus.cobol.runtime.4.100.0.nupkg.sha512",
+        "microfocus.cobol.runtime.nuspec"
+      ]
+    },
+    "MicroFocus.COBOL.Runtime.ADIS/4.100.0": {
+      "sha512": "n+4PlMSUQ7jL0ZIc6eWL++EqT9GW/FIldbIjZUpgFmgU1R9fPEMKQVrCYzUu85IlQe7zY7B5CP4jPnAFywyzDQ==",
+      "type": "package",
+      "path": "microfocus.cobol.runtime.adis/4.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net8.0/MicroFocus.COBOL.AcceptDisplay.dll",
+        "microfocus.cobol.runtime.adis.4.100.0.nupkg.sha512",
+        "microfocus.cobol.runtime.adis.nuspec",
+        "ref/net8.0/MicroFocus.COBOL.AcceptDisplay.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.AcceptDisplay.dll"
+      ]
+    },
+    "MicroFocus.COBOL.Runtime.Core/4.100.0": {
+      "sha512": "mVRZh2BMnVgOfbdwpwlcFoHu6p8k18TJCffOjDOfXifj8zBiftHGITyco3dwoa3b5+2/4b+Vk+sJpaPSo+nB1w==",
+      "type": "package",
+      "path": "microfocus.cobol.runtime.core/4.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net8.0/MicroFocus.COBOL.Messages.dll",
+        "lib/net8.0/MicroFocus.COBOL.Runtime.Net.dll",
+        "lib/net8.0/MicroFocus.COBOL.Runtime.dll",
+        "lib/net8.0/MicroFocus.COBOL.RuntimeServices.dll",
+        "lib/net8.0/MicroFocus.COBOL.Tracing.Net.dll",
+        "lib/net8.0/MicroFocus.COBOL.Tracing.dll",
+        "lib/net8.0/en-GB/MicroFocus.COBOL.Messages.resources.dll",
+        "lib/net8.0/en-US/MicroFocus.COBOL.Messages.resources.dll",
+        "lib/net8.0/ja/MicroFocus.COBOL.Messages.resources.dll",
+        "microfocus.cobol.runtime.core.4.100.0.nupkg.sha512",
+        "microfocus.cobol.runtime.core.nuspec",
+        "ref/net8.0/MicroFocus.COBOL.Runtime.dll",
+        "ref/net8.0/MicroFocus.COBOL.RuntimeServices.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.Messages.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.Runtime.Net.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.Runtime.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.RuntimeServices.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.Tracing.Net.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.Tracing.dll"
+      ]
+    },
+    "MicroFocus.COBOL.Runtime.JSON/4.100.0": {
+      "sha512": "4p16F++tUhgvWf6eAB5FPCDtO8Yff83CiFM8gqSDi7ogpatMkb8O0kCbL3dhxP+wzIVshbz1prvg45u1k2PHmA==",
+      "type": "package",
+      "path": "microfocus.cobol.runtime.json/4.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net8.0/MicroFocus.IMRT.JSON.dll",
+        "microfocus.cobol.runtime.json.4.100.0.nupkg.sha512",
+        "microfocus.cobol.runtime.json.nuspec",
+        "ref/net8.0/MicroFocus.IMRT.JSON.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.IMRT.JSON.dll"
+      ]
+    },
+    "MicroFocus.COBOL.Runtime.SLR/4.100.0": {
+      "sha512": "KL0FutJjk2BHiQQeL5q6dezS1tZud7yxHbgDxhXFlPIWmxT1ocOzSdu1qwS6veMU65gT4LoVAPR+kcDogG3PNA==",
+      "type": "package",
+      "path": "microfocus.cobol.runtime.slr/4.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net8.0/MicroFocus.COBOL.Runtime.SLR.dll",
+        "microfocus.cobol.runtime.slr.4.100.0.nupkg.sha512",
+        "microfocus.cobol.runtime.slr.nuspec",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.Runtime.SLR.dll"
+      ]
+    },
+    "MicroFocus.COBOL.Runtime.XML/4.100.0": {
+      "sha512": "cHVFrYKS1YD7ZVxPgOB4umQCn/uuyazh9t/MA4XBnyhJKFxNLg/DSjxHRnVsL43AEFGZX8iasNo9px0b5mWJIg==",
+      "type": "package",
+      "path": "microfocus.cobol.runtime.xml/4.100.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net8.0/MicroFocus.COBOL.XmlParse.dll",
+        "lib/net8.0/MicroFocus.COBOL.Xmlgen.dll",
+        "microfocus.cobol.runtime.xml.4.100.0.nupkg.sha512",
+        "microfocus.cobol.runtime.xml.nuspec",
+        "ref/net8.0/MicroFocus.COBOL.XmlParse.dll",
+        "ref/net8.0/MicroFocus.COBOL.Xmlgen.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.XmlParse.dll",
+        "runtimes/any/lib/net8.0/MicroFocus.COBOL.Xmlgen.dll"
+      ]
+    },
+    "System.Configuration.ConfigurationManager/8.0.0": {
+      "sha512": "JlYi9XVvIREURRUlGMr1F6vOFLk7YSY4p1vHo4kX3tQ0AGrjqlRWHDi66ImHhy6qwXBG3BJ6Y1QlYQ+Qz6Xgww==",
+      "type": "package",
+      "path": "system.configuration.configurationmanager/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Configuration.ConfigurationManager.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Configuration.ConfigurationManager.targets",
+        "lib/net462/System.Configuration.ConfigurationManager.dll",
+        "lib/net462/System.Configuration.ConfigurationManager.xml",
+        "lib/net6.0/System.Configuration.ConfigurationManager.dll",
+        "lib/net6.0/System.Configuration.ConfigurationManager.xml",
+        "lib/net7.0/System.Configuration.ConfigurationManager.dll",
+        "lib/net7.0/System.Configuration.ConfigurationManager.xml",
+        "lib/net8.0/System.Configuration.ConfigurationManager.dll",
+        "lib/net8.0/System.Configuration.ConfigurationManager.xml",
+        "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll",
+        "lib/netstandard2.0/System.Configuration.ConfigurationManager.xml",
+        "system.configuration.configurationmanager.8.0.0.nupkg.sha512",
+        "system.configuration.configurationmanager.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Diagnostics.EventLog/8.0.0": {
+      "sha512": "fdYxcRjQqTTacKId/2IECojlDSFvp7LP5N78+0z/xH7v/Tuw5ZAxu23Y6PTCRinqyu2ePx+Gn1098NC6jM6d+A==",
+      "type": "package",
+      "path": "system.diagnostics.eventlog/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Diagnostics.EventLog.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Diagnostics.EventLog.targets",
+        "lib/net462/System.Diagnostics.EventLog.dll",
+        "lib/net462/System.Diagnostics.EventLog.xml",
+        "lib/net6.0/System.Diagnostics.EventLog.dll",
+        "lib/net6.0/System.Diagnostics.EventLog.xml",
+        "lib/net7.0/System.Diagnostics.EventLog.dll",
+        "lib/net7.0/System.Diagnostics.EventLog.xml",
+        "lib/net8.0/System.Diagnostics.EventLog.dll",
+        "lib/net8.0/System.Diagnostics.EventLog.xml",
+        "lib/netstandard2.0/System.Diagnostics.EventLog.dll",
+        "lib/netstandard2.0/System.Diagnostics.EventLog.xml",
+        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll",
+        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll",
+        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.xml",
+        "runtimes/win/lib/net7.0/System.Diagnostics.EventLog.Messages.dll",
+        "runtimes/win/lib/net7.0/System.Diagnostics.EventLog.dll",
+        "runtimes/win/lib/net7.0/System.Diagnostics.EventLog.xml",
+        "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll",
+        "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll",
+        "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.xml",
+        "system.diagnostics.eventlog.8.0.0.nupkg.sha512",
+        "system.diagnostics.eventlog.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Security.Cryptography.ProtectedData/8.0.0": {
+      "sha512": "+TUFINV2q2ifyXauQXRwy4CiBhqvDEDZeVJU7qfxya4aRYOKzVBpN+4acx25VcPB9ywUN6C0n8drWl110PhZEg==",
+      "type": "package",
+      "path": "system.security.cryptography.protecteddata/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Security.Cryptography.ProtectedData.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Security.Cryptography.ProtectedData.targets",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net462/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net462/System.Security.Cryptography.ProtectedData.xml",
+        "lib/net6.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net6.0/System.Security.Cryptography.ProtectedData.xml",
+        "lib/net7.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net7.0/System.Security.Cryptography.ProtectedData.xml",
+        "lib/net8.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net8.0/System.Security.Cryptography.ProtectedData.xml",
+        "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "system.security.cryptography.protecteddata.8.0.0.nupkg.sha512",
+        "system.security.cryptography.protecteddata.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Security.Permissions/8.0.0": {
+      "sha512": "v/BBylw7XevuAsHXoX9dDUUfmBIcUf7Lkz8K3ZXIKz3YRKpw8YftpSir4n4e/jDTKFoaK37AsC3xnk+GNFI1Ow==",
+      "type": "package",
+      "path": "system.security.permissions/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Security.Permissions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Security.Permissions.targets",
+        "lib/net462/System.Security.Permissions.dll",
+        "lib/net462/System.Security.Permissions.xml",
+        "lib/net6.0/System.Security.Permissions.dll",
+        "lib/net6.0/System.Security.Permissions.xml",
+        "lib/net7.0/System.Security.Permissions.dll",
+        "lib/net7.0/System.Security.Permissions.xml",
+        "lib/net8.0/System.Security.Permissions.dll",
+        "lib/net8.0/System.Security.Permissions.xml",
+        "lib/netstandard2.0/System.Security.Permissions.dll",
+        "lib/netstandard2.0/System.Security.Permissions.xml",
+        "system.security.permissions.8.0.0.nupkg.sha512",
+        "system.security.permissions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.ServiceProcess.ServiceController/8.0.0": {
+      "sha512": "jtYVG3bpw2n/NvNnP2g/JLri0D4UtfusTvLeH6cZPNAEjJXJVGspS3wLgVvjNbm+wjaYkFgsXejMTocV1T5DIQ==",
+      "type": "package",
+      "path": "system.serviceprocess.servicecontroller/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.ServiceProcess.ServiceController.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.ServiceProcess.ServiceController.targets",
+        "lib/net462/System.ServiceProcess.ServiceController.dll",
+        "lib/net462/System.ServiceProcess.ServiceController.xml",
+        "lib/net6.0/System.ServiceProcess.ServiceController.dll",
+        "lib/net6.0/System.ServiceProcess.ServiceController.xml",
+        "lib/net7.0/System.ServiceProcess.ServiceController.dll",
+        "lib/net7.0/System.ServiceProcess.ServiceController.xml",
+        "lib/net8.0/System.ServiceProcess.ServiceController.dll",
+        "lib/net8.0/System.ServiceProcess.ServiceController.xml",
+        "lib/netstandard2.0/System.ServiceProcess.ServiceController.dll",
+        "lib/netstandard2.0/System.ServiceProcess.ServiceController.xml",
+        "runtimes/win/lib/net6.0/System.ServiceProcess.ServiceController.dll",
+        "runtimes/win/lib/net6.0/System.ServiceProcess.ServiceController.xml",
+        "runtimes/win/lib/net7.0/System.ServiceProcess.ServiceController.dll",
+        "runtimes/win/lib/net7.0/System.ServiceProcess.ServiceController.xml",
+        "runtimes/win/lib/net8.0/System.ServiceProcess.ServiceController.dll",
+        "runtimes/win/lib/net8.0/System.ServiceProcess.ServiceController.xml",
+        "system.serviceprocess.servicecontroller.8.0.0.nupkg.sha512",
+        "system.serviceprocess.servicecontroller.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Text.Encoding.CodePages/8.0.0": {
+      "sha512": "OZIsVplFGaVY90G2SbpgU7EnCoOO5pw1t4ic21dBF3/1omrJFpAGoNAVpPyMVOC90/hvgkGG3VFqR13YgZMQfg==",
+      "type": "package",
+      "path": "system.text.encoding.codepages/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Text.Encoding.CodePages.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net462/System.Text.Encoding.CodePages.dll",
+        "lib/net462/System.Text.Encoding.CodePages.xml",
+        "lib/net6.0/System.Text.Encoding.CodePages.dll",
+        "lib/net6.0/System.Text.Encoding.CodePages.xml",
+        "lib/net7.0/System.Text.Encoding.CodePages.dll",
+        "lib/net7.0/System.Text.Encoding.CodePages.xml",
+        "lib/net8.0/System.Text.Encoding.CodePages.dll",
+        "lib/net8.0/System.Text.Encoding.CodePages.xml",
+        "lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
+        "lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.xml",
+        "runtimes/win/lib/net7.0/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/net7.0/System.Text.Encoding.CodePages.xml",
+        "runtimes/win/lib/net8.0/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/net8.0/System.Text.Encoding.CodePages.xml",
+        "system.text.encoding.codepages.8.0.0.nupkg.sha512",
+        "system.text.encoding.codepages.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Windows.Extensions/8.0.0": {
+      "sha512": "Obg3a90MkOw9mYKxrardLpY2u0axDMrSmy4JCdq2cYbelM2cUwmUir5Bomvd1yxmPL9h5LVHU1tuKBZpUjfASg==",
+      "type": "package",
+      "path": "system.windows.extensions/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net6.0/System.Windows.Extensions.dll",
+        "lib/net6.0/System.Windows.Extensions.xml",
+        "lib/net7.0/System.Windows.Extensions.dll",
+        "lib/net7.0/System.Windows.Extensions.xml",
+        "lib/net8.0/System.Windows.Extensions.dll",
+        "lib/net8.0/System.Windows.Extensions.xml",
+        "runtimes/win/lib/net6.0/System.Windows.Extensions.dll",
+        "runtimes/win/lib/net6.0/System.Windows.Extensions.xml",
+        "runtimes/win/lib/net7.0/System.Windows.Extensions.dll",
+        "runtimes/win/lib/net7.0/System.Windows.Extensions.xml",
+        "runtimes/win/lib/net8.0/System.Windows.Extensions.dll",
+        "runtimes/win/lib/net8.0/System.Windows.Extensions.xml",
+        "system.windows.extensions.8.0.0.nupkg.sha512",
+        "system.windows.extensions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "MicroFocus.COBOL.MFUNIT >= 8.100.*",
+      "MicroFocus.COBOL.Runtime.Core >= 4.*"
+    ]
+  },
+  "packageFolders": {
+    "/home/spg/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/spg/git/Micro-Focus-Unit-Testing-Framework-Samples/courseware/Module4/Example2_SQL_MOCK/dn8/dn8.cblproj",
+      "projectName": "examples",
+      "projectPath": "/home/spg/git/Micro-Focus-Unit-Testing-Framework-Samples/courseware/Module4/Example2_SQL_MOCK/dn8/dn8.cblproj",
+      "packagesPath": "/home/spg/.nuget/packages/",
+      "outputPath": "/home/spg/git/Micro-Focus-Unit-Testing-Framework-Samples/courseware/Module4/Example2_SQL_MOCK/dn8/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/spg/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "/opt/microfocus/EnterpriseDeveloper10/NuGetPackages/": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "MicroFocus.COBOL.MFUNIT": {
+            "target": "Package",
+            "version": "[8.100.*, )"
+          },
+          "MicroFocus.COBOL.Runtime.Core": {
+            "target": "Package",
+            "version": "[4.*, )",
+            "autoReferenced": true
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
