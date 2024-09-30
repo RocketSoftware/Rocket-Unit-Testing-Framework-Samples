@@ -1,6 +1,6 @@
 # Rocket Unit Testing Framework Samples for 10.0
 
-This repo contains a collection of samples that demonstrate the features included with the [Rocket Unit Testing Framework](https://www.microfocus.com/documentation/enterprise-developer/ed80/ED-Eclipse/index.html?t=GUID-56868D50-F836-4FA3-9255-8BCE6F895D1B.html)
+This repo contains a collection of samples that demonstrate the features included with the [Rocket Unit Testing Framework](https://www.microfocus.com/documentation/enterprise-developer/ed100/ED-Eclipse/index.html?t=GUID-56868D50-F836-4FA3-9255-8BCE6F895D1B.html)
 
 ## Samples
 
@@ -32,10 +32,17 @@ This repo contains a collection of samples that demonstrate the features include
 | Visual COBOL For Java Developers Book/Chapter 9 | [Git Repo](https://github.com/RocketSoftware/visual-cobol-for-java-developers-book/tree/master/chapter-09/complete) | JVM      |
 | Airport Sample                                  | [Git Repo](https://github.com/RocketSoftware/Airport-Sample)                                                        | Native   |
 
+## Articles and Blogs
+
+| Title | Author|
+|--|--|
+| [Using the Rocket Software Unit Test Framework to facilitate smarter testing of Mainframe Subsystem programs](https://www.rocketsoftware.com/blogs/using-the-rocket-unit-test-framework-to-facilitate-smarter-testing-of-mainframe-subsystem-programs) | Gary Evans | 
+| [Unit Test Demo](https://www.youtube.com/watch?v=l3RB80RLBUQ&list=PLlUdEXI83_XpnIQjdXd8ias4ZcKBIPwBm&index=5&pp=iAQB) | Gary Evans / Stephen Gennard|
+
 ## License
 
 Copyright 2023 – 2024 Rocket Software, Inc. or its affiliates. 
-This software may be used, modified, and distributed (provided this notice is included without modification)
+This software may be used, modified, and distributed z(provided this notice is included without modification)
 
 Solely for internal demonstration purposes with other Rocket® products, and is otherwise subject to the EULA at [https://www.rocketsoftware.com/company/trust/agreements](https://www.rocketsoftware.com/company/trust/agreements).
 
