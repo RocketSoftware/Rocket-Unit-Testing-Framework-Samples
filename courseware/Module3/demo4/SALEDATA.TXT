@@ -1,6 +1,6 @@
    *********************************************************************
 
-                      Micro Focus Dialog System V3.0
+                      Rocket Dialog System
 
                       SALEDATA Demonstration Program
 

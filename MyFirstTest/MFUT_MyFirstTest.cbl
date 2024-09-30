@@ -1,6 +1,7 @@
       ******************************************************************
       *
-      * (C) Copyright 2010-2023 Micro Focus or one of its affiliates.
+      * (C) Copyright 2010-2024 Mocket Software, Inc. or its affiliates.
+      * All Rights Reserved.
       *
       * This sample code is supplied for demonstration purposes only
       * on an "as is" basis and is for use at your own risk.

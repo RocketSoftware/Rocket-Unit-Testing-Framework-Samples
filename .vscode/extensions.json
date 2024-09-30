@@ -1,6 +1,6 @@
 {
-    "recommendations": [
-        "micro-focus-amc.mfcobol",
-        "micro-focus-amc.mfenterprise"
-    ]
+        "recommendations": [
+            "RocketSoftware.rocket-cobol",
+            "RocketSoftware.rocket-enterprise"
+        ]
 }

@@ -24,7 +24,7 @@ shift
 goto top_args
 :args_end
 
-set JUNIT_PACKAGE=com.microfocus.sample.%TARGET%
+set JUNIT_PACKAGE=com.rocketsoftware.sample.%TARGET%
 set REPORT_NAME=%NAME%_%TARGET%-report.txt
 set "REPORT_ARGS=-report:junit -junit-packname:%JUNIT_PACKAGE% -report:printfile -reportfile:%REPORT_NAME%"
 echo TARGET is %TARGET%
@@ -74,7 +74,7 @@ goto theend
 :bld_jvm
 call :check_jvm_extra
 mkdir jbin >nul: 2>&1
-for %%i in (*.cbl) do cobol %%i jvmgen(sub) anim  iloutput"jbin" ilnamespace"com.microfocus.test" %MFUPP_DIR%;
+for %%i in (*.cbl) do cobol %%i jvmgen(sub) anim  iloutput"jbin" ilnamespace"com.rocketsoftware.test" %MFUPP_DIR%;
 jar cvf  examples.jar -C jbin .
 call mfjarprogmap.bat -jar examples.jar
 call mfurunj.bat %REPORT_ARGS% -generate-mfu examples.jar

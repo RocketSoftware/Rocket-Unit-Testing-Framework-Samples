@@ -10,7 +10,7 @@ report=junit
 report=printfile
 reportfile=scan_employee_table_net6-report.txt
 report=nomarkdown
-junit-packname=com.microfocus.sample.net6.
+junit-packname=com.rocketsoftware.sample.net6.
 ignore-return-code=false
 fixture-preload-filename=examples.dll
 

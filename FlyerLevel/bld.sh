@@ -25,7 +25,7 @@ do
 	esac
 done
 
-JUNIT_PACKAGE=com.microfocus.sample.$TARGET
+JUNIT_PACKAGE=com.rocketsoftware.sample.$TARGET
 REPORT_NAME=${NAME}_${TARGET}-report.txt
 REPORT_ARGS="-report:junit -junit-packname:$JUNIT_PACKAGE -report:printfile -reportfile:$REPORT_NAME"
 
@@ -59,9 +59,9 @@ bld_jvm() {
 		echo Compiling : $i.cbl
 		if [ -f $i.dir ]
 		then
-			cob -j -C 'use"'$i.dir'"' -C iloutput\"jbin\" -C ilnamespace\"com.microfocus.test\" $i.cbl
+			cob -j -C 'use"'$i.dir'"' -C iloutput\"jbin\" -C ilnamespace\"com.rocketsoftware.test\" $i.cbl
 		else
-			cob -j -C iloutput\"jbin\" -C ilnamespace\"com.microfocus.test\" $i.cbl
+			cob -j -C iloutput\"jbin\" -C ilnamespace\"com.rocketsoftware.test\" $i.cbl
 		fi
 	done
 

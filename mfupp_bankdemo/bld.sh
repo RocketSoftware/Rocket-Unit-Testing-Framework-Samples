@@ -56,7 +56,7 @@ bld_jvm() {
 		if [ -f $i ]
 		then
 			echo Compiling : $i
-			cob -vj -C nolitlink -C iloutput\"jbin\" -C ilnamespace\"com.microfocus.test\" "$MFUPP_DIR" $i
+			cob -vj -C nolitlink -C iloutput\"jbin\" -C ilnamespace\"com.rocketsoftware.test\" "$MFUPP_DIR" $i
 		fi
 	done
 
@@ -65,9 +65,9 @@ bld_jvm() {
 		echo Compiling : $i.cbl
 		if [ -f $i.dir ]
 		then
-			cob -vj -C 'use"'$i.dir'"' -C iloutput\"jbin\" -C ilnamespace\"com.microfocus.test\" "$MFUPP_DIR" $i.cbl
+			cob -vj -C 'use"'$i.dir'"' -C iloutput\"jbin\" -C ilnamespace\"com.rocketsoftware.test\" "$MFUPP_DIR" $i.cbl
 		else
-			cob -vj -C iloutput\"jbin\" -C ilnamespace\"com.microfocus.test\" "$MFUPP_DIR" $i.cbl
+			cob -vj -C iloutput\"jbin\" -C ilnamespace\"com.rocketsoftware.test\" "$MFUPP_DIR" $i.cbl
 		fi
 	done
 
@@ -99,7 +99,7 @@ do
 		   ;;
 	esac
 done
-JUNIT_PACKAGE=com.microfocus.sample.$TARGET
+JUNIT_PACKAGE=com.rocketsoftware.sample.$TARGET
 REPORT_NAME=${NAME}_${TARGET}-report.txt
 REPORT_ARGS="-report:junit -junit-packname:$JUNIT_PACKAGE. -report:printfile -reportfile:$REPORT_NAME"
 
