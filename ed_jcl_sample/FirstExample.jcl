@@ -11,5 +11,5 @@
 //JCLDM1 JOB 'MFUEX1',CLASS=A,MSGCLASS=A
 //*---- should pass ----------------------------------------------------
 //STEP01 EXEC PGM=IEFBR14
-//OUTA1 OUTPUT ADDRESS=('Open Text','The Lawn','Newbury','Berkshire')
+//OUTA1 OUTPUT ADDRESS=('Rocket Software','The Lawn','Newbury','Berkshire')
 //

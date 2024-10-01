@@ -1,13 +1,23 @@
-//MFJDEM12 JOB 'Open Text',CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID
+//MFJDEM12 JOB 'Rocket',CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID
 //*
 //* ------------------------------------------------------------------
-//*<CR_TAG_JCL\>
+//* Copyright 1984-2024 Rocket Software, Inc. or its affiliates. 
+//* All Rights Reserved.
+//* This software may be used, modified, and distributed
+//* 
+//* (provided this notice is included without modification)
+//* solely for internal demonstration purposes with other
+//* Rocket® products, and is otherwise subject to the EULA at
+//* https://www.rocketsoftware.com/company/trust/agreements.
 //*
-//* Copyright (C) Open Text 1984 - 2019 or one of its affiliates.
-//* This sample code is supplied for demonstration purposes only
-//* on an "as is" basis and "is for use at your own risk".
+//* THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED
+//* WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF
+//* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,
+//* SHALL NOT APPLY.
 //*
-//*<CR_TAG_JCL_END\>
+//* TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL
+//* ROCKET SOFTWARE HAVE ANY LIABILITY WHATSOEVER IN CONNECTION
+//* WITH THIS SOFTWARE.
 //* ------------------------------------------------------------------
 //*
 //* DEMONSTRATES THE FOLLOWING:
