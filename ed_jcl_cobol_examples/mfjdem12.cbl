@@ -1,23 +1,23 @@
-      ****************************************************************
-      *<CR_S_T_B\>
-      *
-      * Copyright (C) Open Text 1984 - 2019 or one of its affiliates.
-      * The only warranties for products and services of Open Text and
-      * its affiliates and licensors ("Open Text") are set forth in 
-      * the express warranty statements accompanying such products and
-      * services. Nothing herein should be construed as constituting an 
-      * additional warranty. Open Text shall not be liable for technical 
-      * or editorial errors or omissions contained herein. 
-      * The information contained herein is subject to change without notice.
-      * Contains Confidential Information. Except as specifically indicated 
-      * otherwise, a valid license is required for possession, use or copying.
-      * Consistent with FAR 12.211 and 12.212, Commercial Computer Software, 
-      * Computer Software Documentation, and Technical Data for Commercial 
-      * Items are licensed to the U.S. Government under vendor's standard 
-      * commercial license.
-      *
-      *<CR_S_T_E\>
-      ****************************************************************
+      *****************************************************************
+      *                                                               *
+      * Copyright 2010-2024 Rocket Software, Inc. or its affiliates.  *
+      * All Rights Reserved.                                          *
+      *                                                               *
+      * This software may be used, modified, and distributed          *
+      * (provided this notice is included without modification)       *
+      * solely for internal demonstration purposes with other         *
+      * Rocket® products, and is otherwise subject to the EULA at     *
+      * https://www.rocketsoftware.com/company/trust/agreements.      *
+      *                                                               *
+      * THIS SOFTWARE IS PROVIDED "AS IS" AND ALL IMPLIED WARRANTIES, *
+      * INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY AND       *
+      * FITNESS FOR A PARTICULAR PURPOSE, SHALL NOT APPLY.            *
+      *                                                               *
+      * TO THE EXTENT PERMITTED BY LAW, IN NO EVENT WILL              *
+      * ROCKET SOFTWARE HAVE ANY LIABILITY WHATSOEVER IN CONNECTION   *
+      * WITH THIS SOFTWARE.                                           *
+      *                                                               *
+      *****************************************************************
 
        IDENTIFICATION DIVISION.
        PROGRAM-ID.    MFJDEM12.
