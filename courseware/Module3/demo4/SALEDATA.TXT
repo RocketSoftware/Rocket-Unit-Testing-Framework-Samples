@@ -1,8 +1,6 @@
    *********************************************************************
 
-                      Rocket Dialog System
-
-                      SALEDATA Demonstration Program
+                  Dialog System - SALEDATA Demonstration Program
 
    *********************************************************************
 
