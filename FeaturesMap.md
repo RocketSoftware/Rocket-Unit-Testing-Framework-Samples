@@ -26,4 +26,4 @@
 |                       | Feature: Initial support for EXEC DLI                                                                                                                                                   |
 |                       | Feature: mfuenv support                                                                                                                                                                 |
 |                       | Feature: json-helper/nojh for code generation                                                                                                                                           |
-|                       | feature: Support for [NO_COLOR](http://no-color.org/) environment variable                                                                                                              |
+|                       | Feature: Support for [NO_COLOR](http://no-color.org/) environment variable                                                                                                              |
